@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  position: relative;
 }
 
 .App-logo {
@@ -35,4 +37,64 @@
   to {
     transform: rotate(360deg);
   }
+  
 }
+
+
+.section-login {
+    width: 100%;
+    height: 90%;
+    position: absolute;
+  }
+
+  /* BG Home  */
+  #section-bg {
+    background-color: beige;
+    /* background-image:  linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('https://media.discordapp.net/attachments/453542849573814282/811878985306341426/145a4477029515.5c7bcf54cc7f2.png'); */
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+  #section-bg .content-bg {
+	height: 100vh;
+
+  }
+  @media screen and (min-width: 601px) {
+    div.overlay {
+      margin-left: 8%;
+      margin-bottom: 2%;
+    }
+  
+    div.content-bg {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      padding-bottom: 2%;
+      font-weight: bold;
+      font-size: 2em;
+    }
+ 
+    
+  }
+  
+@media screen and (max-width: 600px) {
+  div.overlay {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    font-size: 2em;
+  }
+
+  div.viewaboutspacex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+    font-size: 2em;
+    display: flex;
+  }
+ 
+}
+
