@@ -24,8 +24,10 @@ const Login = () => {
                                     <a href="/" type="submit" className="border-2 border-gray-100 focus:outline-none bg-red-600 text-white font-bold tracking-wider block w-full p-2 rounded-lg focus:border-gray-700 hover:bg-purple-700">
                                         Login
                                     </a>
+                                    <br></br>
+                                    <strong>Do you have an account ?</strong>
                                     <a href="/register" type="submit" className="border-2 border-gray-100 focus:outline-none bg-blue-600 text-white font-bold tracking-wider block w-full p-2 rounded-lg focus:border-gray-700 hover:bg-purple-700">
-                                        Sign In
+                                        Sign Up
                                     </a>
                                 </div>
                             </form>
