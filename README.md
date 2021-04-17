@@ -13,7 +13,7 @@
     * Promotions /promotions Display all promotion
 4. Purchase
     * ✔   Cart /cart Display products in cart
-    * Checkout /checkout Checkout form
+    * ✔   Checkout /checkout Checkout form
     * Payment /payment Payment form
 5. Admin Dashboard
     * Admin dashboard /admin Display admin dashboard
