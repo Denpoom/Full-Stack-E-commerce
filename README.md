@@ -5,7 +5,7 @@
     * ✔   Register /register Register form
 2. Customer
     * ✔  Customer info /customer Display customer detail
-    * Customer orders /customer/orders Display customer orders
+    * ✔  Customer orders /customer/orders Display customer orders
     * Customer order detail /customer/order/:orderId Display order detail by order id
 3. Show Product & Promotion Detail
     * ✔  Products /products Display all product with pagiznation
