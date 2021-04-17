@@ -14,7 +14,6 @@ const Loadable = (opts) => L({
 const AsyncHome = Loadable({
   loader: () => import('./View/Authen/Home')
 })
-
 const AsyncLogin = Loadable({
   loader: () => import('./View/Authen/Login')
 })
@@ -36,6 +35,9 @@ const AsyncCustomerDetail = Loadable({
 const AsyncCustomerCart = Loadable({
   loader: () => import('./View/Purchase/Cart')
 })
+const AsyncCustomerCheckout = Loadable({
+  loader: () => import('./View/Purchase/Checkout')
+})
 
 const queryClient = new QueryClient()
 
@@ -52,9 +54,10 @@ function App() {
             <Route path="/register" exact component={AsyncRegister} />
             <Route path="/product" exact component={AsyncProduct} />
             <Route path="/customer" exact component={AsyncCustomer} />
-            <Route path="/orders" exact component={AsyncCustomerOrders} />
+            <Route path="/customer/orders" exact component={AsyncCustomerOrders} />
             <Route path="/product/detail" exact component={AsyncCustomerDetail} />
             <Route path="/cart" exact component={AsyncCustomerCart} />
+            <Route path="/checkout" exact component={AsyncCustomerCheckout} />
           </Switch>
         <Footer/>
         </div>

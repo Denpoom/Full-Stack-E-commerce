@@ -1,17 +1,17 @@
 import React, { Suspense } from 'react';
-import CartList from '../../Components/CartList';
-import Checkout from '../../Components/CheckoutForm';
 
-const Cart = () => {
+import CheckoutFrom from '../../Components/CheckoutForm';
+
+const Checkout = () => {
     return (
         <React.Fragment >
             <Suspense fallback={<h1>Still Loading…</h1>}>  
-                <CartList/>
+                <CheckoutFrom/>
             </Suspense>
         </React.Fragment>
     )
 }
-export default Cart
+export default Checkout
 
 
 
