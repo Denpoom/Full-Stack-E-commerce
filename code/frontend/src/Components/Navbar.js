@@ -15,9 +15,9 @@ const Navbar = () => {
                     <div className="sub_head ml-auto flex space-x-6 my-auto">
                         <a className="h_btns cursor-pointer" href="/">Home</a>
                         <a className="h_btns cursor-pointer" href="/product">Products</a>
-                        <a className="h_btns cursor-pointer" href="#">Order</a>
+                        <a className="h_btns cursor-pointer" href="/orders">Order</a>
                         <a className="h_btns cursor-pointer" href="#">Promotion</a>
-                        <a className="h_btns cursor-pointer" href="customer">Dashboard</a>
+                        <a className="h_btns cursor-pointer" href="/">Dashboard</a>
                     </div>
                 </div>
 
@@ -27,29 +27,3 @@ const Navbar = () => {
 };
 
 export default Navbar
-//   <div className="container-fluid">
-//                 <a className="navbar-brand" href="#">E-Commerce</a>
-//                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//                     <span className="navbar-toggler-icon"></span>
-//                 </button>
-//                 <div className="collapse navbar-collapse" id="navbarNav">
-//                     <ul className="navbar-nav">
-//                         <li className="nav-item">
-//                             <a className="nav-link" href="#">Dashboard </a>
-//                         </li>
-//                         <li className="nav-item">
-//                             <a className="nav-link" href="#">Promotion</a>
-//                         </li>
-//                         <li className="nav-item">
-//                             <a className="nav-link" href="#">Product </a>
-//                         </li>
-//                         <li className="nav-item">
-//                             <a className="nav-link" href="#">Orders </a>
-//                         </li>  
-//                     </ul> 
-//                 </div>
-//                 <div className="form-inline my-3 my-lg-0">
-//                 <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>
-//                 <button className="btn btn-outline-light my-2 my-sm-0 m-2" type="submit">Logout</button>
-//                 </div>
-//             </div>

@@ -25,7 +25,7 @@ const AsyncProduct = Loadable({
   loader: () => import('./View/Product/Product')
 })
 const AsyncCustomer = Loadable({
-  loader: () => import('./View/Customer/Info')
+  loader: () => import('./View/Customer/Customer')
 })
 const AsyncCustomerOrders = Loadable({
   loader: () => import('./View/Customer/Orders')

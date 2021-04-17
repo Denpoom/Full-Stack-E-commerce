@@ -1,16 +1,16 @@
 import React, { Suspense } from 'react';
-import OrderList from '../../Components/OrderList';
+import Info from '../../Components/Info';
 
-const Orders = () => {
+const Customer = () => {
     return (
         <React.Fragment >
             <Suspense fallback={<h1>Still Loading…</h1>}>  
-                <OrderList/>
+                <Info/>
             </Suspense>
         </React.Fragment>
     )
 }
-export default Orders
+export default Customer
 
 
 
