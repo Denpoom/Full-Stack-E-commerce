@@ -18,6 +18,7 @@ const Navbar = () => {
                         <a className="h_btns cursor-pointer" href="/orders">Order</a>
                         <a className="h_btns cursor-pointer" href="#">Promotion</a>
                         <a className="h_btns cursor-pointer" href="/">Dashboard</a>
+                        <a className="h_btns cursor-pointer" href="/cart">Cart</a>
                     </div>
                 </div>
 

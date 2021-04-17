@@ -30,6 +30,12 @@ const AsyncCustomer = Loadable({
 const AsyncCustomerOrders = Loadable({
   loader: () => import('./View/Customer/Orders')
 })
+const AsyncCustomerDetail = Loadable({
+  loader: () => import('./View/Customer/Detail')
+})
+const AsyncCustomerCart = Loadable({
+  loader: () => import('./View/Purchase/Cart')
+})
 
 const queryClient = new QueryClient()
 
@@ -47,6 +53,8 @@ function App() {
             <Route path="/product" exact component={AsyncProduct} />
             <Route path="/customer" exact component={AsyncCustomer} />
             <Route path="/orders" exact component={AsyncCustomerOrders} />
+            <Route path="/product/detail" exact component={AsyncCustomerDetail} />
+            <Route path="/cart" exact component={AsyncCustomerCart} />
           </Switch>
         <Footer/>
         </div>

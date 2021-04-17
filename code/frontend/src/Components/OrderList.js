@@ -28,21 +28,21 @@ const OrderList = () => {
                                     <td>Intro to CSS</td>
                                     <td>17/4/2021</td>
                                     <td className="text-green-500 font-semibold">Payment Successful</td>
-                                    <td className="no-underline hover:underline"><a href="#">More Details</a></td>
+                                    <td className="no-underline hover:underline"><a href="/">More Details</a></td>
                                     </tr>
                                     <br></br>
                                     <tr>
                                     <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
                                     <td>17/4/2021</td>
                                     <td className="text-red-500 font-semibold">Waiting Payment</td>
-                                    <td className="no-underline hover:underline"><a href="#">More Details</a></td>
+                                    <td className="no-underline hover:underline"><a href="/">More Details</a></td>
                                     </tr>
                                     <br></br>
                                     <tr>
                                     <td>Eieiza</td>
                                     <td>17/4/2021</td>
                                     <td className="text-red-500 font-semibold">Waiting Payment</td>
-                                    <td className="no-underline hover:underline"><a href="#">More Details</a></td>
+                                    <td className="no-underline hover:underline"><a href="/">More Details</a></td>
                                     </tr>
                                 </tbody>
                                 </table>
