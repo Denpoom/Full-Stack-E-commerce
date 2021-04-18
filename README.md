@@ -1,5 +1,5 @@
 # Full-Stack-E-commerce
-1. Authen -> Login Register -> Admin, Customer -> UserType
+1. Authen
     * ✔   Home / Display banner, latest promotion and products
     * ✔   Login /login Login form
     * ✔   Register /register Register form
@@ -7,7 +7,7 @@
     * ✔  Customer info /customer Display customer detail
     * ✔  Customer orders /customer/orders Display customer orders
     * Customer order detail /customer/order/:orderId Display order detail by order id
-3. Show Product & Promotion Detail
+3.Product & Promotion
     * ✔  Products /products Display all product with pagiznation
     * ✔  Product detail /product/:productSlug Display product detail by slug
     * Promotions /promotions Display all promotion
