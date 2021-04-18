@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {PRODUCTS_QUERY} from '../Graphql/productsQuery';
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -43,11 +45,13 @@ const CardList = () => {
                                 <div class="row" >
                                         {data.products.map((product) => {
                                             return (<div class="col-md-2">
+                                                <Link to={`/product/detail/${product._id}`}>
+                                                {/* <Link to={{ pathname: `/space-x/Rocketdetail/${o.id}`}} target="_blank"></div> */}
                                             <Card className={classes.root}>
                                                 <CardActionArea>
                                                     <CardMedia
                                                         className={classes.media}
-                                                        image="/static/images/cards/contemplative-reptile.jpg"
+                                                        image={product.url}
                                                         title="Contemplative Reptile"
                                                     />
                                                     <CardContent>
@@ -55,12 +59,12 @@ const CardList = () => {
                                                             {product.name}
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            {product.detail}
+                                                            {product.price}
                                                         </Typography>
                                                     </CardContent>
                                                 </CardActionArea>
                                             </Card>
-                                        </div>)
+                                            </Link> </div>)
                                         })}
                                 </div>
                             </div>

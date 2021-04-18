@@ -9,6 +9,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useQuery } from '@apollo/client';
+import { PRODUCTS_QUERY } from '../Graphql/productsQuery';
+import { useParams } from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -19,9 +22,29 @@ const useStyles = makeStyles({
     },
 });
 
-const DetailProduct = () => {
-    const classes = useStyles();
 
+// const CardList = () => {
+//     const classes = useStyles();
+//     const { loading, error, data } = useQuery(PRODUCTS_QUERY)
+//     if (loading) {
+//       return 'Loading ...'
+//     }
+//     if (error) {
+//       return 'Error !!'
+//     }
+//     console.log(data)
+const DetailProduct = () => {
+    const { id_product } = useParams()
+    console.log(id_product)
+    const classes = useStyles();
+    const { loading, error, data } = useQuery(PRODUCTS_QUERY)
+    if (loading){
+        return 'Loading ...'
+    }
+    if (error) {
+        return 'Error !!'
+    }
+    console.log(data)
     return (
 
         <React.Fragment>
@@ -36,7 +59,11 @@ const DetailProduct = () => {
                                 <hr></hr>
                                 <br></br>
                                 <div className="container">
-                                    <div className="row" >
+                                    
+                                    {data.products.map((res) => {
+                                    if (id_product == res._id) {
+                                        return (
+                                    <div className="row">
                                         <div className="col-md-3"></div>
                                         <div className="col-md-6" style={{ backgroundColor: "" }}>
                                             <div className="row">
@@ -45,37 +72,30 @@ const DetailProduct = () => {
                                             <CardActionArea>
                                                 <CardMedia
                                                     className={classes.media}
-                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
+                                                    image={res.url}
                                                     title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
-                                                        <a href='/product/detail'>
+                                                      
                                                         <Typography gutterBottom variant="h5" component="h2">
-                                                            iPhone 12 mini
+                                                            {res.name}
                                                         </Typography>
-                                                        <Typography variant="body2" color="textSecondary" component="p">
-                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
-และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
-สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
-                                                        </Typography>
-                                                        </a>
+                                                        
                                                 </CardContent>
                                             </CardActionArea>
                                         </Card>
                                                 </div>
                                                 <div className="col-8">
                                                     <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-                                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">IPhone 12 mini</h1>
+                                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{res.name}</h1>
                                                     <hr></hr>
                                                     <br></br>
-                                                    <p className="leading-relaxed">จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
-และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
-สี่เหลี่ยมมุมฉากมาตรฐานแล้ว </p>
+                                                    <p className="leading-relaxed">{res.detail} </p>
                                                     <br></br>
                                                     <hr></hr>
                                                     <br></br>
                                                     <div className="flex">
-                                                        <span className="title-font font-medium text-2xl text-gray-900">$58.00</span>
+                                                        <span className="title-font font-medium text-2xl text-gray-900">${res.price}</span>
                                                         
                                                         <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
                                                     </div>
@@ -85,7 +105,11 @@ const DetailProduct = () => {
 
                                         </div>
                                         <div class="col-md-3"></div>
-                                    </div>
+                                    </div> 
+                                    )
+                                }
+                            }
+                                )}
                                 </div>
                             </div>
                         </div>

@@ -55,7 +55,7 @@ function App() {
             <Route path="/product" exact component={AsyncProduct} />
             <Route path="/customer" exact component={AsyncCustomer} />
             <Route path="/customer/orders" exact component={AsyncCustomerOrders} />
-            <Route path="/product/detail" exact component={AsyncCustomerDetail} />
+            <Route path="/product/detail/:id_product" exact component={AsyncCustomerDetail} />
             <Route path="/cart" exact component={AsyncCustomerCart} />
             <Route path="/checkout" exact component={AsyncCustomerCheckout} />
           </Switch>
