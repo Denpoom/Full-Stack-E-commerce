@@ -1,3 +1,5 @@
-import './comment'
-import './post'
-import './user'
+import './product'
+import './order'
+import './payment'
+import './promotion'
+import './checkout'

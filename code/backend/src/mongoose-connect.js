@@ -2,11 +2,9 @@ import mongoose from 'mongoose'
 
 mongoose.Promise = Promise
 mongoose.connect(
-  'mongodb://mongodb:27017',
+  'mongodb://localhost:27017',
   {
-    dbName: 'test',
-    user: 'user',
-    pass: 'pass',
+    dbName: 'e-commerce_project',
     promiseLibrary: Promise,
     useNewUrlParser: true,
     useUnifiedTopology: true,

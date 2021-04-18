@@ -1,7 +1,7 @@
 import React from "react";
 
-// Navber 
-const Navbar = () => {
+// Navber Admin
+const NavbarAdmin = () => {
     return (
         <React.Fragment>
             <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark navbar-fixed-top" >
@@ -12,19 +12,13 @@ const Navbar = () => {
                         <div className="text ml-2 my-auto flex-none">E-Commerce</div>
                     </div>
                     </a>
-                    <div className="sub_head  flex space-x-6  ml-5 my-auto">
+                    <div className="sub_head ml-auto flex space-x-6 my-auto">
                         <a className="h_btns cursor-pointer" href="/">Home</a>
                         <a className="h_btns cursor-pointer" href="/product">Products</a>
+                        <a className="h_btns cursor-pointer" href="/orders">Order</a>
                         <a className="h_btns cursor-pointer" href="#">Promotion</a>
+                        <a className="h_btns cursor-pointer" href="/">Dashboard</a>
                         <a className="h_btns cursor-pointer" href="/cart">Cart</a>
-                    </div>
-                    <div className="sub_head ml-auto flex space-x-6 my-auto">
-                    <p  className="ml-2 py-2 rounded text-black-700 font-bold hover:text-blue ">Username</p>
-
-                    <a href="/customer" className=" block text-md px-2  ml-2 py-2 rounded text-black-700 font-bold hover:text-blue "><i class="fas fa-user-alt"></i></a>
-                    {/* <a href="/login" class=" block text-md px-2  ml-2 py-2 rounded text-black-700 font-bold hover:text-white hover:bg-blue-700 lg:mt-0">login</a> */}
-                    <a href="/logout" className=" block text-md px-2  ml-2 py-2 rounded text-black-700 font-bold hover:text-white hover:bg-red-700 lg:mt-0">logout</a>
-
                     </div>
                 </div>
 
@@ -33,4 +27,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar
+export default NavbarAdmin

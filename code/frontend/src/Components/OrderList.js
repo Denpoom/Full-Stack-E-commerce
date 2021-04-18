@@ -1,6 +1,15 @@
 import React from "react";
-
+import { useQuery } from '@apollo/client'
+import {ORDERS_QUERY} from '../Graphql/ordersQuery';
 const OrderList = () => {
+    const { loading, error, data } = useQuery(ORDERS_QUERY)
+    if (loading) {
+      return 'Loading ...'
+    }
+    if (error) {
+      return 'Error !!'
+    }
+    console.log(data)
     return (
          //form 
         <section className="#">
@@ -16,34 +25,26 @@ const OrderList = () => {
                                 <table class="table-fixed">
                                 <thead>
                                     <tr className="bg-gray-200 max-w-sm">
-                                    <th class="w-1/3"><h1 className="text-center"><i class="fas fa-shopping-cart"></i> รายการสั่งซื้อ</h1></th>
-                                    <th class="w-1/5"><h1 className="text-center"><i class="fas fa-history"></i> วันที่ทำการสั่งซื้อ</h1></th>
-                                    <th class="w-1/4"><h1 className="text-center"><i class="fas fa-money-bill"></i> สถานะ</h1></th>
-                                    <th class="w-1/6"><h1 className="text-center"><i class="fas fa-info"></i> ดูรายละเอียดเพิ่มเติม</h1></th>
+                                    <th className="w-1/3"><h1 className="text-center"><i className="fas fa-shopping-cart"></i> รายการสั่งซื้อ</h1></th>
+                                    <th className="w-1/5"><h1 className="text-center"><i className="fas fa-history"></i> วันที่ทำการสั่งซื้อ</h1></th>
+                                    <th className="w-1/4"><h1 className="text-center"><i className="fas fa-money-bill"></i> สถานะ</h1></th>
+                                    <th className="w-1/6"><h1 className="text-center"><i className="fas fa-info"></i> ดูรายละเอียดเพิ่มเติม</h1></th>
                                     </tr>
                                 </thead>
                                 <br></br>
                                 <tbody>
-                                    <tr>
-                                    <td>Intro to CSS</td>
-                                    <td>17/4/2021</td>
-                                    <td className="text-green-500 font-semibold">Payment Successful</td>
-                                    <td className="no-underline hover:underline"><a href="#">More Details</a></td>
-                                    </tr>
-                                    <br></br>
-                                    <tr>
-                                    <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
-                                    <td>17/4/2021</td>
-                                    <td className="text-red-500 font-semibold">Waiting Payment</td>
-                                    <td className="no-underline hover:underline"><a href="#">More Details</a></td>
-                                    </tr>
-                                    <br></br>
-                                    <tr>
-                                    <td>Eieiza</td>
-                                    <td>17/4/2021</td>
-                                    <td className="text-red-500 font-semibold">Waiting Payment</td>
-                                    <td className="no-underline hover:underline"><a href="#">More Details</a></td>
-                                    </tr>
+                                    {data.orders.map((order)=>{
+                                        return(
+                                        <>
+                                        <tr>
+                                        <td>{order.name}</td>
+                                        <td>{order.timestamp}</td>
+                                        <td className={order.status === "Wait"?"text-red-500 font-semibold":"text-green-500 font-semibold"}>{order.status === "Wait"?"Waiting Payment":"Payment Successful"}</td>
+                                        <td className="no-underline hover:underline"><a href="#">More Details</a></td>
+                                        </tr>
+                                        <br></br>
+                                        </>
+                                    )})}
                                 </tbody>
                                 </table>
                         </div>
