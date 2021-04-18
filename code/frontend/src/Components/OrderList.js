@@ -25,10 +25,10 @@ const OrderList = () => {
                                 <table class="table-fixed">
                                 <thead>
                                     <tr className="bg-gray-200 max-w-sm">
-                                    <th class="w-1/3"><h1 className="text-center"><i class="fas fa-shopping-cart"></i> รายการสั่งซื้อ</h1></th>
-                                    <th class="w-1/5"><h1 className="text-center"><i class="fas fa-history"></i> วันที่ทำการสั่งซื้อ</h1></th>
-                                    <th class="w-1/4"><h1 className="text-center"><i class="fas fa-money-bill"></i> สถานะ</h1></th>
-                                    <th class="w-1/6"><h1 className="text-center"><i class="fas fa-info"></i> ดูรายละเอียดเพิ่มเติม</h1></th>
+                                    <th className="w-1/3"><h1 className="text-center"><i className="fas fa-shopping-cart"></i> รายการสั่งซื้อ</h1></th>
+                                    <th className="w-1/5"><h1 className="text-center"><i className="fas fa-history"></i> วันที่ทำการสั่งซื้อ</h1></th>
+                                    <th className="w-1/4"><h1 className="text-center"><i className="fas fa-money-bill"></i> สถานะ</h1></th>
+                                    <th className="w-1/6"><h1 className="text-center"><i className="fas fa-info"></i> ดูรายละเอียดเพิ่มเติม</h1></th>
                                     </tr>
                                 </thead>
                                 <br></br>
