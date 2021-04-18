@@ -9,8 +9,7 @@ const CheckoutForm = () => {
                     <div className="mt-5 relative lg:max-w-screen-2xl w-full">
                         <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-lg">
                             <h1 className="font-bold tracking-wider text-3xl mb-8 text-gray-800"> Checkout Form</h1>
-                            <div className="row flex justify-center">
-                            {/* <div className="col-2 ">sdf</div> */}
+                            <div className="row justify-center">
                                 <div className="col-6 ">
                                     <form className="text-center">
 
@@ -88,15 +87,60 @@ const CheckoutForm = () => {
                                             </button>
                                         </a>
                                     </form>
-
                                 </div>
-                                {/* <div class="col-2 ">sdf</div> */}
+                                <div class="col-4 ">
+                                    <div class="is-sticky-column">
+                                        <div class="is-sticky-column__inner" style={{ position: "relative" }}>
+                                            <table class="table table-borderless">
+                                                <thead className="h-12 uppercase">
+                                                    <tr class="table-info">
+                                                        <th className="text-left   focus:text-black font-bold mb-">ORder</th>
+                                                        <th className="text-right  focus:text-black font-bold mb-2">Subtotal</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td className="text-left ">Iphone x 1</td>
+                                                        <td className="text-right">30.00€</td>
+                                                    </tr>
+                                                    <tr>
 
-                                
+                                                        <td className="text-left ">Earphone x 3</td>
+                                                        <td className="text-right">30.00€</td>
+                                                    </tr>
+                                                    <tr>
+
+                                                        <td className="text-left ">Subtotal</td>
+                                                        <td className="text-right">60.00€</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="text-left text-danger">Redeem Code</td>
+                                                        <td className="text-right text-danger">-5.00€</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="text-left font-bold mb-2"><b>Total</b></td>
+                                                        <td className="text-right font-bold mb-2">55.00€</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <hr></hr>
+                                            <form>
+                                            <div className="-mx-3 md:flex mb-">
+                                                <div className="md:w-1/2 px-2 mb-6 md:mb-1 mt-1">
+                                                    <input type="text" className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 " placeholder="Redeem Code" />
+                                                </div>
+                                                <div className="md:w-1/2 px-2 mb-6 md:mb-1 ">
+                                                    <button  type="submit" className="flex justify-center w-full px- py-2 mt-1 font-medium text-white uppercase bg-blue-800 rounded-full item-center hover:bg-blue-700 focus:shadow-outline focus:outline-none">
+                                                        <span class="ml-2 mt-5px">Redeem</span>
+                                                    </button>
+                                                </div> 
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
