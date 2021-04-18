@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+        marginBottom: 25,
     },
     media: {
         height: 140,
@@ -46,7 +47,6 @@ const CardList = () => {
                                         {data.products.map((product) => {
                                             return (<div class="col-md-2">
                                                 <Link to={`/product/detail/${product._id}`}>
-                                                {/* <Link to={{ pathname: `/space-x/Rocketdetail/${o.id}`}} target="_blank"></div> */}
                                             <Card className={classes.root}>
                                                 <CardActionArea>
                                                     <CardMedia
