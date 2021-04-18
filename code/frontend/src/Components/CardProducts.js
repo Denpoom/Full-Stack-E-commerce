@@ -41,17 +41,18 @@ const CardList = () => {
                                             <CardActionArea>
                                                 <CardMedia
                                                     className={classes.media}
-                                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
                                                     title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
                                                         <a href='/product/detail'>
                                                         <Typography gutterBottom variant="h5" component="h2">
-                                                            Lizard
+                                                            iPhone 12 mini
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                            across all continents except Antarctica
+                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
+และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
+สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
                                                         </Typography>
                                                         </a>
                                                 </CardContent>
@@ -63,17 +64,18 @@ const CardList = () => {
                                             <CardActionArea>
                                                 <CardMedia
                                                     className={classes.media}
-                                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
                                                     title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
                                                         <a href='/product/detail'>
                                                         <Typography gutterBottom variant="h5" component="h2">
-                                                            Lizard
+                                                            iPhone 12 mini
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                            across all continents except Antarctica
+                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
+และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
+สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
                                                         </Typography>
                                                         </a>
                                                 </CardContent>
@@ -85,17 +87,18 @@ const CardList = () => {
                                             <CardActionArea>
                                                 <CardMedia
                                                     className={classes.media}
-                                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
                                                     title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
                                                         <a href='/product/detail'>
                                                         <Typography gutterBottom variant="h5" component="h2">
-                                                            Lizard
+                                                            iPhone 12 mini
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                            across all continents except Antarctica
+                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
+และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
+สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
                                                         </Typography>
                                                         </a>
                                                 </CardContent>
@@ -107,17 +110,18 @@ const CardList = () => {
                                             <CardActionArea>
                                                 <CardMedia
                                                     className={classes.media}
-                                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
                                                     title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
                                                         <a href='/product/detail'>
                                                         <Typography gutterBottom variant="h5" component="h2">
-                                                            Lizard
+                                                            iPhone 12 mini
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                            across all continents except Antarctica
+                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
+และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
+สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
                                                         </Typography>
                                                         </a>
                                                 </CardContent>
@@ -129,17 +133,18 @@ const CardList = () => {
                                             <CardActionArea>
                                                 <CardMedia
                                                     className={classes.media}
-                                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
                                                     title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
                                                         <a href='/product/detail'>
                                                         <Typography gutterBottom variant="h5" component="h2">
-                                                            Lizard
+                                                            iPhone 12 mini
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                            across all continents except Antarctica
+                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
+และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
+สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
                                                         </Typography>
                                                         </a>
                                                 </CardContent>
@@ -151,17 +156,18 @@ const CardList = () => {
                                             <CardActionArea>
                                                 <CardMedia
                                                     className={classes.media}
-                                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
                                                     title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
                                                         <a href='/product/detail'>
                                                         <Typography gutterBottom variant="h5" component="h2">
-                                                            Lizard
+                                                            iPhone 12 mini
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                            across all continents except Antarctica
+                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
+และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
+สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
                                                         </Typography>
                                                         </a>
                                                 </CardContent>

@@ -41,31 +41,36 @@ const DetailProduct = () => {
                                         <div className="col-md-6" style={{ backgroundColor: "" }}>
                                             <div className="row">
                                                 <div className="col-4" style={{ justifyItems: "center" }}>
-                                                    <Card className={classes.root}>
-                                                        <CardActionArea>
-                                                            <CardMedia
-                                                                className={classes.media}
-                                                                image="/static/images/cards/contemplative-reptile.jpg"
-                                                                title="Contemplative Reptile"
-                                                            />
-                                                            <CardContent>
-                                                                <Typography gutterBottom variant="h5" component="h2">
-                                                                    Lizard
+                                                <Card className={classes.root}>
+                                            <CardActionArea>
+                                                <CardMedia
+                                                    className={classes.media}
+                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
+                                                    title="Contemplative Reptile"
+                                                />
+                                                <CardContent>
+                                                        <a href='/product/detail'>
+                                                        <Typography gutterBottom variant="h5" component="h2">
+                                                            iPhone 12 mini
                                                         </Typography>
-                                                                <Typography variant="body2" color="textSecondary" component="p">
-                                                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                                    across all continents except Antarctica
+                                                        <Typography variant="body2" color="textSecondary" component="p">
+                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
+และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
+สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
                                                         </Typography>
-                                                            </CardContent>
-                                                        </CardActionArea>
-                                                    </Card>
+                                                        </a>
+                                                </CardContent>
+                                            </CardActionArea>
+                                        </Card>
                                                 </div>
                                                 <div className="col-8">
                                                     <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-                                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+                                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">IPhone 12 mini</h1>
                                                     <hr></hr>
                                                     <br></br>
-                                                    <p className="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+                                                    <p className="leading-relaxed">จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
+และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
+สี่เหลี่ยมมุมฉากมาตรฐานแล้ว </p>
                                                     <br></br>
                                                     <hr></hr>
                                                     <br></br>
