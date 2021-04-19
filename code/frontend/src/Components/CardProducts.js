@@ -59,7 +59,7 @@ const CardList = () => {
                                                             {product.name}
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            {product.price}
+                                                            {product.price} THB
                                                         </Typography>
                                                     </CardContent>
                                                 </CardActionArea>
