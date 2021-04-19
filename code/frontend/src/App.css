@@ -41,6 +41,15 @@
 }
 
 
+.bg-image {
+  background:url(https://media.discordapp.net/attachments/790236733437378622/833393375691800646/unknown.png);
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+body {background:white !important;}
+
+
 .section-login {
     width: 100%;
     height: 90%;
