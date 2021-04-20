@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { useQuery } from '@apollo/client';
 import { PRODUCTS_QUERY } from '../Graphql/productsQuery';
 import { useParams } from 'react-router-dom'
-
+import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -58,59 +58,59 @@ const DetailProduct = () => {
                                 </h1>
                                 <hr></hr>
                                 <br></br>
-                                <div className="container">
+                                <Grid container alignItems="stretch" spacing={2}>
                                     
                                     {data.products.map((res) => {
                                     if (id_product == res._id) {
                                         return (
-                                    <div className="row">
-                                        <div className="col-md-3"></div>
-                                        <div className="col-md-6" style={{ backgroundColor: "" }}>
-                                            <div className="row">
-                                                <div className="col-4" style={{ justifyItems: "center" }}>
-                                                <Card className={classes.root}>
-                                            <CardActionArea>
-                                                <CardMedia
-                                                    className={classes.media}
-                                                    image={res.url}
-                                                    title="Contemplative Reptile"
-                                                />
-                                                <CardContent>
-                                                      
-                                                        <Typography gutterBottom variant="h5" component="h2">
-                                                            {res.name}
-                                                        </Typography>
-                                                        
-                                                </CardContent>
-                                            </CardActionArea>
-                                        </Card>
+                                            <Grid item xs={12} style={{ display: 'flex' }}>
+                                            <Grid item xs={2}></Grid>
+                                            <Grid item style={{ display: 'flex' }} xs={3} align='center'>
+                                                <Card style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
+                                                    <CardActionArea>
+                                                        <CardMedia
+                                                            className={classes.media}
+                                                            image={res.url}
+                                                            title="Contemplative Reptile"
+                                                        />
+                                                        <CardContent>
+                                                            <a href='/product/detail'>
+                                                                <Typography gutterBottom variant="h7" component="h3">
+                                                                {res.name}
+                                                            </Typography>
+                                                                <Typography variant="body2" color="textSecondary" component="p">
+                                                                    15.6 inch / AMD Athlon 3050U / 4GB DDR4 / 1TB / Integrated Graphics / Win 10
+                                                            </Typography>
+                                                                <Typography variant="h6" color="textinfo" align="right" component="p">
+                                                                    $50.00
+                                                            </Typography>
+                                                            </a>
+                                                        </CardContent>
+                                                    </CardActionArea>
+                                                </Card>
+                                            </Grid>
+                                            <Grid item xs={4} style={{marginLeft: "2%"}}>
+                                                
+                                                <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{res.name}</h1>
+                                                <hr></hr>
+                                                <br></br>
+                                                <p className="leading-relaxed">{res.detail} </p>
+                                                
+                                                <br></br>
+                                                <hr></hr>
+                                                <br></br>
+                                                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                                    <h1 className="title-font font-medium text-2xl text-gray-900" style={{ margin: "2%" }}>${res.price}</h1>
+                                                    <button className=" text-white bg-red-500 border-0 py-2 px-6  focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
                                                 </div>
-                                                <div className="col-8">
-                                                    <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-                                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{res.name}</h1>
-                                                    <hr></hr>
-                                                    <br></br>
-                                                    <p className="leading-relaxed">{res.detail} </p>
-                                                    <br></br>
-                                                    <hr></hr>
-                                                    <br></br>
-                                                    <div className="flex">
-                                                        <span className="title-font font-medium text-2xl text-gray-900">${res.price}</span>
-                                                        
-                                                        <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div> 
+                                            </Grid>
+                                            <Grid item xs={2}></Grid>
+                                        </Grid> 
                                     )
                                 }
                             }
                                 )}
-                                </div>
+                                </Grid>
                             </div>
                         </div>
                     </div>

@@ -8,12 +8,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {PRODUCTS_QUERY} from '../Graphql/productsQuery';
-import { Link } from "react-router-dom";
-
+import Grid from '@material-ui/core/Grid'
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
-        marginBottom: 25,
     },
     media: {
         height: 140,
@@ -43,30 +41,34 @@ const CardList = () => {
                                 </h1>
                                 <hr></hr>
                                 <br></br>
-                                <div class="row" >
+                                <Grid container alignItems="stretch" spacing={2}>
                                         {data.products.map((product) => {
-                                            return (<div class="col-md-2">
-                                                <Link to={`/product/detail/${product._id}`}>
-                                            <Card className={classes.root}>
+                                            return (<Grid item style={{ display: 'flex' }} xs={3}>
+                                            <Card style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
                                                 <CardActionArea>
                                                     <CardMedia
                                                         className={classes.media}
-                                                        image={product.url}
+                                                        image="https://img.advice.co.th/images_nas/pic_product4/A0135183/A0135183OK_ORI_1.jpg"
                                                         title="Contemplative Reptile"
                                                     />
                                                     <CardContent>
-                                                        <Typography gutterBottom variant="h5" component="h2">
+                                                        <a href='/product/detail'>
+                                                            <Typography gutterBottom variant="h7" component="h3">
                                                             {product.name}
-                                                        </Typography>
-                                                        <Typography variant="body2" color="textSecondary" component="p">
-                                                            {product.price}
-                                                        </Typography>
+                                                            </Typography>
+                                                            <Typography variant="body2" color="textSecondary" component="p">
+                                                            {product.detail}
+                                                            </Typography>
+                                                            <Typography variant="h6" color="textinfo" align="right" component="p">
+                                                                $50.00
+                                                            </Typography>
+                                                        </a>
                                                     </CardContent>
                                                 </CardActionArea>
                                             </Card>
-                                            </Link> </div>)
+                                        </Grid>)
                                         })}
-                                </div>
+                                </Grid>
                             </div>
                         </div>
                     </div>
