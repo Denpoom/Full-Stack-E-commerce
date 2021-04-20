@@ -64,7 +64,7 @@ const DetailProduct = () => {
                                                             title="Contemplative Reptile"
                                                         />
                                                         <CardContent>
-                                                            <a href='/product/detail'>
+                                                            
                                                                 <Typography gutterBottom variant="h7" component="h3">
                                                                 {res.name}
                                                             </Typography>
@@ -72,9 +72,9 @@ const DetailProduct = () => {
                                                                     15.6 inch / AMD Athlon 3050U / 4GB DDR4 / 1TB / Integrated Graphics / Win 10
                                                             </Typography>
                                                                 <Typography variant="h6" color="textinfo" align="right" component="p">
-                                                                    $50.00
+                                                                    ${res.price}
                                                             </Typography>
-                                                            </a>
+                                                            
                                                         </CardContent>
                                                     </CardActionArea>
                                                 </Card>

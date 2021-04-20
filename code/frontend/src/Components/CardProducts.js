@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+        height: "100%",
+        marginBottom: 25,
     },
     media: {
         height: 140,
@@ -45,11 +47,10 @@ const CardList = () => {
                                 <br></br>
                                 <Grid container alignItems="stretch" spacing={2}>
                                         {data.products.map((product) => {
-                                            return (<Grid item style={{ display: 'flex' }} xs={3}>
-                                            <Link to={`/product/detail/${product._id}`}>
-                                            <Card style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
-
-                                                
+                                            return (
+                                            <Grid item style={{ display: 'flex' }} xs={3}>
+                                            
+                                            <Card style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>     
                                                 <CardActionArea>
                                                     <CardMedia
                                                         className={classes.media}
@@ -57,6 +58,7 @@ const CardList = () => {
                                                         title="Contemplative Reptile"
                                                     />
                                                     <CardContent>
+                                                    <Link to={`/product/detail/${product._id}`}>
                                                             <Typography gutterBottom variant="h7" component="h3">
                                                             {product.name}
                                                             </Typography>
@@ -66,11 +68,10 @@ const CardList = () => {
                                                             <Typography variant="h6" color="textinfo" align="right" component="p">
                                                                 $50.00
                                                             </Typography>
-                                                        
+                                                            </Link>
                                                     </CardContent>
                                                 </CardActionArea>                 
-                                            </Card>
-                                            </Link>
+                                            </Card> 
                                         </Grid>)
                                         })}
                                 </Grid>
