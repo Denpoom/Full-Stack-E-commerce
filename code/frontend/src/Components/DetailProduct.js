@@ -9,10 +9,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+        marginBottom: 20,
     },
     media: {
         height: 140,
@@ -35,58 +37,53 @@ const DetailProduct = () => {
                                 </h1>
                                 <hr></hr>
                                 <br></br>
-                                <div className="container">
-                                    <div className="row" >
-                                        <div className="col-md-3"></div>
-                                        <div className="col-md-6" style={{ backgroundColor: "" }}>
-                                            <div className="row">
-                                                <div className="col-4" style={{ justifyItems: "center" }}>
-                                                <Card className={classes.root}>
-                                            <CardActionArea>
-                                                <CardMedia
-                                                    className={classes.media}
-                                                    image="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUIErQIKM7rH2vOhMMAwOSuvhR6wKJQcSFfQXgcRIh3VzHtN3z94.jpg"
-                                                    title="Contemplative Reptile"
-                                                />
-                                                <CardContent>
+                                <Grid container alignItems="stretch" spacing={2}>
+                                    <Grid item xs={12} style={{ display: 'flex' }}>
+                                        <Grid item xs={2}></Grid>
+                                        <Grid item style={{ display: 'flex' }} xs={3} align='center'>
+                                            <Card style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
+                                                <CardActionArea>
+                                                    <CardMedia
+                                                        className={classes.media}
+                                                        image="https://img.advice.co.th/images_nas/pic_product4/A0135183/A0135183OK_ORI_1.jpg"
+                                                        title="Contemplative Reptile"
+                                                    />
+                                                    <CardContent>
                                                         <a href='/product/detail'>
-                                                        <Typography gutterBottom variant="h5" component="h2">
-                                                            iPhone 12 mini
+                                                            <Typography gutterBottom variant="h7" component="h3">
+                                                                Notebook Asus D533UA-BQ001TS
                                                         </Typography>
-                                                        <Typography variant="body2" color="textSecondary" component="p">
-                                                            จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
-และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
-สี่เหลี่ยมมุมฉากมาตรฐานแล้ว 
+                                                            <Typography variant="body2" color="textSecondary" component="p">
+                                                                15.6 inch / AMD Athlon 3050U / 4GB DDR4 / 1TB / Integrated Graphics / Win 10
+                                                        </Typography>
+                                                            <Typography variant="h6" color="textinfo" align="right" component="p">
+                                                                $50.00
                                                         </Typography>
                                                         </a>
-                                                </CardContent>
-                                            </CardActionArea>
-                                        </Card>
-                                                </div>
-                                                <div className="col-8">
-                                                    <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-                                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">IPhone 12 mini</h1>
-                                                    <hr></hr>
-                                                    <br></br>
-                                                    <p className="leading-relaxed">จอภาพ iPhone 12 mini มีมุมมนที่รับกับดีไซน์แบบโค้งอันงดงาม
-และมุมทั้งหมดนี้อยู่ในสี่เหลี่ยมมุมฉากมาตรฐาน และเมื่อวัดเป็นรูป
-สี่เหลี่ยมมุมฉากมาตรฐานแล้ว </p>
-                                                    <br></br>
-                                                    <hr></hr>
-                                                    <br></br>
-                                                    <div className="flex">
-                                                        <span className="title-font font-medium text-2xl text-gray-900">$58.00</span>
-                                                        
-                                                        <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
-                                                    </div>
-                                                </div>
-
+                                                    </CardContent>
+                                                </CardActionArea>
+                                            </Card>
+                                        </Grid>
+                                        <Grid item xs={4} style={{marginLeft: "2%"}}>
+                                            
+                                            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">Notebook Asus D533UA-BQ001TS</h1>
+                                            <hr></hr>
+                                            <br></br>
+                                            <p className="leading-relaxed">หน้าจอแสดงผลขนาด 15.6 ระดับ FHD </p>
+                                            <p className="leading-relaxed">หน่วยประมวลผล AMD Ryzen 7 4700U Processor</p>
+                                            <p className="leading-relaxed">หน่วยประมวลผลกราฟิก AMD Radeon RX 640 Graphics</p>
+                                            <p className="leading-relaxed">หน่วยความจุ 512GB และ RAM DDR4 8GB</p>
+                                            <br></br>
+                                            <hr></hr>
+                                            <br></br>
+                                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                                <h1 className="title-font font-medium text-2xl text-gray-900" style={{ margin: "2%" }}>$58.00</h1>
+                                                <button className=" text-white bg-red-500 border-0 py-2 px-6  focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
                                             </div>
-
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div>
-                                </div>
+                                        </Grid>
+                                        <Grid item xs={2}></Grid>
+                                    </Grid>
+                                </Grid>
                             </div>
                         </div>
                     </div>
