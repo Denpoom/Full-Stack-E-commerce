@@ -1,6 +1,6 @@
 import React from "react";
 
-// Navber Admin
+// Navber 
 const Navbar = () => {
     return (
         <React.Fragment>
@@ -12,12 +12,19 @@ const Navbar = () => {
                         <div className="text ml-2 my-auto flex-none">E-Commerce</div>
                     </div>
                     </a>
-                    <div className="sub_head ml-auto flex space-x-6 my-auto">
+                    <div className="sub_head  flex space-x-6  ml-5 my-auto">
                         <a className="h_btns cursor-pointer" href="/">Home</a>
                         <a className="h_btns cursor-pointer" href="/product">Products</a>
-                        <a className="h_btns cursor-pointer" href="#">Order</a>
                         <a className="h_btns cursor-pointer" href="#">Promotion</a>
-                        <a className="h_btns cursor-pointer" href="customer">Dashboard</a>
+                        <a className="h_btns cursor-pointer" href="/cart">Cart</a>
+                    </div>
+                    <div className="sub_head ml-auto flex space-x-6 my-auto">
+                    <p  className="ml-2 py-2 rounded text-black-700 font-bold hover:text-blue ">Username</p>
+
+                    <a href="/customer" className=" block text-md px-2  ml-2 py-2 rounded text-black-700 font-bold hover:text-blue "><i class="fas fa-user-alt"></i></a>
+                    {/* <a href="/login" class=" block text-md px-2  ml-2 py-2 rounded text-black-700 font-bold hover:text-white hover:bg-blue-700 lg:mt-0">login</a> */}
+                    <a href="/logout" className=" block text-md px-2  ml-2 py-2 rounded text-black-700 font-bold hover:text-white hover:bg-red-700 lg:mt-0">logout</a>
+
                     </div>
                 </div>
 
@@ -27,29 +34,3 @@ const Navbar = () => {
 };
 
 export default Navbar
-//   <div className="container-fluid">
-//                 <a className="navbar-brand" href="#">E-Commerce</a>
-//                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//                     <span className="navbar-toggler-icon"></span>
-//                 </button>
-//                 <div className="collapse navbar-collapse" id="navbarNav">
-//                     <ul className="navbar-nav">
-//                         <li className="nav-item">
-//                             <a className="nav-link" href="#">Dashboard </a>
-//                         </li>
-//                         <li className="nav-item">
-//                             <a className="nav-link" href="#">Promotion</a>
-//                         </li>
-//                         <li className="nav-item">
-//                             <a className="nav-link" href="#">Product </a>
-//                         </li>
-//                         <li className="nav-item">
-//                             <a className="nav-link" href="#">Orders </a>
-//                         </li>  
-//                     </ul> 
-//                 </div>
-//                 <div className="form-inline my-3 my-lg-0">
-//                 <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>
-//                 <button className="btn btn-outline-light my-2 my-sm-0 m-2" type="submit">Logout</button>
-//                 </div>
-//             </div>

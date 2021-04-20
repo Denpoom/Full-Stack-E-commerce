@@ -14,7 +14,6 @@ const Loadable = (opts) => L({
 const AsyncHome = Loadable({
   loader: () => import('./View/Authen/Home')
 })
-
 const AsyncLogin = Loadable({
   loader: () => import('./View/Authen/Login')
 })
@@ -25,11 +24,34 @@ const AsyncProduct = Loadable({
   loader: () => import('./View/Product/Product')
 })
 const AsyncCustomer = Loadable({
-  loader: () => import('./View/Customer/Info')
+  loader: () => import('./View/Customer/Customer')
 })
 const AsyncCustomerOrders = Loadable({
   loader: () => import('./View/Customer/Orders')
 })
+const AsyncCustomerDetail = Loadable({
+  loader: () => import('./View/Customer/Detail')
+})
+const AsyncCustomerCart = Loadable({
+  loader: () => import('./View/Purchase/Cart')
+})
+const AsyncCustomerCheckout = Loadable({
+  loader: () => import('./View/Purchase/Checkout')
+})
+const AsyncAdminInfo = Loadable({
+  loader: () => import('./View/Admin/AdminInfo')
+})
+const AsyncProductInfo = Loadable({
+  loader: () => import('./View/Admin/ProductInfo')
+})
+const AsyncPromotionInfo = Loadable({
+  loader: () => import('./View/Admin/PromotionInfo')
+})
+const AsyncOrderInfo = Loadable({
+  loader: () => import('./View/Admin/OrderInfo')
+})
+
+
 
 const queryClient = new QueryClient()
 
@@ -46,7 +68,14 @@ function App() {
             <Route path="/register" exact component={AsyncRegister} />
             <Route path="/product" exact component={AsyncProduct} />
             <Route path="/customer" exact component={AsyncCustomer} />
-            <Route path="/orders" exact component={AsyncCustomerOrders} />
+            <Route path="/customer/orders" exact component={AsyncCustomerOrders} />
+            <Route path="/product/detail/:id_product" exact component={AsyncCustomerDetail} />
+            <Route path="/cart" exact component={AsyncCustomerCart} />
+            <Route path="/checkout" exact component={AsyncCustomerCheckout} />
+            <Route path="/admin" exact component={AsyncAdminInfo} />
+            <Route path="/productadmin" exact component={AsyncProductInfo} />
+            <Route path="/promotionadmin" exact component={AsyncPromotionInfo} />
+            <Route path="/orderadmin" exact component={AsyncOrderInfo} />            
           </Switch>
         <Footer/>
         </div>
