@@ -38,6 +38,7 @@ const AsyncCustomerCart = Loadable({
 const AsyncCustomerCheckout = Loadable({
   loader: () => import('./View/Purchase/Checkout')
 })
+//ไม่ต้องทำแบบนี้ก็ได้ มันไม่ได้โหลดมาทีเดียว
 
 const queryClient = new QueryClient()
 
@@ -45,7 +46,7 @@ const queryClient = new QueryClient()
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename='/Home'>
+      <BrowserRouter basename='/'>
         <div className="App">
         <Navbar/>
           <Switch>

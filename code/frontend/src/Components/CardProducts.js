@@ -9,6 +9,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {PRODUCTS_QUERY} from '../Graphql/productsQuery';
 import Grid from '@material-ui/core/Grid'
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -44,15 +46,17 @@ const CardList = () => {
                                 <Grid container alignItems="stretch" spacing={2}>
                                         {data.products.map((product) => {
                                             return (<Grid item style={{ display: 'flex' }} xs={3}>
+                                            <Link to={`/product/detail/${product._id}`}>
                                             <Card style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
+
+                                                
                                                 <CardActionArea>
                                                     <CardMedia
                                                         className={classes.media}
-                                                        image="https://img.advice.co.th/images_nas/pic_product4/A0135183/A0135183OK_ORI_1.jpg"
+                                                        image={product.url}
                                                         title="Contemplative Reptile"
                                                     />
                                                     <CardContent>
-                                                        <a href='/product/detail'>
                                                             <Typography gutterBottom variant="h7" component="h3">
                                                             {product.name}
                                                             </Typography>
@@ -62,10 +66,11 @@ const CardList = () => {
                                                             <Typography variant="h6" color="textinfo" align="right" component="p">
                                                                 $50.00
                                                             </Typography>
-                                                        </a>
+                                                        
                                                     </CardContent>
-                                                </CardActionArea>
+                                                </CardActionArea>                 
                                             </Card>
+                                            </Link>
                                         </Grid>)
                                         })}
                                 </Grid>

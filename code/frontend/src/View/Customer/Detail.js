@@ -7,7 +7,6 @@ const Detail = () => {
         <React.Fragment >
             <Suspense fallback={<h1>Still Loading…</h1>}>  
                 <DetailProduct/>
-               
             </Suspense>
         </React.Fragment>
     )

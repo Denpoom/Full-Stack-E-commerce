@@ -4,15 +4,16 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
+
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+
 import Typography from '@material-ui/core/Typography';
 import { useQuery } from '@apollo/client';
 import { PRODUCTS_QUERY } from '../Graphql/productsQuery';
 import { useParams } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -22,26 +23,16 @@ const useStyles = makeStyles({
     },
 });
 
-
-// const CardList = () => {
-//     const classes = useStyles();
-//     const { loading, error, data } = useQuery(PRODUCTS_QUERY)
-//     if (loading) {
-//       return 'Loading ...'
-//     }
-//     if (error) {
-//       return 'Error !!'
-//     }
-//     console.log(data)
 const DetailProduct = () => {
     const { id_product } = useParams()
-    console.log(id_product)
     const classes = useStyles();
     const { loading, error, data } = useQuery(PRODUCTS_QUERY)
     if (loading){
+        console.log("loading")
         return 'Loading ...'
     }
     if (error) {
+        console.log("error")
         return 'Error !!'
     }
     console.log(data)
@@ -59,9 +50,8 @@ const DetailProduct = () => {
                                 <hr></hr>
                                 <br></br>
                                 <Grid container alignItems="stretch" spacing={2}>
-                                    
                                     {data.products.map((res) => {
-                                    if (id_product == res._id) {
+                                    if (id_product === res._id) {
                                         return (
                                             <Grid item xs={12} style={{ display: 'flex' }}>
                                             <Grid item xs={2}></Grid>
