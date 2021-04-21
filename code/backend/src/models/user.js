@@ -16,8 +16,8 @@ const UserSchema = new Schema({
   },
   username: { type: String, required: true, index: true ,unique: true, lowercase:true, trim:true},
   password: { type: String, require: true, bcrypt: true },
-  name: { type: String, required: true, trim: true},
-  surname: { type: String},
+  confirmpassword: { type: String, require: true, bcrypt: true },
+  fullname: { type: String, required: true, trim: true},
   email: {type: String},
   tel: {type: String},
 },{ discriminatorKey: DKey })
@@ -30,7 +30,7 @@ export const UserModel = mongoose.model('User', UserSchema)
 export const AdminModel = UserModel.discriminator(enumUserRole.ADMIN, AdminSchema)
 export const CustomerModel = UserModel.discriminator(enumUserRole.CUSTOMER, CustomerSchema)
 
-export const UserTC = composeWithMongooseDiscriminators(UserModel).removeField('password')
+export const UserTC = composeWithMongooseDiscriminators(UserModel).removeField(['password','confirmpassword'])
 export const AdminTC = UserTC.discriminator(AdminModel, { name: enumUserRole.ADMIN })
 export const CustomerTC = UserTC.discriminator(CustomerModel, { name: enumUserRole.CUSTOMER})
 

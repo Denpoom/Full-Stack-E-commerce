@@ -76,6 +76,4 @@ import {
       </SessionContext.Provider>
     )
   }
-  export const useSession = () => useContext(SessionContext)
-  
   export default SessionContext

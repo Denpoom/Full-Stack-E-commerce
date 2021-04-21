@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Navber 
 const Navbar = () => {
@@ -13,10 +14,10 @@ const Navbar = () => {
                     </div>
                     </a>
                     <div className="sub_head  flex space-x-6  ml-5 my-auto">
-                        <a className="h_btns cursor-pointer" href="/">Home</a>
-                        <a className="h_btns cursor-pointer" href="/product">Products</a>
-                        <a className="h_btns cursor-pointer" href="#">Promotion</a>
-                        <a className="h_btns cursor-pointer" href="/cart">Cart</a>
+                        <Link className="h_btns cursor-pointer" to="/">Home</Link>
+                        <Link className="h_btns cursor-pointer" to="/product">Products</Link>
+                        <Link className="h_btns cursor-pointer" to="#">Promotion</Link>
+                        <Link className="h_btns cursor-pointer" to="/cart">Cart</Link>
                     </div>
                     <div className="sub_head ml-auto flex space-x-6 my-auto">
                     <p  className="ml-2 py-2 rounded text-black-700 font-bold hover:text-blue ">Username</p>
