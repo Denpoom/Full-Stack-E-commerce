@@ -32,13 +32,32 @@ const AsyncCustomerOrders = Loadable({
 const AsyncCustomerDetail = Loadable({
   loader: () => import('./View/Customer/Detail')
 })
-const AsyncCustomerCart = Loadable({
+const AsyncCart = Loadable({
   loader: () => import('./View/Purchase/Cart')
 })
-const AsyncCustomerCheckout = Loadable({
+const AsyncCheckout = Loadable({
   loader: () => import('./View/Purchase/Checkout')
 })
+const AsyncPayment = Loadable({
+  loader: () => import('./View/Purchase/Payment')
+})
 //ไม่ต้องทำแบบนี้ก็ได้ มันไม่ได้โหลดมาทีเดียว
+const AsyncAdmin = Loadable({
+  loader: () => import('./View/Admin/AdminInfo')
+})
+const AsyncAdminOrder = Loadable({
+  loader: () => import('./View/Admin/OrderInfo')
+})
+const AsyncAdminPromotion = Loadable({
+  loader: () => import('./View/Admin/PromotionInfo')
+})
+const AsyncAdminProduct = Loadable({
+  loader: () => import('./View/Admin/ProductInfo')
+})
+const AsyncAdminAddProduct = Loadable({
+  loader: () => import('./View/Admin/AddProduct')
+})
+
 
 const queryClient = new QueryClient()
 
@@ -57,8 +76,16 @@ function App() {
             <Route path="/customer" exact component={AsyncCustomer} />
             <Route path="/customer/orders" exact component={AsyncCustomerOrders} />
             <Route path="/product/detail/:id_product" exact component={AsyncCustomerDetail} />
-            <Route path="/cart" exact component={AsyncCustomerCart} />
-            <Route path="/checkout" exact component={AsyncCustomerCheckout} />
+            <Route path="/cart" exact component={AsyncCart} />
+            <Route path="/checkout" exact component={AsyncCheckout} />
+            <Route path="/payment" exact component={AsyncPayment} />
+            <Route path="/admin/dashboard" exact component={AsyncAdmin} />
+            <Route path="/admin/" exact component={AsyncAdmin} />
+            <Route path="/admin/order" exact component={AsyncAdminOrder} />
+            <Route path="/admin/promotion" exact component={AsyncAdminPromotion} />
+            <Route path="/admin/product" exact component={AsyncAdminProduct} />
+            <Route path="/admin/product/create" exact component={AsyncAdminAddProduct} />
+            
           </Switch>
         <Footer/>
         </div>
