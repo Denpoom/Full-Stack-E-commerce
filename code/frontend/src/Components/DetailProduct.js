@@ -4,15 +4,25 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
+<<<<<<< HEAD
 
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
+=======
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
 import Typography from '@material-ui/core/Typography';
 import { useQuery } from '@apollo/client';
 import { PRODUCTS_QUERY } from '../Graphql/productsQuery';
 import { useParams } from 'react-router-dom'
+<<<<<<< HEAD
 import Grid from '@material-ui/core/Grid';
+=======
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
 
 const useStyles = makeStyles({
     root: {
@@ -23,6 +33,7 @@ const useStyles = makeStyles({
     },
 });
 
+<<<<<<< HEAD
 const DetailProduct = () => {
     const { id_product } = useParams()
     const classes = useStyles();
@@ -33,6 +44,28 @@ const DetailProduct = () => {
     }
     if (error) {
         console.log("error")
+=======
+
+// const CardList = () => {
+//     const classes = useStyles();
+//     const { loading, error, data } = useQuery(PRODUCTS_QUERY)
+//     if (loading) {
+//       return 'Loading ...'
+//     }
+//     if (error) {
+//       return 'Error !!'
+//     }
+//     console.log(data)
+const DetailProduct = () => {
+    const { id_product } = useParams()
+    console.log(id_product)
+    const classes = useStyles();
+    const { loading, error, data } = useQuery(PRODUCTS_QUERY)
+    if (loading){
+        return 'Loading ...'
+    }
+    if (error) {
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
         return 'Error !!'
     }
     console.log(data)
@@ -49,6 +82,7 @@ const DetailProduct = () => {
                                 </h1>
                                 <hr></hr>
                                 <br></br>
+<<<<<<< HEAD
                                 <Grid container alignItems="stretch" spacing={2}>
                                     {data.products.map((res) => {
                                     if (id_product === res._id) {
@@ -96,11 +130,65 @@ const DetailProduct = () => {
                                             </Grid>
                                             <Grid item xs={2}></Grid>
                                         </Grid> 
+=======
+                                <div className="container">
+                                    
+                                    {data.products.map((res) => {
+                                    if (id_product == res._id) {
+                                        return (
+                                    <div className="row">
+                                        <div className="col-md-3"></div>
+                                        <div className="col-md-6" style={{ backgroundColor: "" }}>
+                                            <div className="row">
+                                                <div className="col-4" style={{ justifyItems: "center" }}>
+                                                <Card className={classes.root}>
+                                            <CardActionArea>
+                                                <CardMedia
+                                                    className={classes.media}
+                                                    image={res.url}
+                                                    title="Contemplative Reptile"
+                                                />
+                                                <CardContent>
+                                                      
+                                                        <Typography gutterBottom variant="h5" component="h2">
+                                                            {res.name}
+                                                        </Typography>
+                                                        
+                                                </CardContent>
+                                            </CardActionArea>
+                                        </Card>
+                                                </div>
+                                                <div className="col-8">
+                                                    <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+                                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{res.name}</h1>
+                                                    <hr></hr>
+                                                    <br></br>
+                                                    <p className="leading-relaxed">{res.detail} </p>
+                                                    <br></br>
+                                                    <hr></hr>
+                                                    <br></br>
+                                                    <div className="flex">
+                                                        <span className="title-font font-medium text-2xl text-gray-900">${res.price}</span>
+                                                        
+                                                        <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                    </div> 
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
                                     )
                                 }
                             }
                                 )}
+<<<<<<< HEAD
                                 </Grid>
+=======
+                                </div>
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
                             </div>
                         </div>
                     </div>

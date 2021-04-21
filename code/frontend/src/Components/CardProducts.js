@@ -8,13 +8,19 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {PRODUCTS_QUERY} from '../Graphql/productsQuery';
+<<<<<<< HEAD
 import Grid from '@material-ui/core/Grid'
+=======
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+<<<<<<< HEAD
         height: "100%",
+=======
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
         marginBottom: 25,
     },
     media: {
@@ -45,12 +51,20 @@ const CardList = () => {
                                 </h1>
                                 <hr></hr>
                                 <br></br>
+<<<<<<< HEAD
                                 <Grid container alignItems="stretch" spacing={2}>
                                         {data.products.map((product) => {
                                             return (
                                             <Grid item style={{ display: 'flex' }} xs={3}>
                                             
                                             <Card style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>     
+=======
+                                <div class="row" >
+                                        {data.products.map((product) => {
+                                            return (<div class="col-md-2">
+                                                <Link to={`/product/detail/${product._id}`}>
+                                            <Card className={classes.root}>
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
                                                 <CardActionArea>
                                                     <CardMedia
                                                         className={classes.media}
@@ -58,6 +72,7 @@ const CardList = () => {
                                                         title="Contemplative Reptile"
                                                     />
                                                     <CardContent>
+<<<<<<< HEAD
                                                     <Link to={`/product/detail/${product._id}`}>
                                                             <Typography gutterBottom variant="h7" component="h3">
                                                             {product.name}
@@ -75,6 +90,20 @@ const CardList = () => {
                                         </Grid>)
                                         })}
                                 </Grid>
+=======
+                                                        <Typography gutterBottom variant="h5" component="h2">
+                                                            {product.name}
+                                                        </Typography>
+                                                        <Typography variant="body2" color="textSecondary" component="p">
+                                                            {product.price}
+                                                        </Typography>
+                                                    </CardContent>
+                                                </CardActionArea>
+                                            </Card>
+                                            </Link> </div>)
+                                        })}
+                                </div>
+>>>>>>> cbeb370307546724608957ed405ab17c1c5f8ba0
                             </div>
                         </div>
                     </div>

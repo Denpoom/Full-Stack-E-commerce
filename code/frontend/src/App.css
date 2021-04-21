@@ -107,3 +107,12 @@ body {background:white !important;}
  
 }
 
+.button-admin{
+    background-color: #474747;
+    color:white;
+}
+
+.button-admin:hover{
+  background-color: #252525;
+  color:white;
+}
