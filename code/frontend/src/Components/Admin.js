@@ -12,28 +12,28 @@ const AdminInfo = () => {
                                 <i class="fas fa-user-cog"></i> Admin Dasboard
                                 </h1>
                                 <hr></hr>
-                                
+  
                                 <div class="ml-2 mt-4 row text-left">
                                     <div class="col-md-4">                                
-                                    <a href="admin">
+                                    <a href="/admin/dashboard">
                                     <button type="button" class="mt-4 px-6 py-4 btn button-admin">
                                     <i class="fas fa-user-cog"></i> Dashboard
                                     </button>
                                 </a>
                                 <br></br>                                                                  
-                                <a href="productadmin">
+                                <a href="/admin/product">
                                     <button type="button" class="mt-4 px-6 py-4 btn button-admin">
                                         <i class="fas fa-archive"></i> Manage Product
                                     </button>
                                 </a>
                                 <br></br>
-                                <a href="promotionadmin">
+                                <a href="/admin/promotion">
                                     <button type="button" class="mt-4 px-6 py-4 btn button-admin">
                                         <i class="fas fa-ad"></i> Manage Promotion
                                     </button>
                                 </a> 
                                 <br></br>
-                                <a href="orderadmin">
+                                <a href="/admin/order">
                                     <button type="button" class="mt-4 px-6 py-4 btn button-admin">
                                         <i class="fas fa-list"></i> Manage Order
                                     </button>
@@ -50,8 +50,7 @@ const AdminInfo = () => {
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <div class="col-5 px-6 py-4 border rounded bg-yellow-100 shadow-md"><span class="h3">แก้เอา</span><hr></hr><br></br> 10 ชิ้น </div>
                                         </div>
-                                    </div>
-                                    
+                                    </div>                 
                                 </div>                                                           
                         </div>
                     </div>
