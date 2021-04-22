@@ -16,11 +16,11 @@
     * ✔   Checkout /checkout Checkout form
     * Payment /payment Payment form
 5. Admin Dashboard
-    * Admin dashboard /admin Display admin dashboard
+    * ✔ Admin dashboard /admin Display admin dashboard
 6. Admin Product
-    * Admin products /admin/products Display all product
-    * Admin create product /admin/product/create Create product from
-    * Admin update product /admin/product/:productId Update product form
+    * ✔ Admin products /admin/products Display all product
+    * ✔ Admin create product /admin/product/create Create product from
+    *   Admin update product /admin/product/:productId Update product form
 7. Admin Promotion
     * Admin promotions /admin/promotions Display all promotion
     * Admin create promotion /admin/promotion/create Create promotion from
