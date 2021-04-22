@@ -47,7 +47,7 @@ const FormaddProduct = () => {
                                                 <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
                                                 Product Name
                                                 </label>
-                                                <input type="password" className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 " placeholder="" />
+                                                <input type="text" className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 " placeholder="" />
                                             </div>
                                         </div>
                                         <div className="-mx-3 md:flex mb-6">

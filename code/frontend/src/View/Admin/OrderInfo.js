@@ -1,6 +1,6 @@
 import React from "react";
 
-const AdminInfo = () => {
+const OrderInfo = () => {
     return (
          //form 
         <section className="#">
@@ -67,4 +67,4 @@ const AdminInfo = () => {
         </section>
     )
 }
-export default AdminInfo
+export default OrderInfo
