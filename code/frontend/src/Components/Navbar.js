@@ -14,7 +14,7 @@ const Navbar = () => {
                     </div>
                     </a>
                     <div className="sub_head  flex space-x-6  ml-5 my-auto">
-                        <Link className="h_btns cursor-pointer" to="/">Home</Link>
+                        <Link className="h_btns cursor-pointer" to="">Home</Link>
                         <Link className="h_btns cursor-pointer" to="/product">Products</Link>
                         <Link className="h_btns cursor-pointer" to="#">Promotion</Link>
                         <Link className="h_btns cursor-pointer" to="/cart">Cart</Link>

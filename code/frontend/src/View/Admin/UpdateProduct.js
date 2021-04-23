@@ -1,34 +1,33 @@
 import React, { Suspense } from 'react';
-import FromProduct from '../../Components/FromaddProduct';
+import FromUpdateProduct from '../../Components/FromUpdateProduct';
 import List from '../../Components/ListAdmin'
-import FormaddProduct from '../../Components/FromaddProduct'
-import { Link,} from 'react-router-dom';
-const AddProduct = () => {
+const UpdateProduct = () => {
     return (
         <React.Fragment >
-            <Suspense fallback={<h1>Still Loading…</h1>}> 
+            <Suspense fallback={<h1>Still Loading…</h1>}>  
             <div className="font-sans">
                 <div className="relative mt-8 flex flex-col lg:justify-center items-center">
                     <div className="mt-5 relative lg:max-w-screen-2xl w-full">
                         <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-lg">
                             <h1 className="font-bold tracking-wider text-3xl mb-8 w-full text-gray-800">
-                                <i class="fas fa-user-cog"></i> Create Product
+                                <i class="fas fa-user-cog"></i> Update Product
                                 </h1>
                             <hr></hr>
+
                             <div class="ml-2 mt-4 row text-left">
                                 <List/>
-                                <FormaddProduct/>
+                                <FromUpdateProduct/>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                
             </Suspense>
         </React.Fragment>
     )
 }
-export default AddProduct
+export default UpdateProduct
 
 
 

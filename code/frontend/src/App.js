@@ -57,7 +57,9 @@ const AsyncAdminProduct = Loadable({
 const AsyncAdminAddProduct = Loadable({
   loader: () => import('./View/Admin/AddProduct')
 })
-
+const AsyncAdminUpdateProduct = Loadable({
+  loader: () => import('./View/Admin/UpdateProduct')
+})
 
 const queryClient = new QueryClient()
 
@@ -85,7 +87,7 @@ function App() {
             <Route path="/admin/promotion" exact component={AsyncAdminPromotion} />
             <Route path="/admin/product" exact component={AsyncAdminProduct} />
             <Route path="/admin/product/create" exact component={AsyncAdminAddProduct} />
-            
+            <Route path="/admin/product/update" exact component={AsyncAdminUpdateProduct} />
           </Switch>
         <Footer/>
         </div>

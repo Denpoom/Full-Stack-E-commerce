@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom";
 const Section2 = () => {
     return (
 
@@ -12,6 +13,9 @@ const Section2 = () => {
                     </div>
                     <div class="subsec my-auto p-8">
                         <div class="title font-semibold text-3xl mb-5">Promotion is Coming Soon!!!!!!</div>
+                        <Link to="/promotion"  className="border-2 border-gray-100 focus:outline-none bg-purple-600 text-white font-bold tracking-wider  p-2 rounded-lg focus:border-gray-700 hover:bg-blue-700" >
+                                        All Promotion
+                                </Link>
                         {/* <div class="desc text-lg">We've seen it all kinds of ways, with different types of flours, but we settled on almond flour for its nutty flavor. We also mix in spices—Italian seasoning and garlic powder—to give it more flavor. We skip yeast because it can be a pain and instead incorporate eggs and olive oil. The eggs help make the crust fluffy.</div> */}
                     </div>
                 </div>

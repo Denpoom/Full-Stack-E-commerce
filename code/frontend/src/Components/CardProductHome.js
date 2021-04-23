@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     },
 });
 
-const CardList = () => {
+const CardListHome = () => {
     const classes = useStyles();
     const { loading, error, data } = useQuery(PRODUCTS_QUERY)
     if (loading) {
@@ -41,7 +41,7 @@ const CardList = () => {
                         <div className="mt-5 relative lg:max-w-screen-2xl w-full">
                             <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-lg">
                                 <h1 className="font-bold tracking-wider text-3xl mb-8 w-full text-gray-800">
-                                    <i className="fas fa-shopping-cart"></i> Products
+                                    <i className="fas fa-shopping-cart"></i> HOT Recommend
                                 </h1>
                                 <hr></hr>
                                 <br></br>
@@ -74,8 +74,13 @@ const CardList = () => {
                                             </Card> 
                                         </Grid>)
                                         })}
-                                </Grid>
+                                        
+                                </Grid><br></br>
+                                <Link to="/product"  className="border-2 border-gray-100 focus:outline-none bg-blue-600 text-white font-bold tracking-wider  p-2 rounded-lg focus:border-gray-700 hover:bg-purple-700" >
+                                        All Product
+                                </Link>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -85,4 +90,4 @@ const CardList = () => {
     )
 }
 
-export default CardList
+export default CardListHome

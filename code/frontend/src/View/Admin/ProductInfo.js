@@ -3,7 +3,7 @@ import Table from '@material-ui/core/Table';
 import { Link,} from 'react-router-dom';
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-
+import List from '../../Components/ListAdmin'
 
 
 const columns = [
@@ -50,31 +50,7 @@ const ProductInfo = () => {
                             <hr></hr>
 
                             <div class="ml-2 mt-4 row text-left">
-                                <div class="col-md-4">
-                                    <a href="/admin/dashboard">
-                                        <button type="button" class="mt-4 px-6 py-4 btn button-admin">
-                                            <i class="fas fa-user-cog"></i> Dashboard
-                                    </button>
-                                    </a>
-                                    <br></br>
-                                    <a href="/admin/product">
-                                        <button type="button" class="mt-4 px-6 py-4 btn button-admin">
-                                            <i class="fas fa-archive"></i> Manage Product
-                                    </button>
-                                    </a>
-                                    <br></br>
-                                    <a href="/admin/promotion">
-                                        <button type="button" class="mt-4 px-6 py-4 btn button-admin">
-                                            <i class="fas fa-ad"></i> Manage Promotion
-                                    </button>
-                                    </a>
-                                    <br></br>
-                                    <a href="/admin/order">
-                                        <button type="button" class="mt-4 px-6 py-4 btn button-admin">
-                                            <i class="fas fa-list"></i> Manage Order
-                                    </button>
-                                    </a>
-                                </div>
+                                <List/>
                                 <div class="mt-1 col-md-8">
                                     <div class="h2"><i class="fas fa-archive"></i> Manage Product<br></br></div>
                                     <div class="row">
@@ -92,11 +68,11 @@ const ProductInfo = () => {
                                             <i class="fas fa-plus-circle"></i> Create Product
                                         </button>
                                     </Link>
-                                        <a href="">
+                                    <Link to="/admin/product/update">
                                             <button type="button" class="mt-2 col-11 px-6 py-4 btn button-admin">
-                                                <i class="fas fa-sync-alt"></i> Click for update product !!7
+                                                <i class="fas fa-sync-alt"></i> Click for update product !!
                                                 </button>
-                                        </a>
+                                    </Link>
                                     </div>
                                 </div>
 
