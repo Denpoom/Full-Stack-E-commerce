@@ -20,11 +20,11 @@
 6. Admin Product
     * ✔ Admin products /admin/products Display all product
     * ✔ Admin create product /admin/product/create Create product from
-    *   Admin update product /admin/product/:productId Update product form
+    * ✔  Admin update product /admin/product/:productId Update product form
 7. Admin Promotion
-    * ✔Admin promotions /admin/promotions Display all promotion
+    * ✔ Admin promotions /admin/promotions Display all promotion
     * Admin create promotion /admin/promotion/create Create promotion from
     * Admin update promotion /admin/promotion/:promotionId Update promotion form
 8. Admin Order
-    * ✔Admin orders /admin/orders Display all orders
+    * ✔ Admin orders /admin/orders Display all orders
     * Admin order detail /admin/order/:orderId Display order detail by order id
