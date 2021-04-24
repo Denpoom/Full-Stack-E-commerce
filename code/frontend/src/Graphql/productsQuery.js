@@ -5,7 +5,9 @@ query{
   products(sort:NAME_ASC){
     _id
     name
-    detail
+    detail{
+      ram
+    }
     price
     url
   }
