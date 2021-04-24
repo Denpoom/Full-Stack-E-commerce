@@ -10,9 +10,9 @@ const Dasboard = () => {
                 <div class="col-5 px-6 py-5 border rounded bg-green-100 shadow-md"><span class="h3"><i class="fas fa-list"></i> จำนวนออร์เดอร์</span><hr></hr><br></br> 10 ชิ้น </div>
             </div>
             <div class="mt-5 row">
-                <div class="col-5 px-6 py-5 border rounded bg-red-100 shadow-md"><span class="h3">แก้เอา</span><hr></hr><br></br> 10 ชิ้น </div>
+                <div class="col-5 px-6 py-5 border rounded bg-red-100 shadow-md"><span class="h3"><i class="fas fa-chart-pie"></i> จำนวนโปรโมชั่นที่มี</span><hr></hr><br></br> 10 ชิ้น </div>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="col-5 px-6 py-5 border rounded bg-yellow-100 shadow-md"><span class="h3">แก้เอา</span><hr></hr><br></br> 10 ชิ้น </div>
+                <div class="col-5 px-6 py-5 border rounded bg-yellow-100 shadow-md"><span class="h3"><i class="fas fa-user-cog"></i> จำนวนผู้ใช้ที่มี</span><hr></hr><br></br> 10 user </div>
             </div>
         </div>
 

@@ -43,7 +43,7 @@ const AsyncPayment = Loadable({
 })
 //ไม่ต้องทำแบบนี้ก็ได้ มันไม่ได้โหลดมาทีเดียว
 const AsyncAdmin = Loadable({
-  loader: () => import('./View/Admin/AdminInfo')
+  loader: () => import('./View/Admin/DasboardInfo')
 })
 const AsyncAdminOrder = Loadable({
   loader: () => import('./View/Admin/OrderInfo')
