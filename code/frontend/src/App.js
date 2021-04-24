@@ -60,6 +60,9 @@ const AsyncAdminAddProduct = Loadable({
 const AsyncAdminUpdateProduct = Loadable({
   loader: () => import('./View/Admin/UpdateProduct')
 })
+const AsyncAdminDetailOrder = Loadable({
+  loader: () => import('./View/Admin/DetailOrder')
+})
 
 const queryClient = new QueryClient()
 
@@ -88,6 +91,7 @@ function App() {
             <Route path="/admin/product" exact component={AsyncAdminProduct} />
             <Route path="/admin/product/create" exact component={AsyncAdminAddProduct} />
             <Route path="/admin/product/update" exact component={AsyncAdminUpdateProduct} />
+            <Route path="/admin/order/id_order" exact component={AsyncAdminDetailOrder} />
           </Switch>
         <Footer/>
         </div>
