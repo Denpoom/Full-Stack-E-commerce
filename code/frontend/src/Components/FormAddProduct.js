@@ -1,6 +1,6 @@
 import React from "react";
 import { Link,} from 'react-router-dom';
-const FromUpdateProduct = () => {
+const FormaddProduct = () => {
 
     return (
         //form 
@@ -74,15 +74,15 @@ const FromUpdateProduct = () => {
                                                 <input type="text" className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 " placeholder="" />
                                             </div>
                                         </div>
-                                        <Link to="">
+                                        <a href="">
                                             <button className="flex justify-center w-full px-10 py-2 mt-6 font-medium text-white uppercase bg-blue-800 rounded-full item-center hover:bg-blue-700 focus:shadow-outline focus:outline-none">
-                                                Update Product
+                                                Create Product
                                             </button>
-                                        </Link>
+                                        </a>
                                     </form>
 
                                 </div>
        
     )
 }
-export default FromUpdateProduct
+export default FormaddProduct

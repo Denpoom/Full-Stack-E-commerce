@@ -3,9 +3,9 @@ import Table from '@material-ui/core/Table';
 import { Link,} from 'react-router-dom';
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import List from '../../Components/ListAdmin'
-
-
+import List from '../../Components/ListAdmin';
+import { PRODUCTS_QUERY } from '../../Graphql/productsQuery';
+import { useQuery } from '@apollo/client'
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'name', headerName: 'Name', width: 350 },
@@ -23,20 +23,22 @@ const columns = [
     },
     
 ];
-const rows = [
-    { id: 1,  name: 'Notebook Acer Aspire A515-44G-R67L/T003', price: 15000, amount: 15 },
-    { id: 2,  name: 'Notebook Acer Aspire A515-44G-R67L/T003',price: 15000 , amount: 15},
-    { id: 3,  name: 'Notebook Acer Aspire A515-44G-R67L/T003', price: 15000 , amount: 15},
-    { id: 4,  name: 'Notebook Acer Aspire A515-44G-R67L/T003', price: 15000, amount: 15 },
-    { id: 5, name: 'Notebook Acer Aspire A515-44G-R67L/T003', price: 15000, amount: 15 },
-    { id: 6,  name: 'Notebook Acer Aspire A515-44G-R67L/T003', price: 15000 , amount: 15},
-    { id: 7, name: 'Notebook Acer Aspire A515-44G-R67L/T003', price: 15000 , amount: 15},
-    { id: 8, name: 'Notebook Acer Aspire A515-44G-R67L/T003', price: 15000, amount: 15},
-    { id: 9, name: 'Notebook Acer Aspire A515-44G-R67L/T003', price: 15000 , amount: 15},
-];
-
-
+const rows = []
 const ProductInfo = () => {
+    const { loading, error, data } = useQuery(PRODUCTS_QUERY)
+    if (loading) {
+        return 'Loading ...'
+    }
+    if (error) {
+        console.log(error)
+        return 'Error !!'
+    }
+    data.products.map((product, i) => {
+        return(
+            rows.push({ id: i+1,  name: product.name, price: product.price, amount: product.amount })
+        )
+    })
+console.log(data)
     return (
         //form 
         <section className="#">
