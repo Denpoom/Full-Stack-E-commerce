@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
-import FromProduct from '../../Components/FromaddProduct';
+import FromaddProduct from '../../Components/FromAddProduct'
 import List from '../../Components/ListAdmin'
-import FormaddProduct from '../../Components/FromaddProduct'
 import { Link,} from 'react-router-dom';
 const AddProduct = () => {
     return (
@@ -17,7 +16,7 @@ const AddProduct = () => {
                             <hr></hr>
                             <div class="ml-2 mt-4 row text-left">
                                 <List/>
-                                <FormaddProduct/>
+                                <FromaddProduct/>
                             </div>
                         </div>
                     </div>
