@@ -7,7 +7,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import {PRODUCTS_QUERY} from '../Graphql/productsQuery';
+import {RECOMMEND_PRODUCTS_QUERY} from '../Graphql/productsQuery';
 import Grid from '@material-ui/core/Grid'
 import { Link } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 
 const CardListHome = () => {
     const classes = useStyles();
-    const { loading, error, data } = useQuery(PRODUCTS_QUERY)
+    const { loading, error, data } = useQuery(RECOMMEND_PRODUCTS_QUERY)
     if (loading) {
       return 'Loading ...'
     }
@@ -63,7 +63,7 @@ const CardListHome = () => {
                                                             {product.name}
                                                             </Typography>
                                                             <Typography variant="body2" color="textSecondary" component="p">
-                                                            {product.detail}
+                                                            {product.detail.monitor} / {product.detail.cpu} / {product.detail.ram} / {product.detail.storage} / {product.detail.gpu} / {product.detail.os}
                                                             </Typography>
                                                             <Typography variant="h6" color="textinfo" align="right" component="p">
                                                                 {product.price} THB

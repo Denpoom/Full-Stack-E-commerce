@@ -1,6 +1,6 @@
 import React from "react";
 import { Link,} from 'react-router-dom';
-const FromUpdateProduct = () => {
+const FormUpdateProduct = () => {
 
     return (
         //form 
@@ -85,4 +85,4 @@ const FromUpdateProduct = () => {
        
     )
 }
-export default FromUpdateProduct
+export default FormUpdateProduct

@@ -4,25 +4,32 @@ import { composeWithMongoose } from 'graphql-compose-mongoose'
 const { Schema } = mongoose
 const ProductSchema = new Schema({
     name: { type: String, required: true, index: true },
-    detail: {type: String, required:true},
     timestamp: {type: Date, default: Date.now},
-    price: {type: String, default: '0.00'},
-    type: {
-        type: String,
-        require: true,
-        index: true,
+    detail:{
+        monitor: {type: String},
+        cpu: {type: String},
+        gpu: {type: String},
+        storage: {type: String},
+        ram: {type: String},
+        os: {type: String},
     },
+    price: {type: String, default: '0.00'},
     url:{
         type: String, require:true
     },
-    count:{
-        type: String, require:true
+    isRecommended:{
+        type: Boolean, default:false
     },
     orderId: {
         type: String,
         index: true,
         ref: 'Order',
     },
+    amount: {
+        type: Number,
+        index: true,
+        default: 1,
+    }
 })
 const baseOptions = {
     inputType: {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link,} from 'react-router-dom';
-const FromaddProduct = () => {
+const FormaddProduct = () => {
 
     return (
         //form 
@@ -85,4 +85,4 @@ const FromaddProduct = () => {
        
     )
 }
-export default FromaddProduct
+export default FormaddProduct

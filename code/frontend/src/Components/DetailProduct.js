@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import Typography from '@material-ui/core/Typography';
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { PRODUCTS_QUERY } from '../Graphql/productsQuery';
 import { useParams } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
@@ -23,7 +23,15 @@ const useStyles = makeStyles({
     },
 });
 
+const CREATE_CART_MUTATION = gql`
+mutation ($record: CreateOneStatusPostInput!) {
+  createStatusPost (record: $record) {
+    recordId
+  }
+}
+`
 const DetailProduct = () => {
+
     const { id_product } = useParams()
     const classes = useStyles();
     const { loading, error, data } = useQuery(PRODUCTS_QUERY)
@@ -36,6 +44,9 @@ const DetailProduct = () => {
         return 'Error !!'
     }
     console.log(data)
+    const handelAddcart = () => {
+        
+    }
     return (
 
         <React.Fragment>
@@ -69,7 +80,7 @@ const DetailProduct = () => {
                                                                 {res.name}
                                                             </Typography>
                                                                 <Typography variant="body2" color="textSecondary" component="p">
-                                                                    15.6 inch / AMD Athlon 3050U / 4GB DDR4 / 1TB / Integrated Graphics / Win 10
+                                                                {res.detail.monitor} / {res.detail.cpu} / {res.detail.ram} / {res.detail.storage} / {res.detail.gpu} / {res.detail.os}
                                                             </Typography>
                                                                 <Typography variant="h6" color="textinfo" align="right" component="p">
                                                                     ${res.price}
@@ -84,14 +95,25 @@ const DetailProduct = () => {
                                                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{res.name}</h1>
                                                 <hr></hr>
                                                 <br></br>
-                                                <p className="leading-relaxed">{res.detail} </p>
-                                                
+                                                <p className="leading-relaxed">
+                                                    หน้าจอแสดงผลขนาด {res.detail.monitor}
+                                                </p>
+                                                <p className="leading-relaxed">
+                                                    หน่วยประมวลผล {res.detail.cpu}
+                                                </p>
+                                                <p className="leading-relaxed">
+                                                    หน่วยประมวลผลกราฟิก {res.detail.gpu}
+                                                </p>
+                                                <p className="leading-relaxed">
+                                                    หน่วยความจุ {res.detail.storage} และ RAM {res.detail.ram}
+                                                </p>
                                                 <br></br>
                                                 <hr></hr>
                                                 <br></br>
                                                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                                     <h1 className="title-font font-medium text-2xl text-gray-900" style={{ margin: "2%" }}>${res.price}</h1>
-                                                    <button className=" text-white bg-red-500 border-0 py-2 px-6  focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
+                                                    <button onClick={handelAddcart}className=" text-white bg-red-500 border-0 py-2 px-6  focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
+                                                    
                                                 </div>
                                             </Grid>
                                             <Grid item xs={2}></Grid>
