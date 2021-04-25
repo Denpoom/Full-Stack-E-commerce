@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
-import FromProduct from '../../Components/FromaddProduct';
 import List from '../../Components/ListAdmin'
-import FormaddProduct from '../../Components/FromaddProduct'
+import FormaddProduct from '../../Components/FormAddProduct'
 import { Link,} from 'react-router-dom';
 const AddProduct = () => {
     return (

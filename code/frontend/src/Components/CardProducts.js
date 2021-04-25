@@ -29,6 +29,7 @@ const CardList = () => {
       return 'Loading ...'
     }
     if (error) {
+    console.log(error)
       return 'Error !!'
     }
     console.log(data)
@@ -63,10 +64,10 @@ const CardList = () => {
                                                             {product.name}
                                                             </Typography>
                                                             <Typography variant="body2" color="textSecondary" component="p">
-                                                            {product.detail}
+                                                            {product.detail.monitor} / {product.detail.cpu} / {product.detail.ram} / {product.detail.storage} / {product.detail.gpu} / {product.detail.os}
                                                             </Typography>
                                                             <Typography variant="h6" color="textinfo" align="right" component="p">
-                                                                {product.price} THB
+                                                                $ {product.price} 
                                                             </Typography>
                                                             </Link>
                                                     </CardContent>

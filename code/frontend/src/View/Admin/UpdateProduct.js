@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import FromUpdateProduct from '../../Components/FromUpdateProduct';
+import FormUpdateProduct from '../../Components/FormUpdateProduct';
 import List from '../../Components/ListAdmin'
 const UpdateProduct = () => {
     return (
@@ -16,7 +16,7 @@ const UpdateProduct = () => {
 
                             <div class="ml-2 mt-4 row text-left">
                                 <List/>
-                                <FromUpdateProduct/>
+                                <FormUpdateProduct/>
 
                             </div>
                         </div>

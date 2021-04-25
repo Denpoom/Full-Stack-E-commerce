@@ -69,7 +69,7 @@ const DetailProduct = () => {
                                                                 {res.name}
                                                             </Typography>
                                                                 <Typography variant="body2" color="textSecondary" component="p">
-                                                                    15.6 inch / AMD Athlon 3050U / 4GB DDR4 / 1TB / Integrated Graphics / Win 10
+                                                                {res.detail.monitor} / {res.detail.cpu} / {res.detail.ram} / {res.detail.storage} / {res.detail.gpu} / {res.detail.os}
                                                             </Typography>
                                                                 <Typography variant="h6" color="textinfo" align="right" component="p">
                                                                     ${res.price}
@@ -84,8 +84,18 @@ const DetailProduct = () => {
                                                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{res.name}</h1>
                                                 <hr></hr>
                                                 <br></br>
-                                                <p className="leading-relaxed">{res.detail} </p>
-                                                
+                                                <p className="leading-relaxed">
+                                                    หน้าจอแสดงผลขนาด {res.detail.monitor}
+                                                </p>
+                                                <p className="leading-relaxed">
+                                                    หน่วยประมวลผล {res.detail.cpu}
+                                                </p>
+                                                <p className="leading-relaxed">
+                                                    หน่วยประมวลผลกราฟิก {res.detail.gpu}
+                                                </p>
+                                                <p className="leading-relaxed">
+                                                    หน่วยความจุ {res.detail.storage} และ RAM {res.detail.ram}
+                                                </p>
                                                 <br></br>
                                                 <hr></hr>
                                                 <br></br>
