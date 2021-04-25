@@ -1,6 +1,7 @@
-import React, { useState} from "react";
+import React, { useState,useCallback} from "react";
 import { REGISTER_MUTATION } from '../../Graphql/registerMutation'
 import { useMutation } from '@apollo/client'
+import {useHistory } from "react-router-dom";
 const Register = () => {
     const [values, setValues] = useState({
         role:'Customer',
@@ -29,9 +30,19 @@ const Register = () => {
               }
         }
     })
+    const history = useHistory()
+    const redirect = useCallback(
+        () => {
+            history.push('/login')
+        },
+        [history],
+    )
     const onSubmit = (event) => {
         event.preventDefault();
         addUser()
+        alert('สมัครสมาชิกเรียบร้อย!!!!!!!!!!')
+        redirect()
+       
     }
     return (
         // For Register
