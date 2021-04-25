@@ -14,7 +14,7 @@ const Register = () => {
         setValues({...values, [event.target.name]: event.target.value})
     }
 
-    const [addUser, {loading, error}] = useMutation(REGISTER_MUTATION,{
+    const [addUser] = useMutation(REGISTER_MUTATION,{
         update(proxy, result){
             console.log(result)
         },
