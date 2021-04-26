@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useCallback } from "react";
 import {useMutation } from '@apollo/client';
 import {CREATE_PRODUCT_MUTATION} from '../Graphql/productMutation';
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 const FormaddProduct = () => {
     const [values, setValues] = useState({
         name:'',
@@ -38,14 +39,26 @@ const FormaddProduct = () => {
         }}
 
     })
+    const history = useHistory()
+    const redirect = useCallback(
+        () => {
+            history.push('/admin/product')
+        },
+        [history],
+    )
     const onSubmit = (event) => {
         event.preventDefault();
         addProduct()
+        redirect()
+        alert('Add Product Success')
+        window.location.reload()
     }
+    
+
     return (
         //form 
             <div class="mt-1 col-md-8">
-                                    <form className="text-center" onSubmit={onSubmit}>
+                                    <form className="text-center" onSubmit={onSubmit} >
                                     <div className="-mx-3 md:flex mb-6">
                                             <div className="md:w-full px-3">
                                                 <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
@@ -117,6 +130,8 @@ const FormaddProduct = () => {
                                                     Create Product
                                             </button>   
                                     </form>
+
+                                    
 
                                 </div>
        
