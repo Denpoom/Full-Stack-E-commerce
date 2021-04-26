@@ -1,5 +1,3 @@
-import Button from '@material-ui/core/Button';
-import Table from '@material-ui/core/Table';
 import { Link,} from 'react-router-dom';
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
@@ -50,7 +48,6 @@ console.log(data)
                                 <i class="fas fa-user-cog"></i> Admin Dasboard
                                 </h1>
                             <hr></hr>
-
                             <div class="ml-2 mt-4 row text-left">
                                 <List/>
                                 <div class="mt-1 col-md-8">
@@ -59,7 +56,7 @@ console.log(data)
                                         <div class="col-11 px-6 py-4 border rounded bg-gray-100 shadow-md">
 
                                             <div style={{ height: 400, width: '100%' }}>
-                                                <DataGrid rows={rows} columns={columns} pageSize={5}  />
+                                                <DataGrid rows={rows} columns={columns} pageSize={5}/>
                                             </div>
                                            
                                         </div>
