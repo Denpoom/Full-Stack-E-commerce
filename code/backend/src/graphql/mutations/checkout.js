@@ -1,5 +1,5 @@
-import { CheckoutTC } from '../../models'
+import { CheckoutTC } from "../../models";
 
-export const createCheckout = CheckoutTC.getResolver('createOne')
-export const updateCheckoutById = CheckoutTC.getResolver('updateById')
-export const removeCheckoutById = CheckoutTC.getResolver('removeById')
+export const createCheckout = CheckoutTC.getResolver("createOne");
+export const updateCheckoutById = CheckoutTC.getResolver("updateById");
+export const removeCheckoutById = CheckoutTC.getResolver("removeById");

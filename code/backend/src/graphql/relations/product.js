@@ -1,9 +1,9 @@
-import {ProductTC, DetailProductTC} from '../../models'
-import moment from 'moment'
+import { ProductTC, DetailProductTC } from "../../models";
+import moment from "moment";
 ProductTC.addFields({
-    timestamp: {
-      type: 'String',
-      resolve: (source) => moment(source.timestamp).fromNow(),
-      projection: { timestamp: 1 },
-    },
-  })
+  timestamp: {
+    type: "String",
+    resolve: (source) => moment(source.timestamp).fromNow(),
+    projection: { timestamp: 1 },
+  },
+});

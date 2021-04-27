@@ -1,3 +1,3 @@
-import { PaymentTC } from '../../models'
+import { PaymentTC } from "../../models";
 
-export const createPayment = PaymentTC.getResolver('createOne')
+export const createPayment = PaymentTC.getResolver("createOne");

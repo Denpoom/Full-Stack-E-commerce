@@ -1,4 +1,4 @@
-import {OrderTC} from '../../models'
+import { OrderTC } from "../../models";
 
-export const orderById = OrderTC.getResolver('findById')
-export const orders = OrderTC.getResolver('findMany')
+export const orderById = OrderTC.getResolver("findById");
+export const orders = OrderTC.getResolver("findMany");
