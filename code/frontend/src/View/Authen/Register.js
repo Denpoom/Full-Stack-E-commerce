@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { REGISTER_MUTATION } from "../../Graphql/registerMutation";
 import { useMutation } from "@apollo/client";
-import { useHistory } from "react-router-dom";
-const Register = () => {
+import Alert from "@material-ui/lab/Alert";
+const Register = (props) => {
+  const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     role: "Customer",
     username: "",
@@ -18,6 +19,12 @@ const Register = () => {
   const [addUser] = useMutation(REGISTER_MUTATION, {
     update(proxy, result) {
       console.log(result);
+      alert("สมัครสมาชิกเรียบร้อย!!!!!!!!!!");
+      props.history.push("/login");
+    },
+    onError(err) {
+      console.log(err.graphQLErrors[0].extensions.exception.message);
+      setErrors(err.graphQLErrors[0].extensions.exception.message);
     },
     variables: {
       record: {
@@ -30,15 +37,9 @@ const Register = () => {
       },
     },
   });
-  const history = useHistory();
-  const redirect = useCallback(() => {
-    history.push("/login");
-  }, [history]);
   const onSubmit = (event) => {
     event.preventDefault();
     addUser();
-    alert("สมัครสมาชิกเรียบร้อย!!!!!!!!!!");
-    redirect();
   };
   return (
     // For Register
@@ -116,6 +117,9 @@ const Register = () => {
                     Sign Up
                   </button>
                 </div>
+                {Object.keys(errors).length > 0 && (
+                  <Alert severity="error">{errors}</Alert>
+                )}
               </form>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import Dasboard from "../../Components/Dasboard";
-import { Link } from "react-router-dom";
 import List from "../../Components/ListAdmin";
 const AdminInfo = () => {
   return (

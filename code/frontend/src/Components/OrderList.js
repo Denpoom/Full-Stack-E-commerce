@@ -67,7 +67,7 @@ const OrderList = () => {
                               : "Payment Successful"}
                           </td>
                           <td className="no-underline hover:underline">
-                            <a href="#">More Details</a>
+                            <a>More Details</a>
                           </td>
                         </tr>
                         <br></br>

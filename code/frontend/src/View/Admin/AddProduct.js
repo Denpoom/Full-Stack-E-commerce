@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import List from "../../Components/ListAdmin";
 import FormaddProduct from "../../Components/FormAddProduct";
-import { Link } from "react-router-dom";
 const AddProduct = () => {
   return (
     <React.Fragment>
