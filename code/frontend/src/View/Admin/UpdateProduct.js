@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import FormUpdateProduct from '../../Components/FormUpdateProduct';
 import List from '../../Components/ListAdmin'
+import { useParams } from 'react-router-dom'
 const UpdateProduct = () => {
+    const { id_product } = useParams()
     return (
         <React.Fragment >
             <Suspense fallback={<h1>Still Loading…</h1>}>  
@@ -16,7 +18,7 @@ const UpdateProduct = () => {
 
                             <div class="ml-2 mt-4 row text-left">
                                 <List/>
-                                <FormUpdateProduct/>
+                                <FormUpdateProduct id_product={id_product}/>
 
                             </div>
                         </div>

@@ -5,7 +5,7 @@ import List from '../../Components/ListAdmin';
 import { PRODUCTS_QUERY } from '../../Graphql/productsQuery';
 import { useQuery } from '@apollo/client'
 const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'id', headerName: 'ID', width: 350 },
     { field: 'name', headerName: 'Name', width: 350 },
     {
         field: 'price',
@@ -33,7 +33,7 @@ const ProductInfo = () => {
     }
     data.products.map((product, i) => {
         return(
-            rows.push({ id: i+1,  name: product.name, price: product.price, amount: product.amount })
+            rows.push({ id: product._id,  name: product.name, price: product.price, amount: product.amount })
         )
     })
 console.log(data)

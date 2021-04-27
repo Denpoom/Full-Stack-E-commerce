@@ -109,7 +109,7 @@ function App() {
             <Route path="/admin/promotion" exact component={AdminPromotionPage} />
             <Route path="/admin/product" exact component={AdminProductPage} />
             <Route path="/admin/product/create" exact component={AdminAddProductPage} />
-            <Route path="/admin/product/update" exact component={AdminUpdateProductPage} />
+            <Route path="/admin/product/update/:id_product" exact component={AdminUpdateProductPage} />
             <Route path="/admin/order/id_order" exact component={AdminDetailOrderPage} />
             
           </Switch>
