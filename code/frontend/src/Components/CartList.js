@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const CartList = () => {
+
     return (
         //form 
         <section className="#">
@@ -11,6 +12,8 @@ const CartList = () => {
                             <h1 className="font-bold tracking-wider text-3xl mb-8 w-full text-gray-800">
                                 <i class="fas fa-shopping-cart"></i> Cart
                                 </h1>
+{/* if ไอดีที่ล๊อคอินอยู่ == cart._id */}
+                            
                             <table class="w-full text-sm lg:text-base" cellspacing="0">
                                 <thead>
                                     <tr className="h-12 uppercase">

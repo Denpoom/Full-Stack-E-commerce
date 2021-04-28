@@ -1,3 +1,4 @@
 import { CartTC } from "../../models/cart";
 
-export const CartById = CartTC.getResolver('findById')
+export const cartById = CartTC.getResolver('findById')
+export const carts = CartTC.getResolver('findMany')

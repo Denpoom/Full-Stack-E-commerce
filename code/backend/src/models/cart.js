@@ -11,7 +11,7 @@ const CartSchema = new Schema({
         index: true,
         ref: 'User',
     },
-    productCart: [],
+    productCart: {type: Array, require:false },
     
 })
 

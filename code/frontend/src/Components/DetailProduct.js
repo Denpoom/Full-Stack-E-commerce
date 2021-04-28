@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import Typography from '@material-ui/core/Typography';
-import { gql, useQuery } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { PRODUCTS_QUERY } from '../Graphql/productsQuery';
 import { useParams } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
@@ -24,17 +24,38 @@ const useStyles = makeStyles({
 });
 
 const CREATE_CART_MUTATION = gql`
-mutation ($record: CreateOneStatusPostInput!) {
-  createStatusPost (record: $record) {
-    recordId
+mutation($record:CreateOneCartInput!){
+    createCart(record:$record){
+      record{
+      count
+      productCart
+      ownerId
+      }
+    }
   }
-}
 `
+//กลับมาเพิ่ม ownerId ตอนLoginเสร็จ
 const DetailProduct = () => {
-
+    
     const { id_product } = useParams()
     const classes = useStyles();
     const { loading, error, data } = useQuery(PRODUCTS_QUERY)
+    const [addCart] = useMutation(CREATE_CART_MUTATION)
+    
+    const onSubmit = useCallback (
+        async (event) => {
+        event.preventDefault()
+        const variables = {
+            record: {
+                count: 1,
+                productCart: id_product,
+                ownerId: "608576abe261391338fe21a2",
+            },
+        }
+        await addCart({ variables})
+        },
+        [id_product, addCart],
+    )
     if (loading){
         console.log("loading")
         return 'Loading ...'
@@ -44,9 +65,8 @@ const DetailProduct = () => {
         return 'Error !!'
     }
     console.log(data)
-    const handelAddcart = () => {
-        
-    }
+
+
     return (
 
         <React.Fragment>
@@ -64,6 +84,7 @@ const DetailProduct = () => {
                                     {data.products.map((res) => {
                                     if (id_product === res._id) {
                                         return (
+                                            <form className="text-center" onSubmit={onSubmit}>
                                             <Grid item xs={12} style={{ display: 'flex' }}>
                                             <Grid item xs={2}></Grid>
                                             <Grid item style={{ display: 'flex' }} xs={3} align='center'>
@@ -112,12 +133,13 @@ const DetailProduct = () => {
                                                 <br></br>
                                                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                                     <h1 className="title-font font-medium text-2xl text-gray-900" style={{ margin: "2%" }}>${res.price}</h1>
-                                                    <button onClick={handelAddcart}className=" text-white bg-red-500 border-0 py-2 px-6  focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
+                                                    <button type="submit" className=" text-white bg-red-500 border-0 py-2 px-6  focus:outline-none hover:bg-red-600 rounded">Add Cart </button>
                                                     
                                                 </div>
                                             </Grid>
                                             <Grid item xs={2}></Grid>
                                         </Grid> 
+                                        </form>
                                     )
                                 }
                             }

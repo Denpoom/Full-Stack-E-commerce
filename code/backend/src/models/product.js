@@ -2,6 +2,23 @@ import mongoose from 'mongoose'
 import { composeWithMongoose } from 'graphql-compose-mongoose'
 
 const { Schema } = mongoose
+const enumProductBrand = {
+    ACER:'ACER',
+    ASUS:'ASUS',
+    HP:'HP',
+    LENOVO:'LENOVO',
+    DELL:'DELL',
+    Fuji:'FUJI',
+    MSI:'MSI',
+    HUAWEI:'HUAWEI',
+    MICROSOFT: 'MICROSOFT',
+    APPLE:'APPLE'
+  }
+  const enumProductOS = {
+    WINDOW:'Window',
+    LINUX:'Linux',
+    MACOS:'MacOS',
+  }
 const ProductSchema = new Schema({
     name: { type: String, required: true, index: true },
     timestamp: {type: Date, default: Date.now},
@@ -11,7 +28,15 @@ const ProductSchema = new Schema({
         gpu: {type: String},
         storage: {type: String},
         ram: {type: String},
-        os: {type: String},
+        os: {type: String,
+            index:true,
+            enum: enumProductOS,
+        },
+        brand:{
+            type: String,
+            index: true,
+            enum: enumProductBrand,
+        }
     },
     price: {type: String, default: '0.00'},
     url:{
@@ -20,16 +45,16 @@ const ProductSchema = new Schema({
     isRecommended:{
         type: Boolean, default:false
     },
-    orderId: {
+    appearInOrder: [{
         type: String,
         index: true,
         ref: 'Order',
-    },
+    }],
     amount: {
-        type: Number,
+        type: String,
         index: true,
-        default: 1,
-    }
+        default: "0",
+    },
 })
 const baseOptions = {
     inputType: {
