@@ -32,7 +32,6 @@ const Register = (props) => {
         username: values.username,
         fullname: values.fullname,
         password: values.password,
-        confirmpassword: values.confirmpassword,
         email: values.email,
       },
     },

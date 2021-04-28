@@ -25,7 +25,6 @@ const UserSchema = new Schema(
       trim: true,
     },
     password: { type: String, require: true, bcrypt: true },
-    confirmpassword: { type: String, require: true, bcrypt: true },
     fullname: { type: String, required: true, trim: true },
     email: { type: String },
     tel: { type: String },
@@ -47,10 +46,9 @@ export const CustomerModel = UserModel.discriminator(
   CustomerSchema
 );
 
-export const UserTC = composeWithMongooseDiscriminators(UserModel).removeField([
-  "password",
-  "confirmpassword",
-]);
+export const UserTC = composeWithMongooseDiscriminators(UserModel).removeField(
+  "password"
+);
 export const AdminTC = UserTC.discriminator(AdminModel, {
   name: enumUserRole.ADMIN,
 });
