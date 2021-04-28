@@ -1,6 +1,18 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
+import { ME_DETAIL_QUERY } from "../Graphql/meDetailQuery";
 
 const InfoCustomer = () => {
+  const { loading, error, data } = useQuery(ME_DETAIL_QUERY, {
+    fetchPolicy: "network-only",
+  });
+  console.log(data);
+  if (loading) {
+    return "Loading...";
+  }
+  if (error) {
+    return "Error !!";
+  }
   return (
     //form
     <section className="#">
@@ -9,15 +21,16 @@ const InfoCustomer = () => {
           <div className="mt-5 relative lg:max-w-screen-2xl w-full">
             <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-lg">
               <h1 className="font-bold tracking-wider text-3xl mb-8 w-full text-gray-800">
-                <i className="fas fa-user-alt"></i> Profile Customer
+                <i className="fas fa-user-alt"></i> Profile {data?.me?.role}
               </h1>
               <hr></hr>
               <br></br>
               <h3 className="text-left md:text-center">
-                <i className="fas fa-address-card"></i> Name : ชื่อ Customer
+                <i className="fas fa-address-card"></i> Name :{" "}
+                {data?.me?.fullname}
               </h3>
               <h3 className="text-left md:text-center">
-                <i className="fas fa-envelope"></i> Email : email customer{" "}
+                <i className="fas fa-envelope"></i> Email : {data?.me?.email}
                 <button className="text-red-900 font-bold no-underline hover:underline">
                   <a href="#">
                     {" "}
@@ -26,7 +39,6 @@ const InfoCustomer = () => {
                 </button>
               </h3>
               <h3 className="text-left md:text-center">
-                <i className="fas fa-key"></i> Password : **********{" "}
                 <button className="text-red-900 font-bold no-underline hover:underline">
                   <a href="#">
                     {" "}

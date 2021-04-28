@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSession } from "../../Contexts/SessionContext";
 const LoginForm = (props) => {
-  const { login, user} = useSession();
+  const { login } = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
@@ -19,14 +19,13 @@ const LoginForm = (props) => {
         setDisabled(true);
         try {
           await login(username, password);
-          console.log(user);
         } catch (err) {
           alert(err?.message);
           setDisabled(false);
         }
       }
     },
-    [props, user, disabled, login, password, username]
+    [disabled, login, password, username]
   );
   return (
     //form

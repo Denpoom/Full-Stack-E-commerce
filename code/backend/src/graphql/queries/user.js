@@ -1,4 +1,4 @@
-import { UserTC, CustomerTC, AdminTC } from "../../models";
+import { UserTC, CustomerTC, AdminTC, UserModel} from "../../models";
 import { requiredAuth } from "../middlewares";
 import { schemaComposer } from "graphql-compose";
 

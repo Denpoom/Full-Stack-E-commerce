@@ -30,6 +30,7 @@ export const SessionProvider = (props) => {
       if (res?.data?.login?.token) {
         setCookie("token", res?.data?.login?.token, { maxAge: 86400 });
         setUser(res?.data?.login?.user);
+        history.push("/customer");
         if (res?.data?.login?.user?.role === "Customer") {
           alert("Welcome Customer!!!");
           console.log(history);
@@ -50,7 +51,8 @@ export const SessionProvider = (props) => {
     await client.clearStore();
     await loadMe();
     setUser(null);
-  }, [client, loadMe, removeCookie]);
+    history.push("");
+  }, [client, loadMe, removeCookie, history]);
   useEffect(() => {
     if (data?.me) {
       setUser(data?.me);

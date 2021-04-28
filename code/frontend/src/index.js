@@ -8,7 +8,6 @@ import { SessionProvider } from "./Contexts/SessionContext";
 import possibleTypes from "./Cache/possibleTypes.json";
 import { CookiesProvider } from "react-cookie";
 import { BrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
 const client = new ApolloClient({
   uri: "http://localhost:3001/graphql",
   cache: new InMemoryCache({
