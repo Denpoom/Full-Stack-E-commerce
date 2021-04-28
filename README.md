@@ -27,4 +27,4 @@
     * Admin update promotion /admin/promotion/:promotionId Update promotion form
 8. Admin Order
     * ✔ Admin orders /admin/orders Display all orders
-    * Admin order detail /admin/order/:orderId Display order detail by order id
+    * Admin order detail /admin/order/:orderId Display order detail by order id_
