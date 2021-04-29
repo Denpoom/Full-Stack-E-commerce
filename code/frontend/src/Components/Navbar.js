@@ -61,7 +61,7 @@ const Navbar = () => {
           <Link className="h_btns cursor-pointer" to="/product">
             Products
           </Link>
-          <Link className="h_btns cursor-pointer" to="#">
+          <Link className="h_btns cursor-pointer" to="/promotion">
             Promotion
           </Link>
           <Link className="h_btns cursor-pointer" to="/cart">

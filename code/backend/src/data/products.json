@@ -1,0 +1,74 @@
+[
+  {
+    "name": "ACER NOTEBOOK NITRO AN515-55-52HQ BLACK V.Normal",
+    "detail": {
+      "monitor": "15.6 inch",
+      "cpu": "Intel Core i5-10300H",
+      "gpu": "NVIDIA GeForce GTX 1650Ti (4GB GDDR6)",
+      "ram": "16 GB DDR4 (1*16GB)",
+      "storage": "512 GB PCIe NVMe SSD",
+      "os": "Window",
+      "brand": "ACER"
+    },
+    "url": "https://www.bnn.in.th/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/A/c/Acer-Notebook-NITRO-AN515-55-52HQ-Black-1-1619201075.jpg",
+    "price": "31,990"
+  },
+  {
+    "name": "ACER NOTEBOOK NITRO AN515-55-52HQ BLACK V.Normal",
+    "detail": {
+      "monitor": "15.6 inch",
+      "cpu": "Intel Core i5-10300H",
+      "gpu": "NVIDIA GeForce GTX 1650Ti (4GB GDDR6)",
+      "ram": "16 GB DDR4 (1*16GB)",
+      "storage": "512 GB PCIe NVMe SSD",
+      "os": "Window",
+      "brand": "ACER"
+    },
+    "url": "https://www.bnn.in.th/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/A/c/Acer-Notebook-NITRO-AN515-55-52HQ-Black-1-1619201075.jpg",
+    "price": "31,990"
+  },
+  {
+    "name": "ACER NOTEBOOK NITRO AN515-55-52HQ BLACK V.Normal",
+    "detail": {
+      "monitor": "15.6 inch",
+      "cpu": "Intel Core i5-10300H",
+      "gpu": "NVIDIA GeForce GTX 1650Ti (4GB GDDR6)",
+      "ram": "16 GB DDR4 (1*16GB)",
+      "storage": "512 GB PCIe NVMe SSD",
+      "os": "Window",
+      "brand": "ACER"
+    },
+    "url": "https://www.bnn.in.th/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/A/c/Acer-Notebook-NITRO-AN515-55-52HQ-Black-1-1619201075.jpg",
+    "price": "31,990"
+  },
+  {
+    "name": "ACER NOTEBOOK NITRO AN515-55-52HQ BLACK V.Recommend",
+    "detail": {
+      "monitor": "15.6 inch",
+      "cpu": "Intel Core i5-10300H",
+      "gpu": "NVIDIA GeForce GTX 1650Ti (4GB GDDR6)",
+      "ram": "16 GB DDR4 (1*16GB)",
+      "storage": "512 GB PCIe NVMe SSD",
+      "os": "Window",
+      "brand": "ACER"
+    },
+    "url": "https://www.bnn.in.th/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/A/c/Acer-Notebook-NITRO-AN515-55-52HQ-Black-1-1619201075.jpg",
+    "price": "31,990",
+    "isRecommended": true
+  },
+  {
+    "name": "ACER NOTEBOOK NITRO AN515-55-52HQ BLACK V.Recommend",
+    "detail": {
+      "monitor": "15.6 inch",
+      "cpu": "Intel Core i5-10300H",
+      "gpu": "NVIDIA GeForce GTX 1650Ti (4GB GDDR6)",
+      "ram": "16 GB DDR4 (1*16GB)",
+      "storage": "512 GB PCIe NVMe SSD",
+      "os": "Window",
+      "brand": "ACER"
+    },
+    "url": "https://www.bnn.in.th/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/A/c/Acer-Notebook-NITRO-AN515-55-52HQ-Black-1-1619201075.jpg",
+    "price": "31,990",
+    "isRecommended": true
+  }
+]
