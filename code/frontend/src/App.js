@@ -9,6 +9,7 @@ import HomePage from "../src/View/Authen/Home";
 import LoginPage from "../src/View/Authen/Login";
 import RegisterPage from "../src/View/Authen/Register";
 import ProductPage from "../src/View/Product/Product";
+import PromotionPage from "../src/View/Product/Promotions";
 import CustomerPage from "../src/View/Customer/Customer";
 import OrderPage from "../src/View/Customer/Orders";
 import DetailPage from "../src/View/Customer/Detail";
@@ -30,60 +31,7 @@ const Loadable = (opts) =>
     ...opts,
   });
 
-// const AsyncHome = Loadable({
-//   loader: () => import('./View/Authen/Home')
-// })
-// const AsyncLogin = Loadable({
-//   loader: () => import('./View/Authen/Login')
-// })
-// const AsyncRegister = Loadable({
-//   loader: () => import('./View/Authen/Register')
-// })
-// const AsyncProduct = Loadable({
-//   loader: () => import('./View/Product/Product')
-// })
-// const AsyncCustomer = Loadable({
-//   loader: () => import('./View/Customer/Customer')
-// })
-// const AsyncCustomerOrders = Loadable({
-//   loader: () => import('./View/Customer/Orders')
-// })
-// const AsyncCustomerDetail = Loadable({
-//   loader: () => import('./View/Customer/Detail')
-// })
-// const AsyncCart = Loadable({
-//   loader: () => import('./View/Purchase/Cart')
-// })
-// const AsyncCheckout = Loadable({
-//   loader: () => import('./View/Purchase/Checkout')
-// })
-// const AsyncPayment = Loadable({
-//   loader: () => import('./View/Purchase/Payment')
-// })
-// //ไม่ต้องทำแบบนี้ก็ได้ มันไม่ได้โหลดมาทีเดียว
-// const AsyncAdmin = Loadable({
-//   loader: () => import('./View/Admin/DasboardInfo')
-// })
-// const AsyncAdminOrder = Loadable({
-//   loader: () => import('./View/Admin/OrderInfo')
-// })
-// const AsyncAdminPromotion = Loadable({
-//   loader: () => import('./View/Admin/PromotionInfo')
-// })
-// const AsyncAdminProduct = Loadable({
-//   loader: () => import('./View/Admin/ProductInfo')
-// })
-// const AsyncAdminAddProduct = Loadable({
-//   loader: () => import('./View/Admin/AddProduct')
-// })
-// const AsyncAdminUpdateProduct = Loadable({
-//   loader: () => import('./View/Admin/UpdateProduct')
-// })
-// const AsyncAdminDetailOrder = Loadable({
-//   loader: () => import('./View/Admin/DetailOrder')
-// })
 
-// const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -94,6 +42,7 @@ function App() {
             <Route path="/login" exact component={LoginPage} />
             <Route path="/register" exact component={RegisterPage} />
             <Route path="/product" exact component={ProductPage} />
+            <Route path="/promotion" exact component={PromotionPage} />
             <Route path="/customer" exact component={CustomerPage} />
             <Route path="/customer/orders" exact component={OrderPage} />
             <Route

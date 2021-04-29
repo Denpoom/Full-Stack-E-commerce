@@ -3,20 +3,27 @@ import { ApolloServer } from "apollo-server-express";
 import jwt from "express-jwt";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+
 import "./mongoose-connect";
 import schema from "./graphql";
+
 const path = "/graphql";
 const app = express();
 const server = new ApolloServer({
   schema,
-  // introspection: true,
   playground: true,
   context: ({ req }) => ({ user: req.user }),
 });
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: process.env.CORS ?? "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(
   path,
   jwt({
@@ -49,7 +56,10 @@ app.use(
 server.applyMiddleware({
   app,
   path,
-  cors: { origin: "http://localhost:3000", credentials: true },
+  cors: {
+    origin: process.env.CORS ?? "http://localhost:3000",
+    credentials: true,
+  },
 });
 
 const port = process.env.PORT ?? 5001;
