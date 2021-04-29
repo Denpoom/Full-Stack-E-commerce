@@ -1,4 +1,4 @@
-import { CheckoutTC } from '../../models'
+import { CheckoutTC } from "../../models";
 
-export const checkouts = CheckoutTC.getResolver('findMany')
-export const checkoutById = CheckoutTC.getResolver('findById')
+export const checkouts = CheckoutTC.getResolver("findMany");
+export const checkoutById = CheckoutTC.getResolver("findById");
