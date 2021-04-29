@@ -32,18 +32,12 @@ const InfoCustomer = () => {
               <h3 className="text-left md:text-center">
                 <i className="fas fa-envelope"></i> Email : {data?.me?.email}
                 <button className="text-red-900 font-bold no-underline hover:underline">
-                  <a href="#">
-                    {" "}
-                    (<i class="fas fa-edit"></i> Edit Email)
-                  </a>
+                  
                 </button>
               </h3>
               <h3 className="text-left md:text-center">
                 <button className="text-red-900 font-bold no-underline hover:underline">
-                  <a href="#">
-                    {" "}
-                    (<i class="fas fa-edit"></i> Edit Password)
-                  </a>
+                  
                 </button>
               </h3>
               <br></br>

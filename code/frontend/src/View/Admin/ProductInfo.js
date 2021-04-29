@@ -5,7 +5,7 @@ import List from "../../Components/ListAdmin";
 import { PRODUCTS_QUERY } from "../../Graphql/productsQuery";
 import { useQuery } from "@apollo/client";
 const columns = [
-  { field: "id", headerName: "ID", width: 350 },
+  { field: "id", headerName: "ID", width: 250 },
   { field: "name", headerName: "Name", width: 350 },
   {
     field: "price",
