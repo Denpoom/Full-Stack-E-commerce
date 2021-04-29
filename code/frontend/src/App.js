@@ -2,8 +2,8 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import L from "react-loadable";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
+// import { QueryClient, QueryClientProvider } from "react-query";
+import { Switch, Route} from "react-router-dom";
 
 import HomePage from "../src/View/Authen/Home";
 import LoginPage from "../src/View/Authen/Login";
@@ -83,12 +83,10 @@ const Loadable = (opts) =>
 //   loader: () => import('./View/Admin/DetailOrder')
 // })
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename="/">
         <div className="App">
           <Navbar />
           <Switch>
@@ -134,8 +132,6 @@ function App() {
           </Switch>
           <Footer />
         </div>
-      </BrowserRouter>
-    </QueryClientProvider>
   );
 }
 

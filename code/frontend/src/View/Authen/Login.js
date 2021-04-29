@@ -1,8 +1,8 @@
-import { useCallback, useState, useContext } from "react";
+import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSession } from "../../Contexts/SessionContext";
 const LoginForm = (props) => {
-  const { login, user } = useSession();
+  const { login } = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
@@ -19,13 +19,6 @@ const LoginForm = (props) => {
         setDisabled(true);
         try {
           await login(username, password);
-          console.log(user);
-          alert("Login!!!");
-          if (user.role == "Customer") {
-            props.history.push("/");
-          } else {
-            props.history.push("/admin");
-          }
         } catch (err) {
           alert(err?.message);
           setDisabled(false);
