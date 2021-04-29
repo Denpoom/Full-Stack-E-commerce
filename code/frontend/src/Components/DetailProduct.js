@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
+import { makeStyles } from "@material-ui/core/styles"
+import Card from "@material-ui/core/Card"
+import CardActionArea from "@material-ui/core/CardActionArea"
 
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent"
+import CardMedia from "@material-ui/core/CardMedia"
 
-import Typography from "@material-ui/core/Typography";
-import { useQuery } from "@apollo/client";
-import { PRODUCTS_QUERY } from "../Graphql/productsQuery";
-import { useParams } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography"
+import { useMutation, useQuery } from "@apollo/client"
+import { PRODUCTS_QUERY } from "../Graphql/productsQuery"
+import { useParams } from "react-router-dom"
+import Grid from "@material-ui/core/Grid"
+import { gql } from '@apollo/client'
+import { ME_DETAIL_QUERY } from "../Graphql/meDetailQuery";
+import { useSession } from "../Contexts/SessionContext";
+
 
 const useStyles = makeStyles({
   root: {
@@ -23,21 +27,35 @@ const useStyles = makeStyles({
 });
 
 const CREATE_CART_MUTATION = gql`
-mutation($record:CreateOneCartInput!){
-    createCart(record:$record){
-      record{
-      count
-      productCart
-      ownerId
-      }
-    }
+mutation ($record: CreateOneCartInput!) {
+  createCart (record: $record) {
+    recordId
   }
+}
 `
-//กลับมาเพิ่ม ownerId ตอนLoginเสร็จ
+
 const DetailProduct = () => {
-  const { id_product } = useParams();
+  const { id_product } = useParams()
+  const { user } = useSession()
   const classes = useStyles();
   const { loading, error, data } = useQuery(PRODUCTS_QUERY);
+  const [createCart] = useMutation(CREATE_CART_MUTATION)
+
+  const handleCreateCart = useCallback(
+    async (e) => {
+      e.preventDefault()
+      const variables = {
+        record: {
+          count: 1,
+          productCart: id_product,
+          ownerId: user?._id,
+        },
+      }
+      await createCart({ variables })
+      console.log(variables, "Cart Succes!!")
+    },
+    [createCart, id_product, user?._id],
+  )
   if (loading) {
     console.log("loading");
     return "Loading ...";
@@ -47,6 +65,7 @@ const DetailProduct = () => {
     return "Error !!";
   }
   console.log(data);
+  console.log(user);
   return (
     <React.Fragment>
       <section className="#">
@@ -147,9 +166,12 @@ const DetailProduct = () => {
                               >
                                 ${res.price}
                               </h1>
-                              <button className=" text-white bg-red-500 border-0 py-2 px-6  focus:outline-none hover:bg-red-600 rounded">
+                              <form onSubmit={handleCreateCart}>
+                              <button className=" text-white bg-red-500 border-0 py-2 px-6 
+                               focus:outline-none hover:bg-red-600 rounded">
                                 Add Cart{" "}
                               </button>
+                              </form>
                             </div>
                           </Grid>
                           <Grid item xs={2}></Grid>
