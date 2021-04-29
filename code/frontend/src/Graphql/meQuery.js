@@ -5,7 +5,10 @@ query {
   me {
     _id
     role
-    name
+    username
+    fullname
+    email
+    tel
   }
 }
 `
