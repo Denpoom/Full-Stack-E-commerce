@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
@@ -8,8 +8,8 @@ import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
 
 import Typography from "@material-ui/core/Typography"
-import { useMutation, useQuery } from "@apollo/client"
-import { PRODUCTS_QUERY } from "../Graphql/productsQuery"
+import { useMutation, useLazyQuery } from "@apollo/client"
+import { PRODUCT_BYID_QUERY  } from "../Graphql/productsQuery"
 import { useParams } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import { gql } from '@apollo/client'
@@ -33,26 +33,37 @@ mutation ($record: CreateOneCartInput!) {
   }
 }
 `
-
+// เมื่อกดถ้า idproduct(ไอดีโปรดักที่จะรับเข้ามา) == ProductCart(ไอดีสินค้าในDB)
+//    ถ้าใช่ ดึงCartidนั้นมา แล้ว
+//             Count += 1 
 const DetailProduct = () => {
   const { id_product } = useParams()
   const { user } = useSession()
   const classes = useStyles();
-  const { loading, error, data } = useQuery(PRODUCTS_QUERY);
   const [createCart] = useMutation(CREATE_CART_MUTATION)
-  const [values, setValues] = useState();
-
-  const onChange = useCallback((e) => {
-    setValues(e.target.value);
-  }, []);
-
+  const [loadProduct, { loading, error, data }] = useLazyQuery(
+    PRODUCT_BYID_QUERY,
+    {
+      variables: {
+        id: id_product,
+      },
+    }
+  );
+  useEffect(() => {
+    const loadData = async () => {
+      loadProduct();
+    };
+    loadData();
+  }, [loadProduct, data]);
   const handleCreateCart = useCallback(
     async (e) => {
       e.preventDefault()
+      
       const variables = {
         record: {
           count: 1,
-          price: values,
+          name: data?.productById?.name,
+          price: data?.productById?.price,
           productCart: id_product,
           ownerId: user?._id,
         },
@@ -60,7 +71,7 @@ const DetailProduct = () => {
       await createCart({ variables })
       console.log(variables, "Cart Succes!!")
     },
-    [createCart, id_product, user?._id, values],
+    [createCart, data?.productById?.name, data?.productById?.price, id_product, user?._id],
   )
   if (loading) {
     console.log("loading");
@@ -70,6 +81,7 @@ const DetailProduct = () => {
     console.log("error");
     return "Error !!";
   }
+  console.log(data?.productById?.name,)
   console.log(data);
   return (
     <React.Fragment>
@@ -84,8 +96,7 @@ const DetailProduct = () => {
                 <hr></hr>
                 <br></br>
                 <Grid container alignItems="stretch" spacing={2}>
-                  {data.products.filter((product)=>id_product === product._id).map((res) => {
-                      return (
+                        <form onSubmit={handleCreateCart}>
                         <Grid item xs={12} style={{ display: "flex" }}>
                           <Grid item xs={2}></Grid>
                           <Grid
@@ -104,7 +115,7 @@ const DetailProduct = () => {
                               <CardActionArea>
                                 <CardMedia
                                   className={classes.media}
-                                  image={res.url}
+                                  image={data?.productById?.url}
                                   title="Contemplative Reptile"
                                 />
                                 <CardContent>
@@ -113,16 +124,16 @@ const DetailProduct = () => {
                                     variant="h7"
                                     component="h3"
                                   >
-                                    {res.name}
+                                    {data?.productById?.name}
                                   </Typography>
                                   <Typography
                                     variant="body2"
                                     color="textSecondary"
                                     component="p"
                                   >
-                                    {res.detail.monitor} / {res.detail.cpu} /{" "}
-                                    {res.detail.ram} / {res.detail.storage} /{" "}
-                                    {res.detail.gpu} / {res.detail.os}
+                                    {data?.productById?.detail.monitor} / {data?.productById?.detail.cpu} /{" "}
+                                    {data?.productById?.detail.ram} / {data?.productById?.detail.storage} /{" "}
+                                    {data?.productById?.detail.gpu} / {data?.productById?.detail.os}
                                   </Typography>
                                   <Typography
                                     variant="h6"
@@ -130,7 +141,7 @@ const DetailProduct = () => {
                                     align="right"
                                     component="p"
                                   >
-                                    ${res.price}
+                                    ${data?.productById?.price}
                                   </Typography>
                                 </CardContent>
                               </CardActionArea>
@@ -138,22 +149,22 @@ const DetailProduct = () => {
                           </Grid>
                           <Grid item xs={4} style={{ marginLeft: "2%" }}>
                             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                              {res.name}
+                              {data?.productById?.name}
                             </h1>
                             <hr></hr>
                             <br></br>
                             <p className="leading-relaxed">
-                              หน้าจอแสดงผลขนาด {res.detail.monitor}
+                              หน้าจอแสดงผลขนาด {data?.productById?.detail.monitor}
                             </p>
                             <p className="leading-relaxed">
-                              หน่วยประมวลผล {res.detail.cpu}
+                              หน่วยประมวลผล {data?.productById?.detail.cpu}
                             </p>
                             <p className="leading-relaxed">
-                              หน่วยประมวลผลกราฟิก {res.detail.gpu}
+                              หน่วยประมวลผลกราฟิก {data?.productById?.detail.gpu}
                             </p>
                             <p className="leading-relaxed">
-                              หน่วยความจุ {res.detail.storage} และ RAM{" "}
-                              {res.detail.ram}
+                              หน่วยความจุ {data?.productById?.detail.storage} และ RAM{" "}
+                              {data?.productById?.detail.ram}
                             </p>
                             <br></br>
                             <hr></hr>
@@ -167,20 +178,18 @@ const DetailProduct = () => {
                               <h1 id="price3"
                                 className="title-font font-medium text-2xl text-gray-900"
                                 style={{ margin: "2%" }}>
-                                ${res.price}
+                                ${data?.productById?.price}
                               </h1>
-                              <form onSubmit={handleCreateCart}>
+                             
                               <button className=" text-white bg-red-500 border-0 py-2 px-6 
-                               focus:outline-none hover:bg-red-600 rounded" onClick={onChange} value={res.price}>
+                               focus:outline-none hover:bg-red-600 rounded">
                                 Add Cart{" "}
                               </button>
-                              </form>
                             </div>
                           </Grid>
                           <Grid item xs={2}></Grid>
                         </Grid>
-                      );
-                  })}
+                        </form>
                 </Grid>
               </div>
             </div>

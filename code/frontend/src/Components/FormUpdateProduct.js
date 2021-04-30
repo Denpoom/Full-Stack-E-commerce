@@ -92,7 +92,6 @@ const FormUpdateProduct = (id_product) => {
   }
   return (
     //form
-
     <div class="mt-1 col-md-8">
       <form className="text-center" onSubmit={onSubmit}>
         <div className="-mx-3 md:flex mb-6">
