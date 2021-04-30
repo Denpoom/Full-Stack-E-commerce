@@ -1,0 +1,44 @@
+import React from "react";
+import List from "../Components/ListAdmin";
+const Dasboard = () => {
+  return (
+    //form
+    <div class="mt-1 col-md-8">
+      <div class="row">
+        <div class="col-5 px-6 py-5 border rounded bg-blue-100 shadow-md">
+          <span class="h3">
+            <i class="fas fa-chart-pie"></i> จำนวนสินค้า
+          </span>
+          <hr></hr>
+          <br></br> 10 ชิ้น{" "}
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-5 px-6 py-5 border rounded bg-green-100 shadow-md">
+          <span class="h3">
+            <i class="fas fa-list"></i> จำนวนออร์เดอร์
+          </span>
+          <hr></hr>
+          <br></br> 10 ชิ้น{" "}
+        </div>
+      </div>
+      <div class="mt-5 row">
+        <div class="col-5 px-6 py-5 border rounded bg-red-100 shadow-md">
+          <span class="h3">
+            <i class="fas fa-chart-pie"></i> จำนวนโปรโมชั่นที่มี
+          </span>
+          <hr></hr>
+          <br></br> 10 ชิ้น{" "}
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-5 px-6 py-5 border rounded bg-yellow-100 shadow-md">
+          <span class="h3">
+            <i class="fas fa-user-cog"></i> จำนวนผู้ใช้ที่มี
+          </span>
+          <hr></hr>
+          <br></br> 10 user{" "}
+        </div>
+      </div>
+    </div>
+  );
+};
+export default Dasboard;

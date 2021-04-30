@@ -1,13 +1,10 @@
-
-mongoose.Promise = Promise
-mongoose.connect(
-  'mongodb://localhost:27017',
-  {
-    dbName: 'e-commerce_project',
-    promiseLibrary: Promise,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  },
-)
+import mongoose from "mongoose";
+mongoose.Promise = Promise;
+mongoose.connect("mongodb://localhost:27017", {
+  dbName: "e-commerce_project",
+  promiseLibrary: Promise,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
