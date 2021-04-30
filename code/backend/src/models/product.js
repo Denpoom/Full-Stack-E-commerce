@@ -71,9 +71,6 @@ const baseOptions = {
 };
 export const ProductModel = mongoose.model("Product", ProductSchema);
 
-export const ProductTC = composeWithMongoose(
-  ProductModel,
-  baseOptions
-).removeField(["appearInCart", "appearInOrder"]);
+export const ProductTC = composeWithMongoose(ProductModel, baseOptions);
 
 export default ProductModel;
