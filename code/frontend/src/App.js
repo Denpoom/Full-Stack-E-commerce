@@ -20,8 +20,10 @@ import DasboardPage from "../src/View/Admin/DasboardInfo";
 import AdminOrderPage from "../src/View/Admin/OrderInfo";
 import AdminProductPage from "../src/View/Admin/ProductInfo";
 import AdminPromotionPage from "../src/View/Admin/PromotionInfo";
-import AdminAddProductPage from "../src/View/Admin/AddProduct";
+import AdminAddPromotionPage from "./View/Admin/AddPromotion";
+import AdminAddProductPage from "./View/Admin/AddProduct";
 import AdminUpdateProductPage from "../src/View/Admin/UpdateProduct";
+import AdminUpdatePromotionPage from "../src/View/Admin/UpdatePromotion";
 import AdminDetailOrderPage from "../src/View/Admin/DetailOrder";
 const Loading = () => <div>Loading...</div>;
 
@@ -31,56 +33,50 @@ const Loadable = (opts) =>
     ...opts,
   });
 
-
-
 function App() {
   return (
-        <div className="App">
-          <Navbar />
-          <Switch>
-            <Route exact={true} path="/" exact component={HomePage} />
-            <Route path="/login" exact component={LoginPage} />
-            <Route path="/register" exact component={RegisterPage} />
-            <Route path="/product" exact component={ProductPage} />
-            <Route path="/promotion" exact component={PromotionPage} />
-            <Route path="/customer" exact component={CustomerPage} />
-            <Route path="/customer/orders" exact component={OrderPage} />
-            <Route
-              path="/product/detail/:id_product"
-              exact
-              component={DetailPage}
-            />
-            <Route path="/cart" exact component={CartPage} />
-            <Route path="/checkout" exact component={CheckoutPage} />
-            <Route path="/payment" exact component={PaymentPage} />
+    <div className="App">
+      <Navbar />
+      <Switch>
+        <Route exact={true} path="/" exact component={HomePage} />
+        <Route path="/login" exact component={LoginPage} />
+        <Route path="/register" exact component={RegisterPage} />
+        <Route path="/product" exact component={ProductPage} />
+        <Route path="/promotion" exact component={PromotionPage} />
+        <Route path="/customer" exact component={CustomerPage} />
+        <Route path="/customer/orders" exact component={OrderPage} />
+        <Route
+          path="/product/detail/:id_product"
+          exact
+          component={DetailPage}
+        />
+        <Route path="/cart" exact component={CartPage} />
+        <Route path="/checkout" exact component={CheckoutPage} />
+        <Route path="/payment" exact component={PaymentPage} />
 
-            <Route path="/admin/" exact component={DasboardPage} />
-            <Route path="/admin/dashboard" exact component={DasboardPage} />
-            <Route path="/admin/order" exact component={AdminOrderPage} />
-            <Route
-              path="/admin/promotion"
-              exact
-              component={AdminPromotionPage}
-            />
-            <Route path="/admin/product" exact component={AdminProductPage} />
-            <Route
-              path="/admin/product/create"
-              exact
-              component={AdminAddProductPage}
-            />
-            <Route
-              path="/admin/product/update/:id_product"
-              exact
-              component={AdminUpdateProductPage}
-            />
-            <Route
-              path="/admin/order/id_order"
-              exact
-              component={AdminDetailOrderPage}
-            />
-          </Switch>
-          <Footer />
-        </div>
+        <Route path="/admin/" exact component={DasboardPage} />
+        <Route path="/admin/dashboard" exact component={DasboardPage} />
+        <Route path="/admin/order" exact component={AdminOrderPage} />
+        <Route exact component={AdminUpdatePromotionPage} />
+        <Route path="/admin/product" exact component={AdminProductPage} />
+        <Route
+          path="/admin/product/create"
+          exact
+          component={AdminAddProductPage}
+        />
+        <Route
+          path="/admin/product/update/:id_product"
+          exact
+          component={AdminUpdateProductPage}
+        />
+        <Route
+          path="/admin/order/id_order"
+          exact
+          component={AdminDetailOrderPage}
+        />
+      </Switch>
+      <Footer />
+    </div>
   );
 }
 

@@ -57,13 +57,13 @@ const FormUpdateProduct = (id_product) => {
 
     <div class="mt-1 col-md-8">
       <form className="text-center" onSubmit={onSubmit}>
-        <div className="-mx-3 md:flex mb-6">
+      <div className="-mx-3 md:flex mb-6">
           <div className="md:w-full px-3">
             <label
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-password"
             >
-              Product Name
+              <i class="fas fa-archive"></i> Product Name
             </label>
             <input
               name="name"
@@ -80,7 +80,7 @@ const FormUpdateProduct = (id_product) => {
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-first-name"
             >
-              DisplayScreen
+              <i class="fas fa-tv"></i> DisplayScreen
             </label>
             <input
               name="monitor"
@@ -95,7 +95,7 @@ const FormUpdateProduct = (id_product) => {
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-last-name"
             >
-              Processor
+              <i class="fas fa-microchip"></i> Processor
             </label>
             <input
               name="cpu"
@@ -113,7 +113,7 @@ const FormUpdateProduct = (id_product) => {
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-first-name"
             >
-              Graphics
+              <i class="fas fa-vr-cardboard"></i> Graphics
             </label>
             <input
               name="gpu"
@@ -128,7 +128,7 @@ const FormUpdateProduct = (id_product) => {
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-first-name"
             >
-              Storage
+              <i class="fas fa-hdd"></i> Storage
             </label>
             <input
               name="storage"
@@ -145,7 +145,7 @@ const FormUpdateProduct = (id_product) => {
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-city"
             >
-              Memory
+              <i class="fas fa-memory"></i> Memory
             </label>
             <input
               name="ram"
@@ -160,7 +160,7 @@ const FormUpdateProduct = (id_product) => {
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-state"
             >
-              ImageURL
+              <i class="fas fa-images"></i> ImageURL
             </label>
             <div className="relative">
               <input
@@ -177,7 +177,7 @@ const FormUpdateProduct = (id_product) => {
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-zip"
             >
-              Price
+              <i class="far fa-money-bill-alt"></i> Price
             </label>
             <input
               name="price"
@@ -192,7 +192,7 @@ const FormUpdateProduct = (id_product) => {
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
               for="grid-zip"
             >
-              Amount
+              <i class="fab fa-creative-commons-nd"></i> Amount
             </label>
             <input
               name="amount"

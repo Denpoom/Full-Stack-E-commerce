@@ -29,7 +29,7 @@ const PromotionInfo = () => {
                     </div>
                   </div>
                   <div class="mt-5 row">
-                    <Link to="">
+                    <Link to="/admin/promotion/create">
                       <button
                         type="button"
                         class="col-11 px-6 py-4 btn button-admin"
@@ -37,7 +37,7 @@ const PromotionInfo = () => {
                         <i class="fas fa-plus-circle"></i> Create Promotion
                       </button>
                     </Link>
-                    <Link to="">
+                    <Link to="/admin/promotion/update">
                       <button
                         data-toggle="modal"
                         data-target="#myModal"

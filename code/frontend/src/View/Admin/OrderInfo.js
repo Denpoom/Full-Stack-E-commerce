@@ -128,7 +128,7 @@ const OrderInfo = () => {
                         type="button"
                         class="mt-2 col-11 px-6 py-4 btn button-admin"
                       >
-                        <i class="fas fa-sync-alt"></i> View Detail
+                        <i class="fas fa-eye"></i> View Detail
                       </button>
                     </Link>
                   </div>
