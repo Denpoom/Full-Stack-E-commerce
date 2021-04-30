@@ -1,5 +1,5 @@
-import {CustomerTC, CartTC} from '../../models'
-CustomerTC.addRelation(
+import {UserTC, CartTC} from '../../models'
+UserTC.addRelation(
     'cart',
     {
         resolver: () => CartTC.getResolver('findById'),
