@@ -15,10 +15,11 @@ const CartSchema = new Schema({
         index: true,
         ref: 'User',
     },
-    productCart: [{
+    productCart: {
+        type: String,
         require: false,
-        ref: 'Product',
-    }]
+        index: true
+    }
     
 })
 
