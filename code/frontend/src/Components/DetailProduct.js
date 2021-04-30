@@ -13,7 +13,7 @@ import { PRODUCTS_QUERY } from "../Graphql/productsQuery"
 import { useParams } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
 import { gql } from '@apollo/client'
-import { ME_DETAIL_QUERY } from "../Graphql/meDetailQuery";
+// import { ME_DETAIL_QUERY } from "../Graphql/meDetailQuery";
 import { useSession } from "../Contexts/SessionContext";
 
 
@@ -84,8 +84,7 @@ const DetailProduct = () => {
                 <hr></hr>
                 <br></br>
                 <Grid container alignItems="stretch" spacing={2}>
-                  {data.products.map((res) => {
-                    if (id_product === res._id) {
+                  {data.products.filter((product)=>id_product === product._id).map((res) => {
                       return (
                         <Grid item xs={12} style={{ display: "flex" }}>
                           <Grid item xs={2}></Grid>
@@ -181,7 +180,6 @@ const DetailProduct = () => {
                           <Grid item xs={2}></Grid>
                         </Grid>
                       );
-                    }
                   })}
                 </Grid>
               </div>

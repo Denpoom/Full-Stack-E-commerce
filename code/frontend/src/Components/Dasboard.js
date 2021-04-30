@@ -1,5 +1,5 @@
 import React from "react";
-import List from "../Components/ListAdmin";
+// import List from "../Components/ListAdmin";
 const Dasboard = () => {
   return (
     //form

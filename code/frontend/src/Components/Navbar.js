@@ -2,7 +2,7 @@ import React, { Fragment, Suspense, useMemo } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useSession } from "../Contexts/SessionContext";
 // Navber
-const LoginForm = React.lazy(() => import("../View/Authen/Login"));
+// const LoginForm = React.lazy(() => import("../View/Authen/Login"));
 
 const Navbar = () => {
   const { loading, user, logout: handleLogout } = useSession();

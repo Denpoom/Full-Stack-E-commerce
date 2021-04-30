@@ -11,6 +11,9 @@ const InfoCustomer = () => {
     if (loading) {
       return null;
     }
+    if (error){
+      return error
+    }
     if (data?.me?.role === "Admin") {
       return (
         <Fragment>
@@ -32,7 +35,7 @@ const InfoCustomer = () => {
           <br></br>
           <h3 className="no-underline hover:underline">
             <a href="/admin">
-              <i className="fas fa-shopping-cart"></i> Admin Dashboard
+            <i className="fas fa-columns"></i> Admin Dashboard
             </a>
           </h3>
         </Fragment>
@@ -64,7 +67,7 @@ const InfoCustomer = () => {
         </Fragment>
       );
     }
-  }, [loading, data]);
+  }, [loading, data, error]);
   return (
     //form
     <section className="#">

@@ -107,5 +107,4 @@ const CardList = () => {
     </React.Fragment>
   );
 };
-
 export default CardList;

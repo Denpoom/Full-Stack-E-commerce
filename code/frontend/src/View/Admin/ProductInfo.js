@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import * as React from "react";
+import { useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import List from "../../Components/ListAdmin";
 import { PRODUCTS_QUERY } from "../../Graphql/productsQuery";
-import { useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
+import { useHistory } from "react-router-dom";
 const columns = [
   { field: "id", headerName: "ID", width: 250 },
   { field: "name", headerName: "Name", width: 350 },
@@ -22,15 +23,15 @@ const columns = [
 ];
 const rows = [];
 const ProductInfo = () => {
-  const { loading, error, data } = useQuery(PRODUCTS_QUERY);
-  if (loading) {
-    return "Loading ...";
-  }
-  if (error) {
-    console.log(error);
-    return "Error !!";
-  }
-  data.products.map((product, i) => {
+  const history = useHistory();
+  const [loadProduct, { loading, error, data }] = useLazyQuery(PRODUCTS_QUERY);
+  useEffect(() => {
+    const loadData = async () => {
+      loadProduct();
+    };
+    loadData();
+  }, [loadProduct]);
+  data?.products?.map((product, i) => {
     return rows.push({
       id: product._id,
       name: product.name,
@@ -38,6 +39,17 @@ const ProductInfo = () => {
       amount: product.amount,
     });
   });
+  const handleRowClick = (event) => {
+    history.push(`/admin/product/update/${event.id}`);
+    console.log(event.id)
+  };
+  if (loading) {
+    return "Loading ...";
+  }
+  if (error) {
+    console.log(error);
+    return "Error !!";
+  }
   console.log(data);
   return (
     //form
@@ -59,7 +71,12 @@ const ProductInfo = () => {
                   <div class="row">
                     <div class="col-11 px-6 py-4 border rounded bg-gray-100 shadow-md">
                       <div style={{ height: 400, width: "100%" }}>
-                        <DataGrid rows={rows} columns={columns} pageSize={5} />
+                        <DataGrid
+                          rows={rows}
+                          columns={columns}
+                          pageSize={5}
+                          onRowClick={handleRowClick}
+                        />
                       </div>
                     </div>
                   </div>
