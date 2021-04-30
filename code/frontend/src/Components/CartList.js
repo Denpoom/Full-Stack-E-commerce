@@ -1,6 +1,18 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
 import { Link } from "react-router-dom";
+import { CART_QUERY } from '../Graphql/cartQuery'
 const CartList = () => {
+  const { loading, error, data } = useQuery(CART_QUERY)
+  if (loading) {
+    console.log("loading");
+    return "Loading ...";
+  }
+  if (error) {
+    console.log("error");
+    return "Error !!";
+  }
+  console.log(data);
   return (
     //form
     <section className="#">

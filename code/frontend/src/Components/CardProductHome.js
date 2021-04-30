@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { RECOMMEND_PRODUCTS_QUERY } from "../Graphql/productsQuery";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
+import { useSession } from "../Contexts/SessionContext";
 
 const useStyles = makeStyles({
   root: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles({
 });
 
 const CardListHome = () => {
+  const { user } = useSession()
   const classes = useStyles();
   const { loading, error, data } = useQuery(RECOMMEND_PRODUCTS_QUERY);
   if (loading) {
@@ -32,6 +34,7 @@ const CardListHome = () => {
     return "Error !!";
   }
   console.log(data);
+  console.log(user)
   return (
     <React.Fragment>
       <section className="#">
