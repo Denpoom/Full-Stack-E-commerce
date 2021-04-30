@@ -55,6 +55,12 @@ export const PRODUCT_BYID_QUERY = gql`
       price
       url
       amount
+      appearInCart
+    }
+    me{
+      cart {
+        _id
+      }
     }
   }
 `;

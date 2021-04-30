@@ -56,6 +56,7 @@ const ProductSchema = new Schema({
       type: String,
       index: true,
       ref: "Cart",
+      dafault: "",
     },
   ],
   amount: {

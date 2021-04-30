@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
@@ -12,9 +12,8 @@ import { useMutation, useLazyQuery } from "@apollo/client"
 import { PRODUCT_BYID_QUERY  } from "../Graphql/productsQuery"
 import { useParams } from "react-router-dom"
 import Grid from "@material-ui/core/Grid"
-import { gql } from '@apollo/client'
+import { UPDATE_PRODUCT_MUTATION } from '../Graphql/productMutation'
 // import { ME_DETAIL_QUERY } from "../Graphql/meDetailQuery";
-import { useSession } from "../Contexts/SessionContext";
 
 
 const useStyles = makeStyles({
@@ -26,21 +25,18 @@ const useStyles = makeStyles({
   },
 });
 
-const CREATE_CART_MUTATION = gql`
-mutation ($record: CreateOneCartInput!) {
-  createCart (record: $record) {
-    recordId
-  }
-}
-`
-// เมื่อกดถ้า idproduct(ไอดีโปรดักที่จะรับเข้ามา) == ProductCart(ไอดีสินค้าในDB)
-//    ถ้าใช่ ดึงCartidนั้นมา แล้ว
-//             Count += 1 
+// const CREATE_CART_MUTATION = gql`
+// mutation ($record: CreateOneCartInput!) {
+//   createCart (record: $record) {
+//     recordId
+//   }
+// }
+// `
+
 const DetailProduct = () => {
   const { id_product } = useParams()
-  const { user } = useSession()
   const classes = useStyles();
-  const [createCart] = useMutation(CREATE_CART_MUTATION)
+  const [updateCart] = useMutation(UPDATE_PRODUCT_MUTATION)
   const [loadProduct, { loading, error, data }] = useLazyQuery(
     PRODUCT_BYID_QUERY,
     {
@@ -61,17 +57,14 @@ const DetailProduct = () => {
       
       const variables = {
         record: {
-          count: 1,
-          name: data?.productById?.name,
-          price: data?.productById?.price,
-          productCart: id_product,
-          ownerId: user?._id,
+          id: id_product,
+          appearInCart: [data?.productById?.appearInCart].push(data?.me?.cart?._id)
         },
       }
-      await createCart({ variables })
-      console.log(variables, "Cart Succes!!")
+      await updateCart({ variables })
+      console.log(variables, "update Cart")
     },
-    [createCart, data?.productById?.name, data?.productById?.price, id_product, user?._id],
+    [data, updateCart, id_product],
   )
   if (loading) {
     console.log("loading");
@@ -83,6 +76,7 @@ const DetailProduct = () => {
   }
   console.log(data?.productById?.name,)
   console.log(data);
+  console.log(data?.productById?.appearInCart)
   return (
     <React.Fragment>
       <section className="#">
@@ -96,7 +90,7 @@ const DetailProduct = () => {
                 <hr></hr>
                 <br></br>
                 <Grid container alignItems="stretch" spacing={2}>
-                        <form onSubmit={handleCreateCart}>
+                        <form onSubmit={handleCreateCart} >
                         <Grid item xs={12} style={{ display: "flex" }}>
                           <Grid item xs={2}></Grid>
                           <Grid
