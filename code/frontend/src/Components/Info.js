@@ -35,7 +35,7 @@ const InfoCustomer = () => {
           <br></br>
           <h3 className="no-underline hover:underline">
             <a href="/admin">
-              <i className="fas fa-shopping-cart"></i> Admin Dashboard
+            <i className="fas fa-columns"></i> Admin Dashboard
             </a>
           </h3>
         </Fragment>

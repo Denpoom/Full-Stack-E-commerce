@@ -1,21 +1,49 @@
-import React, { useState, useCallback } from "react";
-import { useMutation } from "@apollo/client";
+import React, { useState, useCallback, useEffect } from "react";
+import { useMutation, useLazyQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 import { UPDATE_PRODUCT_MUTATION } from "../Graphql/productMutation";
+import { PRODUCT_BYID_QUERY } from "../Graphql/productsQuery";
 const FormUpdateProduct = (id_product) => {
-  console.log(id_product.id_product);
+  const [loadProduct, { loading, error, data }] = useLazyQuery(
+    PRODUCT_BYID_QUERY,
+    {
+      variables: {
+        id: id_product.id_product,
+      },
+    }
+  );
   const [values, setValues] = useState({
-    id: id_product.id_product,
-    name: "",
-    monitor: "",
-    cpu: "",
-    gpu: "",
-    ram: "",
-    storage: "",
-    url: "",
-    price: "",
-    amount: "",
+    id: data?.productById?._id,
+    name: data?.productById?.name,
+    monitor: data?.productById?.detail?.monitor,
+    cpu: data?.productById?.detail?.cpu,
+    gpu: data?.productById?.detail?.gpu,
+    ram: data?.productById?.detail?.ram,
+    storage: data?.productById?.detail?.storage,
+    url: data?.productById?.url,
+    price: data?.productById?.price,
+    amount: data?.productById?.amount,
   });
+  useEffect(() => {
+    const loadData = async () => {
+      loadProduct();
+    };
+    loadData();
+    if (data?.productById) {
+      setValues({
+        id: data?.productById?._id,
+        name: data?.productById?.name,
+        monitor: data?.productById?.detail?.monitor,
+        cpu: data?.productById?.detail?.cpu,
+        gpu: data?.productById?.detail?.gpu,
+        ram: data?.productById?.detail?.ram,
+        storage: data?.productById?.detail?.storage,
+        url: data?.productById?.url,
+        price: data?.productById?.price,
+        amount: data?.productById?.amount,
+      });
+    }
+  }, [loadProduct, data]);
   const onChange = (event) => {
     console.log(values);
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -52,12 +80,22 @@ const FormUpdateProduct = (id_product) => {
     alert("Update Product Success");
     window.location.reload();
   };
+  if (loading) {
+    return loading;
+  }
+  if (error) {
+    return (
+      <div class="mt-1 col-md-8">
+        <p>Please Fill Product Id after product/update/"...."</p>
+      </div>
+    );
+  }
   return (
     //form
 
     <div class="mt-1 col-md-8">
       <form className="text-center" onSubmit={onSubmit}>
-      <div className="-mx-3 md:flex mb-6">
+        <div className="-mx-3 md:flex mb-6">
           <div className="md:w-full px-3">
             <label
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
@@ -71,6 +109,7 @@ const FormUpdateProduct = (id_product) => {
               type="text"
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
               placeholder=""
+              value={values.name}
             />
           </div>
         </div>
@@ -87,7 +126,7 @@ const FormUpdateProduct = (id_product) => {
               onChange={onChange}
               type="text"
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
-              placeholder=""
+              value={values.monitor}
             />
           </div>
           <div className="md:w-1/2 px-3">
@@ -103,6 +142,7 @@ const FormUpdateProduct = (id_product) => {
               type="text"
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
               placeholder=""
+              value={values.cpu}
             />
           </div>
         </div>
@@ -121,6 +161,7 @@ const FormUpdateProduct = (id_product) => {
               type="text"
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
               placeholder=""
+              value={values.gpu}
             />
           </div>
           <div className="md:w-1/2 px-3 mb-6 md:mb-0">
@@ -136,6 +177,7 @@ const FormUpdateProduct = (id_product) => {
               type="text"
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
               placeholder=""
+              value={values.storage}
             />
           </div>
         </div>
@@ -153,6 +195,7 @@ const FormUpdateProduct = (id_product) => {
               type="text"
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
               placeholder=""
+              value={values.ram}
             />
           </div>
           <div className="md:w-1/2 px-1">
@@ -168,6 +211,7 @@ const FormUpdateProduct = (id_product) => {
                 className=" bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700  "
                 type="text"
                 name="url"
+                value={values.url}
               />
               <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"></div>
             </div>
@@ -185,6 +229,7 @@ const FormUpdateProduct = (id_product) => {
               onChange={onChange}
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
               placeholder=""
+              value={values.price}
             />
           </div>
           <div className="px-10">
@@ -200,6 +245,7 @@ const FormUpdateProduct = (id_product) => {
               onChange={onChange}
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
               placeholder=""
+              value={values.amount}
             />
           </div>
         </div>
