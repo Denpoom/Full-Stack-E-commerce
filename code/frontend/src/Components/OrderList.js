@@ -22,25 +22,25 @@ const OrderList = () => {
               </h1>
               <hr></hr>
               <br></br>
-              <table class="table-fixed">
+              <table class="table-auto">
                 <thead>
-                  <tr className="bg-gray-200 max-w-sm">
-                    <th className="w-1/3">
+                  <tr className="bg-gray-200 max-w-lg">
+                    <th className="w-2/4">
                       <h1 className="text-center">
                         <i className="fas fa-shopping-cart"></i> รายการสั่งซื้อ
                       </h1>
                     </th>
-                    <th className="w-1/5">
+                    <th className="w-1/4">
                       <h1 className="text-center">
                         <i className="fas fa-history"></i> วันที่ทำการสั่งซื้อ
                       </h1>
                     </th>
-                    <th className="w-1/4">
+                    <th className="w-1/6">
                       <h1 className="text-center">
                         <i className="fas fa-money-bill"></i> สถานะ
                       </h1>
                     </th>
-                    <th className="w-1/6">
+                    <th className="w-1/3">
                       <h1 className="text-center">
                         <i className="fas fa-info"></i> ดูรายละเอียดเพิ่มเติม
                       </h1>
