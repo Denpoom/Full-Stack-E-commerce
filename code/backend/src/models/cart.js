@@ -1,5 +1,7 @@
 import { composeWithMongoose } from 'graphql-compose-mongoose'
 import mongoose from 'mongoose'
+import ProductModel from '../models/product'
+
 
 
 const { Schema } = mongoose
@@ -13,11 +15,10 @@ const CartSchema = new Schema({
         index: true,
         ref: 'User',
     },
-    productCart: {
-        type: String,
+    productCart: [{
         require: false,
-        index: true,
-    },
+        ref: 'Product',
+    }]
     
 })
 

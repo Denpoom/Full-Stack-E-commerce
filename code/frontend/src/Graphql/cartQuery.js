@@ -8,6 +8,7 @@ query {
       ownerId
       productCart
       price
+      name
     }
   }
 `

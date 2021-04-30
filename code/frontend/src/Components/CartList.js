@@ -42,9 +42,9 @@ const CartList = () => {
                 <tbody>
                   <tr>
                     <td>
-                      <a href="/product/detail">
-                        <p className=" text-left ">{product.productCart}</p>
-                      </a>
+                      <Link to={`/product/detail/${product.productCart}`}>
+                        <p className=" text-left ">{product.name}</p>
+                      </Link>
                       <p type="submit" className="text-left text-danger">
                         {" "}
                         <small>(Remove item)</small>
