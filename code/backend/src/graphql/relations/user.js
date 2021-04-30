@@ -2,9 +2,9 @@ import {UserTC, CartTC} from '../../models'
 UserTC.addRelation(
     'cart',
     {
-        resolver: () => CartTC.getResolver('findById'),
+        resolver: () => CartTC.getResolver('findOne'),
         prepareArgs: {
-            ownerId: (source) => source._id,
+            filter: (source) => ({ ownerId: source._id }),
         },
         projection: { _id: 1 },
     },
