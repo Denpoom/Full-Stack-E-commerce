@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 // import L from "react-loadable";
 // import { QueryClient, QueryClientProvider } from "react-query";
-import { Switch, Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import HomePage from "../src/View/Authen/Home";
 import LoginPage from "../src/View/Authen/Login";
@@ -19,8 +19,8 @@ import PaymentPage from "../src/View/Purchase/Payment";
 import DasboardPage from "../src/View/Admin/DasboardInfo";
 import AdminOrderPage from "../src/View/Admin/OrderInfo";
 import AdminProductPage from "../src/View/Admin/ProductInfo";
-// import AdminPromotionPage from "../src/View/Admin/PromotionInfo";
-// import AdminAddPromotionPage from "./View/Admin/AddPromotion";
+import AdminPromotionPage from "../src/View/Admin/PromotionInfo";
+import AdminAddPromotionPage from "./View/Admin/AddPromotion";
 import AdminAddProductPage from "./View/Admin/AddProduct";
 import AdminUpdateProductPage from "../src/View/Admin/UpdateProduct";
 import AdminUpdatePromotionPage from "../src/View/Admin/UpdatePromotion";
@@ -53,19 +53,33 @@ function App() {
         <Route path="/cart" exact component={CartPage} />
         <Route path="/checkout" exact component={CheckoutPage} />
         <Route path="/payment" exact component={PaymentPage} />
-
         <Route path="/admin/" exact component={DasboardPage} />
         <Route path="/admin/dashboard" exact component={DasboardPage} />
         <Route path="/admin/order" exact component={AdminOrderPage} />
-        <Route exact component={AdminUpdatePromotionPage} />
         <Route path="/admin/product" exact component={AdminProductPage} />
+        <Route exact path="/admin/promotion/" component={AdminPromotionPage} />
+        <Route
+          exact
+          path="/admin/promotion/create"
+          component={AdminAddPromotionPage}
+        />
+        <Route
+          exact
+          path="/admin/promotion/update"
+          component={AdminUpdatePromotionPage}
+        />
+        <Route
+          path="/admin/product/update/:id_product"
+          exact
+          component={AdminUpdateProductPage}
+        />
         <Route
           path="/admin/product/create"
           exact
           component={AdminAddProductPage}
         />
         <Route
-          path="/admin/product/update/:id_product"
+          path="/admin/product/update/"
           exact
           component={AdminUpdateProductPage}
         />

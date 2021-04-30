@@ -28,7 +28,7 @@ const NavbarAdmin = () => {
             <a className="h_btns cursor-pointer" href="/orders">
               Order
             </a>
-            <a className="h_btns cursor-pointer" href="#">
+            <a className="h_btns cursor-pointer" href="/promotion">
               Promotion
             </a>
             <a className="h_btns cursor-pointer" href="/">
