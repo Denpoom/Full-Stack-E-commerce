@@ -56,6 +56,21 @@ const FormaddProduct = () => {
     <div class="mt-1 col-md-8">
       <form className="text-center" onSubmit={onSubmit}>
         <div className="-mx-3 md:flex mb-6">
+        <div className="px-3">
+            <label
+              className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+              for="grid-zip"
+            >
+              <i class="far fa-money-bill-alt"></i> Brand
+            </label>
+            <input
+              name="price"
+              type="text"
+              onChange={onChange}
+              className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
+              placeholder=""
+            />
+          </div>
           <div className="md:w-full px-3">
             <label
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
