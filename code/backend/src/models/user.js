@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "mongoose-bcrypt";
 import { composeWithMongooseDiscriminators } from "graphql-compose-mongoose";
-
 const { Schema } = mongoose;
 const DKey = "role";
 const enumUserRole = {
@@ -34,7 +33,8 @@ const UserSchema = new Schema(
 
 UserSchema.plugin(bcrypt);
 const AdminSchema = new Schema({});
-const CustomerSchema = new Schema({});
+const CustomerSchema = new Schema({
+});
 
 export const UserModel = mongoose.model("User", UserSchema);
 export const AdminModel = UserModel.discriminator(

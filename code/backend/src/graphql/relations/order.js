@@ -10,7 +10,7 @@ OrderTC.addRelation("owner", {
 OrderTC.addRelation("products", {
   resolver: () => ProductTC.getResolver("findMany"),
   prepareArgs: {
-    filter: (source) => ({ orderId: source._id }),
+    filter: (source) => ({ appearInOrder: source._id }),
   },
   projection: { _id: 1 },
 });

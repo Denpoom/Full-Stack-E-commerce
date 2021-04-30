@@ -51,6 +51,13 @@ const ProductSchema = new Schema({
       ref: "Order",
     },
   ],
+  appearInCart: [
+    {
+      type: String,
+      index: true,
+      ref: "Cart",
+    },
+  ],
   amount: {
     type: String,
     index: true,
@@ -64,6 +71,9 @@ const baseOptions = {
 };
 export const ProductModel = mongoose.model("Product", ProductSchema);
 
-export const ProductTC = composeWithMongoose(ProductModel, baseOptions);
+export const ProductTC = composeWithMongoose(
+  ProductModel,
+  baseOptions
+).removeField(["appearInCart", "appearInOrder"]);
 
 export default ProductModel;

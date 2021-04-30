@@ -1,4 +1,4 @@
-import { ProductTC, DetailProductTC } from "../../models";
+import { ProductTC } from "../../models";
 import moment from "moment";
 ProductTC.addFields({
   timestamp: {
