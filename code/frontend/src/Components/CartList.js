@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import React from "react";
 import { Link } from "react-router-dom";
 import { CART_QUERY } from '../Graphql/cartQuery'
+
 const CartList = () => {
   const { loading, error, data } = useQuery(CART_QUERY)
   if (loading) {
@@ -36,11 +37,13 @@ const CartList = () => {
                     <th className="text-right">Total price</th>
                   </tr>
                 </thead>
+                {data.carts.map((product) => {
+                  return (
                 <tbody>
                   <tr>
                     <td>
                       <a href="/product/detail">
-                        <p className=" text-left ">Earphone</p>
+                        <p className=" text-left ">{product.productCart}</p>
                       </a>
                       <p type="submit" className="text-left text-danger">
                         {" "}
@@ -52,7 +55,7 @@ const CartList = () => {
                         <div className="relative flex flex-row w-full h-8">
                           <input
                             type="number"
-                            value="3"
+                            value={product.count}
                             className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
                           />
                         </div>
@@ -60,39 +63,7 @@ const CartList = () => {
                     </td>
                     <td className="hidden text-right md:table-cell">
                       <span className="text-sm lg:text-base font-medium">
-                        10.00€
-                      </span>
-                    </td>
-                    <td className="text-right">
-                      <span className="text-sm lg:text-base font-medium">
-                        30.00€
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="/product/detail">
-                        <p className=" text-left ">IPhone</p>
-                      </a>
-                      <p type="submit" className="text-left text-danger">
-                        {" "}
-                        <small>(Remove item)</small>
-                      </p>
-                    </td>
-                    <td className="justify-center md:justify-end md:flex mt-6">
-                      <div className="w-20 h-10">
-                        <div className="relative flex flex-row w-full h-8">
-                          <input
-                            type="number"
-                            value="1"
-                            className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                    <td className="hidden text-right md:table-cell">
-                      <span className="text-sm lg:text-base font-medium">
-                        30.00€
+                        $ {product.price}
                       </span>
                     </td>
                     <td className="text-right">
@@ -102,6 +73,8 @@ const CartList = () => {
                     </td>
                   </tr>
                 </tbody>
+                  )}
+                  )}
               </table>
               <br></br>
               <hr></hr>

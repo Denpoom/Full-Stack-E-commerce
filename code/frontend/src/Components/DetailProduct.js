@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
@@ -40,6 +40,11 @@ const DetailProduct = () => {
   const classes = useStyles();
   const { loading, error, data } = useQuery(PRODUCTS_QUERY);
   const [createCart] = useMutation(CREATE_CART_MUTATION)
+  const [values, setValues] = useState();
+
+  const onChange = useCallback((e) => {
+    setValues(e.target.value);
+  }, []);
 
   const handleCreateCart = useCallback(
     async (e) => {
@@ -47,6 +52,7 @@ const DetailProduct = () => {
       const variables = {
         record: {
           count: 1,
+          price: values,
           productCart: id_product,
           ownerId: user?._id,
         },
@@ -54,7 +60,7 @@ const DetailProduct = () => {
       await createCart({ variables })
       console.log(variables, "Cart Succes!!")
     },
-    [createCart, id_product, user?._id],
+    [createCart, id_product, user?._id, values],
   )
   if (loading) {
     console.log("loading");
@@ -65,7 +71,6 @@ const DetailProduct = () => {
     return "Error !!";
   }
   console.log(data);
-  console.log(user);
   return (
     <React.Fragment>
       <section className="#">
@@ -160,15 +165,14 @@ const DetailProduct = () => {
                                 justifyContent: "flex-end",
                               }}
                             >
-                              <h1
+                              <h1 id="price3"
                                 className="title-font font-medium text-2xl text-gray-900"
-                                style={{ margin: "2%" }}
-                              >
+                                style={{ margin: "2%" }}>
                                 ${res.price}
                               </h1>
                               <form onSubmit={handleCreateCart}>
                               <button className=" text-white bg-red-500 border-0 py-2 px-6 
-                               focus:outline-none hover:bg-red-600 rounded">
+                               focus:outline-none hover:bg-red-600 rounded" onClick={onChange} value={res.price}>
                                 Add Cart{" "}
                               </button>
                               </form>

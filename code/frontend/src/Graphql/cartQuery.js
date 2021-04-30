@@ -7,6 +7,7 @@ query {
       count
       ownerId
       productCart
+      price
     }
   }
 `

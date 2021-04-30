@@ -1,5 +1,6 @@
-import { UserTC } from "../../models";
+import { UserTC, ProductTC } from "../../models";
 import { CartTC } from "../../models/cart";
+
 
 CartTC.addRelation(
     'owner',
@@ -12,13 +13,10 @@ CartTC.addRelation(
     },
 )
 
-// CartTC.addRelation(
-//     'product',
-//     {
-//         resolver: () => ProductTC.getResolver('findMany'),
-//         prepareArgs: {
-//             filter: (source) => ({ cartId: source._id }),
-//         },
-//         projection: { _id: 1  },
-//     },
-// )
+CartTC.addRelation( "products", {
+  resolver: () => ProductTC.getResolver("findMany"),
+  prepareArgs: {
+    filter: (source) => ({ cartId: source._id }),
+  },
+  projection: { _id: 1 },
+})
