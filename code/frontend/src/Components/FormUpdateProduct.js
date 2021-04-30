@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useMutation } from "@apollo/client";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { UPDATE_PRODUCT_MUTATION } from "../Graphql/productMutation";
 const FormUpdateProduct = (id_product) => {
   console.log(id_product.id_product);

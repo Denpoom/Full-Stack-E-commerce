@@ -16,7 +16,7 @@ const OrderDetail = () => {
         <b><i class="mt-2 far fa-money-bill-alt"></i> Total Cost</b> : $ 2000<br></br>
         <b><i class="mt-2 fas fa-exclamation-circle"></i> Status</b> : Finished
         </div>
-        <a HREF="javascript:javascript:history.go(-1)">
+        {/* <a href="javascript:javascript:history.go(-1)"> */}
         <button
                         data-toggle="modal"
                         data-target="#myModal"
@@ -25,7 +25,7 @@ const OrderDetail = () => {
                       >
         <i class="fas fa-arrow-circle-left"></i> ย้อนกลับ
         </button>
-        </a>
+        {/* </a> */}
       </div>
     </section>
   );

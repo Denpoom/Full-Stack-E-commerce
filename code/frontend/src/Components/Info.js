@@ -11,6 +11,9 @@ const InfoCustomer = () => {
     if (loading) {
       return null;
     }
+    if (error){
+      return error
+    }
     if (data?.me?.role === "Admin") {
       return (
         <Fragment>
@@ -64,7 +67,7 @@ const InfoCustomer = () => {
         </Fragment>
       );
     }
-  }, [loading, data]);
+  }, [loading, data, error]);
   return (
     //form
     <section className="#">

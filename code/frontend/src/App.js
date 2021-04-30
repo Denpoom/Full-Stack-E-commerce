@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import L from "react-loadable";
+// import L from "react-loadable";
 // import { QueryClient, QueryClientProvider } from "react-query";
 import { Switch, Route} from "react-router-dom";
 
@@ -19,26 +19,26 @@ import PaymentPage from "../src/View/Purchase/Payment";
 import DasboardPage from "../src/View/Admin/DasboardInfo";
 import AdminOrderPage from "../src/View/Admin/OrderInfo";
 import AdminProductPage from "../src/View/Admin/ProductInfo";
-import AdminPromotionPage from "../src/View/Admin/PromotionInfo";
-import AdminAddPromotionPage from "./View/Admin/AddPromotion";
+// import AdminPromotionPage from "../src/View/Admin/PromotionInfo";
+// import AdminAddPromotionPage from "./View/Admin/AddPromotion";
 import AdminAddProductPage from "./View/Admin/AddProduct";
 import AdminUpdateProductPage from "../src/View/Admin/UpdateProduct";
 import AdminUpdatePromotionPage from "../src/View/Admin/UpdatePromotion";
 import AdminDetailOrderPage from "../src/View/Admin/DetailOrder";
-const Loading = () => <div>Loading...</div>;
+// const Loading = () => <div>Loading...</div>;
 
-const Loadable = (opts) =>
-  L({
-    loading: Loading,
-    ...opts,
-  });
+// const Loadable = (opts) =>
+//   L({
+//     loading: Loading,
+//     ...opts,
+//   });
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Switch>
-        <Route exact={true} path="/" exact component={HomePage} />
+        <Route path="/" exact component={HomePage} />
         <Route path="/login" exact component={LoginPage} />
         <Route path="/register" exact component={RegisterPage} />
         <Route path="/product" exact component={ProductPage} />
