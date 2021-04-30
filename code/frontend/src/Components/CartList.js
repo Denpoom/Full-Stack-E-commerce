@@ -13,6 +13,7 @@ const CartList = () => {
     console.log("error");
     return "Error !!";
   }
+
   console.log(data);
   return (
     //form
@@ -39,7 +40,7 @@ const CartList = () => {
                 </thead>
                 {data.carts.map((product) => {
                   return (
-                <tbody>
+                <tbody> 
                   <tr>
                     <td>
                       <Link to={`/product/detail/${product.productCart}`}>
