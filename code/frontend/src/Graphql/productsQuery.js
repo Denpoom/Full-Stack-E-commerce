@@ -60,6 +60,9 @@ export const PRODUCT_BYID_QUERY = gql`
     me{
       cart {
         _id
+        products{
+          _id
+        }
       }
     }
   }

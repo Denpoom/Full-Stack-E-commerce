@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
@@ -33,6 +33,7 @@ const useStyles = makeStyles({
 // }
 // `
 
+// .push(data?.me?.cart?._id)
 const DetailProduct = () => {
   const { id_product } = useParams()
   const classes = useStyles();
@@ -45,26 +46,34 @@ const DetailProduct = () => {
       },
     }
   );
+  const [valuet, setValuet] = useState([])
+  // var valuet = data?.productById?.appearInCart
+  // valuet?.push(data?.me?.cart?._id)
+  const [id_cart, setId_cart] = useState("")
   useEffect(() => {
     const loadData = async () => {
       loadProduct();
     };
     loadData();
   }, [loadProduct, data]);
+  
   const handleCreateCart = useCallback(
     async (e) => {
       e.preventDefault()
+      setId_cart(data?.me?.cart?._id)
       
+      id_cart.toString()
+      setValuet(data?.productById?.appearInCart)
       const variables = {
-        record: {
-          id: id_product,
-          appearInCart: [data?.productById?.appearInCart].push(data?.me?.cart?._id)
-        },
+        id: data.productById._id,
+        record : {
+          appearInCart: [data?.me?.cart?._id].push(data?.productById?.appearInCart)
+        }
       }
       await updateCart({ variables })
       console.log(variables, "update Cart")
     },
-    [data, updateCart, id_product],
+    [data, updateCart],
   )
   if (loading) {
     console.log("loading");
@@ -74,9 +83,10 @@ const DetailProduct = () => {
     console.log("error");
     return "Error !!";
   }
-  console.log(data?.productById?.name,)
-  console.log(data);
+  console.log(typeof data?.me?.cart?._id)
   console.log(data?.productById?.appearInCart)
+  // console.log(valuet)
+  console.log(typeof id_cart)
   return (
     <React.Fragment>
       <section className="#">
