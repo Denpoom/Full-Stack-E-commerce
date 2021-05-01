@@ -70,7 +70,7 @@ const DetailProduct = () => {
         }
       }
       await updateCart({ variables })
-      console.log(variables, "update Cart")
+      console.log(variables, "Update Cart")
     },
     [data, updateCart],
   )

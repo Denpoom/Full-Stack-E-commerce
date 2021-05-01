@@ -24,7 +24,6 @@ export const ME_DETAIL_QUERY = gql`
           name
           appearInOrder
           appearInCart
-          amount
           price
         }
       }
