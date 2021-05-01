@@ -59,9 +59,9 @@ const ProductSchema = new Schema({
       },
     ],
   amount: {
-    type: String,
+    type: Number,
     index: true,
-    default: "0",
+    default: 1,
   },
 });
 const baseOptions = {

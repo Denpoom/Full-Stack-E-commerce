@@ -1,11 +1,28 @@
 import { useQuery } from "@apollo/client";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { CART_QUERY } from '../Graphql/cartQuery'
+import { ME_DETAIL_QUERY } from '../Graphql/meDetailQuery'
 
 const CartList = () => {
+  // const handleClickcount = (event) => {
+  //   setValues(event.target.value);
+    
+  // }
+  const { loading, error, data } = useQuery(ME_DETAIL_QUERY, {
+    fetchPolicy: "network-only",
+  });
   
-  const { loading, error, data } = useQuery(CART_QUERY)
+  const [count, setCount] = useState(0)
+  const [cost] = useState(31990)
+  const [total, setTotal] = useState(0)
+
+  const decrementCount = () => {
+      setCount(prevCount => prevCount - 1)
+  }
+  const incrementCount = () => {
+    setCount(prevCount => prevCount + 1)
+  }
+
   if (loading) {
     console.log("loading");
     return "Loading ...";
@@ -14,7 +31,7 @@ const CartList = () => {
     console.log("error");
     return "Error !!";
   }
-
+  console.log(total)
   console.log(data);
   return (
     //form
@@ -26,7 +43,7 @@ const CartList = () => {
               <h1 className="font-bold tracking-wider text-3xl mb-8 w-full text-gray-800">
                 <i class="fas fa-shopping-cart"></i> Cart
               </h1>
-              <table class="w-full text-sm lg:text-base" cellspacing="0">
+              <table class="w-full text-sm lg:text-base" cellspacing="0">           
                 <thead>
                   <tr className="h-12 uppercase">
                     <th className="text-left">Product</th>
@@ -39,13 +56,13 @@ const CartList = () => {
                     <th className="text-right">Total price</th>
                   </tr>
                 </thead>
-                {data.carts.map((product) => {
+                {data?.me?.cart?.products?.map((e) =>  {
                   return (
                 <tbody> 
                   <tr>
                     <td>
-                      <Link to={`/product/detail/${product.productCart}`}>
-                        <p className=" text-left ">{product.name}</p>
+                      <Link to={`/product/detail/${e?._id}`}>
+                        <p className=" text-left ">{e?.name}</p>
                       </Link>
                       <p type="submit" className="text-left text-danger">
                         {" "}
@@ -55,29 +72,37 @@ const CartList = () => {
                     <td className="justify-center md:justify-end md:flex mt-6">
                       <div className="w-20 h-10">
                         <div className="relative flex flex-row w-full h-8">
-                          <input
+                          {/* <input
                             type="number"
-                            value={product.count}
+                            min="1"
+                            max="99"
+                            onClick="{handleClickcount}"
                             className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
-                          />
+                          /> */}
+                          <button onClick={decrementCount}
+                           className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">-</button>
+                          <label className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">{count}</label>
+                          
+                          <button onClick={incrementCount} 
+                          className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">+</button>
                         </div>
                       </div>
                     </td>
                     <td className="hidden text-right md:table-cell">
                       <span className="text-sm lg:text-base font-medium">
-                        $ {product.price}
+                        $ {e?.price}
                       </span>
                     </td>
                     <td className="text-right">
                       <span className="text-sm lg:text-base font-medium">
-                        30.00€
+                        {total}€
                       </span>
                     </td>
                   </tr>
                 </tbody>
-                  )}
-                  )}
+                 )})}
               </table>
+             
               <br></br>
               <hr></hr>
               <div className="row">
@@ -85,7 +110,7 @@ const CartList = () => {
                   <b>Total</b>
                 </div>
                 <div className="col-2 text-right">
-                  <b>60.00€</b>
+                  <b>{60.00}€</b>
                 </div>
               </div>
               <div className="flex justify-content-end">

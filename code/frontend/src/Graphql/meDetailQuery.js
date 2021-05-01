@@ -15,6 +15,19 @@ export const ME_DETAIL_QUERY = gql`
       ... on Customer {
         password
       }
+      cart {
+        _id
+        totalCount
+        totalPrice
+        products {
+          _id
+          name
+          appearInOrder
+          appearInCart
+          amount
+          price
+        }
+      }
     }
   }
 `;
