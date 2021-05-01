@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CART_QUERY } from '../Graphql/cartQuery'
 
 const CartList = () => {
+  
   const { loading, error, data } = useQuery(CART_QUERY)
   if (loading) {
     console.log("loading");

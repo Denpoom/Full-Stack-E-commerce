@@ -46,10 +46,9 @@ const DetailProduct = () => {
       },
     }
   );
-  const [valuet, setValuet] = useState([])
   // var valuet = data?.productById?.appearInCart
   // valuet?.push(data?.me?.cart?._id)
-  const [id_cart, setId_cart] = useState("")
+  // const [id_cart, setId_cart] = useState("")
   useEffect(() => {
     const loadData = async () => {
       loadProduct();
@@ -60,14 +59,14 @@ const DetailProduct = () => {
   const handleCreateCart = useCallback(
     async (e) => {
       e.preventDefault()
-      setId_cart(data?.me?.cart?._id)
+      // setId_cart(data?.me?.cart?._id)
       
-      id_cart.toString()
-      setValuet(data?.productById?.appearInCart)
+      // id_cart.toString()
+      // setValuet(data?.productById?.appearInCart)
       const variables = {
         id: data.productById._id,
         record : {
-          appearInCart: [data?.me?.cart?._id].push(data?.productById?.appearInCart)
+          appearInCart: [data?.me?.cart?._id].concat(data?.productById?.appearInCart)
         }
       }
       await updateCart({ variables })
@@ -83,10 +82,9 @@ const DetailProduct = () => {
     console.log("error");
     return "Error !!";
   }
-  console.log(typeof data?.me?.cart?._id)
-  console.log(data?.productById?.appearInCart)
-  // console.log(valuet)
-  console.log(typeof id_cart)
+  // console.log(typeof data?.me?.cart?._id)
+  // console.log(data?.productById?.appearInCart)
+  // console.log(typeof id_cart)
   return (
     <React.Fragment>
       <section className="#">
