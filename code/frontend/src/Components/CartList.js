@@ -10,19 +10,14 @@ const CartList = () => {
     variables: {
       username: user?.username,
     },
+    fetchPolicy: "network-only",
   });
   const [manageQuantity] = useMutation(UPDATE_CART_MUTATION);
   const totalPrice = data?.products?.reduce(
     (a, c) => a + c?.price * c?.appearInCart[0].quantity,
     0
   );
-  const totalCount = data?.products?.reduce(
-    (a, c) => a + c?.appearInCart[0].quantity,
-    0
-  );
-  // const HandlecreatOrder = () => {
-  //   createOrder();
-  // };
+  // const [total, setTotal] = useState(0);
   if (loading) {
     console.log("loading");
     return "Loading ...";
@@ -88,6 +83,13 @@ const CartList = () => {
                         <td className="justify-center md:justify-end md:flex mt-6">
                           <div className="w-20 h-10">
                             <div className="relative flex flex-row w-full h-8">
+                              {/* <input
+                            type="number"
+                            min="1"
+                            max="99"
+                            onClick="{handleClickcount}"
+                            className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
+                          /> */}
                               <button
                                 onClick={() => {
                                   if (e?.appearInCart[0]?.quantity - 1 <= 0) {
@@ -173,17 +175,12 @@ const CartList = () => {
                   <b>Total</b>
                 </div>
                 <div className="col-2 text-right">
-                  <b>
-                    $ {totalPrice}, {totalCount} ea.
-                  </b>
+                  <b>$ {totalPrice}</b>
                 </div>
               </div>
               <div className="flex justify-content-end">
                 <Link to="/checkout">
-                  <button
-                    // onClick={HandlecreatOrder}
-                    className="flex justify-center  px-6 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-500 focus:shadow-outline focus:outline-none"
-                  >
+                  <button className="flex justify-center  px-6 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-500 focus:shadow-outline focus:outline-none">
                     <svg
                       aria-hidden="true"
                       data-prefix="far"
