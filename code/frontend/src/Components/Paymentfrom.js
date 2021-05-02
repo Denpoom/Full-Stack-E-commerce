@@ -68,7 +68,7 @@ const Paymentfrom = () => {
                     <div className="-mx-3 md:flex mb-6"></div>
 
                     <Link
-                      to=""
+                      // to="customer/orders"
                       className="flex justify-center w-full px-10 py-2 mt-6 font-medium text-white uppercase bg-blue-800 rounded-full item-center hover:bg-blue-700 focus:shadow-outline focus:outline-none"
                     >
                       <svg
@@ -122,7 +122,7 @@ const Paymentfrom = () => {
                             <td className="text-left text-danger">
                               Redeem Code
                             </td>
-                            <td className="text-right text-danger">-5.00€</td>
+                            <td className="text-right text-danger">0.00€</td>
                           </tr>
                           <tr>
                             <td className="text-left font-bold mb-2">
