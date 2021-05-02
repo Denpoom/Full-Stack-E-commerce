@@ -8,21 +8,23 @@ const CartList = () => {
   //   setValues(event.target.value);
     
   // }
+  //ใช้DataGrid
+  //ตอนรันลูป เอาไพ้คูณเค้าเลย สร้างuseState2ตัว มาเก็บtotalอันนึง อีกอันเก็บลูปละเอามาบวกtotal setnullต่อ 
   const { loading, error, data } = useQuery(ME_DETAIL_QUERY, {
     fetchPolicy: "network-only",
   });
   
-  const [count, setCount] = useState(0)
-  const [cost] = useState(31990)
+  // const [count, setCount] = useState(0)
+  // const [cost] = useState(31990)
   const [total, setTotal] = useState(0)
 
-  const decrementCount = () => {
-      setCount(prevCount => prevCount - 1)
-  }
-  const incrementCount = () => {
-    setCount(prevCount => prevCount + 1)
-  }
-
+  // const decrementCount = () => {
+  //     setCount(prevCount => prevCount - 1)
+  // }
+  // const incrementCount = () => {
+  //   setCount(prevCount => prevCount + 1)
+  // }
+    
   if (loading) {
     console.log("loading");
     return "Loading ...";
@@ -32,6 +34,7 @@ const CartList = () => {
     return "Error !!";
   }
   console.log(total)
+  console.log(data.me.cart.products[0].price)
   console.log(data);
   return (
     //form
@@ -79,23 +82,22 @@ const CartList = () => {
                             onClick="{handleClickcount}"
                             className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
                           /> */}
-                          <button onClick={decrementCount}
-                           className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">-</button>
-                          <label className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">{count}</label>
-                          
-                          <button onClick={incrementCount} 
-                          className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">+</button>
+                          {/* <button onClick={decrementCount}
+                           className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">-</button> */}
+                          <label className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">1</label>      
+                          {/* <button onClick={incrementCount} 
+                          className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">+</button> */}
                         </div>
                       </div>
                     </td>
                     <td className="hidden text-right md:table-cell">
-                      <span className="text-sm lg:text-base font-medium">
+                      <span className="text-sm lg:text-base font-medium" value={e?.price} >
                         $ {e?.price}
                       </span>
                     </td>
                     <td className="text-right">
                       <span className="text-sm lg:text-base font-medium">
-                        {total}€
+                      $ {e?.price}
                       </span>
                     </td>
                   </tr>
@@ -110,7 +112,7 @@ const CartList = () => {
                   <b>Total</b>
                 </div>
                 <div className="col-2 text-right">
-                  <b>{60.00}€</b>
+                  <b>{total}€</b>
                 </div>
               </div>
               <div className="flex justify-content-end">
