@@ -1,14 +1,10 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import React from "react";
 import { Link } from "react-router-dom";
 import { SHOW_CART_QUERY } from "../Graphql/cartListQuery";
 import { useSession } from "../Contexts/SessionContext";
-// import { UPDATE_CART_MUTATION } from "../Graphql/cartMutation";
+import { UPDATE_CART_MUTATION } from "../Graphql/cartMutation";
 const CartList = () => {
-  // const handleClickcount = (event) => {
-  //   setValues(event.target.value);
-
-  // }
   const { user } = useSession();
   const { loading, error, data } = useQuery(SHOW_CART_QUERY, {
     variables: {
@@ -16,16 +12,9 @@ const CartList = () => {
     },
     fetchPolicy: "network-only",
   });
-  // const [count, setCount] = useState(0);
-  // const [cost] = useState(31990)
-  // const [total, setTotal] = useState(0)
-  // const decrementCount = () => {
-  //   setCount((prevCount) => prevCount - 1);
-  // };
-  // const incrementCount = () => {
-  //   setCount((prevCount) => prevCount + 1);
-  // };
-
+  const [manageQuantity] = useMutation(UPDATE_CART_MUTATION);
+  const totalPrice = data?.products?.reduce((a,c) => a+(c?.price * c?.appearInCart[0].quantity),0)
+  // const [total, setTotal] = useState(0);
   if (loading) {
     console.log("loading");
     return "Loading ...";
@@ -69,8 +58,23 @@ const CartList = () => {
                           <Link to={`/product/detail/${e?._id}`}>
                             <p className=" text-left ">{e?.name}</p>
                           </Link>
-                          <p className="text-left text-danger">
-                            {" "}
+                          <p
+                            className="text-left text-danger"
+                            onClick={() => {
+                              manageQuantity({
+                                variables: {
+                                  id: e?._id,
+                                  record: {
+                                    appearInCart: e?.appearInCart.filter(
+                                      (item) =>
+                                        item.cartOwner !==
+                                        e?.appearInCart[0].cartOwner
+                                    ),
+                                  },
+                                },
+                              });
+                            }}
+                          >
                             <small>(Remove item)</small>
                           </p>
                         </td>
@@ -78,8 +82,35 @@ const CartList = () => {
                           <div className="w-20 h-10">
                             <div className="relative flex flex-row w-full h-8">
                               <button
-                                onClick={()=>{
-
+                                onClick={() => {
+                                  if (e?.appearInCart[0]?.quantity - 1 <= 0) {
+                                    manageQuantity({
+                                      variables: {
+                                        id: e?._id,
+                                        record: {
+                                          appearInCart: e?.appearInCart.filter(
+                                            (item) =>
+                                              item.cartOwner !==
+                                              e?.appearInCart[0].cartOwner
+                                          ),
+                                        },
+                                      },
+                                    });
+                                  } else {
+                                    manageQuantity({
+                                      variables: {
+                                        id: e?._id,
+                                        record: {
+                                          appearInCart: {
+                                            cartOwner:
+                                              e?.appearInCart[0].cartOwner,
+                                            quantity:
+                                              e?.appearInCart[0].quantity - 1,
+                                          },
+                                        },
+                                      },
+                                    });
+                                  }
                                 }}
                                 className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
                               >
@@ -90,8 +121,20 @@ const CartList = () => {
                               </label>
 
                               <button
-                                onClick={()=>{
-                                  
+                                onClick={() => {
+                                  manageQuantity({
+                                    variables: {
+                                      id: e?._id,
+                                      record: {
+                                        appearInCart: {
+                                          cartOwner:
+                                            e?.appearInCart[0].cartOwner,
+                                          quantity:
+                                            e?.appearInCart[0].quantity + 1,
+                                        },
+                                      },
+                                    },
+                                  });
                                 }}
                                 className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
                               >
@@ -123,7 +166,7 @@ const CartList = () => {
                   <b>Total</b>
                 </div>
                 <div className="col-2 text-right">
-                  <b>{60.0}€</b>
+                  <b>$ {totalPrice}</b>
                 </div>
               </div>
               <div className="flex justify-content-end">

@@ -10,6 +10,7 @@ export const SHOW_CART_QUERY = gql`
       ownerName
     }
     products(filter: { appearInCart: { cartOwner: $username } }) {
+      _id
       appearInCart {
         cartOwner
         quantity
