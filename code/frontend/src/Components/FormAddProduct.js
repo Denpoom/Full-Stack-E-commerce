@@ -12,7 +12,7 @@ const FormaddProduct = () => {
     ram: "",
     storage: "",
     url: "",
-    price: "",
+    price: 0,
     amount: "",
   });
   const onChange = (event) => {
