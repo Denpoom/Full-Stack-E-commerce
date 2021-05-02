@@ -10,7 +10,11 @@ CartTC.addRelation("products", {
   resolver: () => ProductTC.getResolver("findMany"),
   index: true,
   prepareArgs: {
-    filter: (source) => ({ appearInCart: source._id }),
+    filter: (source) => ({
+      appearInCart: {
+        cartId: source._id,
+      },
+    }),
   },
   projection: { _id: 1 },
 });

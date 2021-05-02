@@ -46,18 +46,32 @@ const ProductSchema = new Schema({
   },
   appearInOrder: [
     {
-      type: String,
-      index: true,
-      ref: "Order",
+      orderId: {
+        type: String,
+        index: true,
+        ref: "Cart",
+      },
+      quantity: {
+        type: Number,
+        index: true,
+        default: 0,
+      }
     },
   ],
   appearInCart: [
     {
-      type: String,
-      index: true,
-      ref: 'Cart',
+      cartId: {
+        type: String,
+        index: true,
+        ref: "Cart",
       },
-    ],
+      quantity: {
+        type: Number,
+        index: true,
+        default: 0,
+      }
+    },
+  ],
 });
 const baseOptions = {
   inputType: {
