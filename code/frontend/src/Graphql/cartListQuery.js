@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+
 export const SHOW_CART_QUERY = gql`
   query($username: String!) {
     customers(filter: { username: $username }) {

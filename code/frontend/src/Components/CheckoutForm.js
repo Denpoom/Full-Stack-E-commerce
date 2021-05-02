@@ -1,16 +1,64 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { React, useState, useCallback } from "react";
+import { useQuery, useMutation } from "@apollo/client";
 import { SHOW_CART_QUERY } from '../Graphql/cartListQuery'
+import { CREATE_CHECKOUT_MUTATION } from '../Graphql/checkoutMutation'
 import { useSession } from "../Contexts/SessionContext";
+import { useHistory } from "react-router-dom";
 
 const CheckoutForm = () => {
-  const { user } = useSession()
+  const { user } = useSession();
   const { loading, error, data } = useQuery(SHOW_CART_QUERY, {
     variables: {
       username: user?.username,
     },
   });
+
+  const [values, setValues] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    tel: "",
+    county: "",
+    city: "",
+    state: "",
+    address: "",
+    zip: "",
+
+  });
+  const onChange = (event) => {
+    setValues({ ...values, [event.target.name]: event.target.value });
+  };
+
+  const [addCheckout] = useMutation(CREATE_CHECKOUT_MUTATION, {
+    update(proxy, result) {
+      console.log(result);
+    },
+    variables: {
+      record: {
+          ownerName: user?.username,
+          firstname: values?.firstname,
+          lastname: values?.lastname,
+          email: values?.email,
+          tel: values?.tel,
+          county: values?.county,
+          city: values?.city,
+          state: values?.state,
+          address: values?.address,
+          zip: values?.zip,
+          
+        },
+    },
+  });
+  const history = useHistory();
+  const redirect = useCallback(() => {
+    history.push("/payment");
+  }, [history]);
+  const onSubmit = () => {
+    addCheckout();
+    redirect();
+    alert("Go to Payment page!!")
+  };
+
   const totalPrice = data?.products?.reduce(
     (a, c) => a + c?.price * c?.appearInCart[0].quantity,
     0
@@ -28,6 +76,7 @@ console.log(data)
   return (
     //form
     <section className="#">
+      <form className="text-center" onSubmit={onSubmit}>
       <div className="font-sans">
         <div className="relative mt-8 flex flex-col  items-center">
           <div className="mt-5 relative lg:max-w-screen-2xl w-full">
@@ -38,7 +87,6 @@ console.log(data)
               </h1>
               <div className="row justify-center">
                 <div className="col-6 ">
-                  <form className="text-center">
                     <div className="-mx-3 md:flex mb-6">
                       <div className="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label
@@ -48,9 +96,13 @@ console.log(data)
                           First Name
                         </label>
                         <input
-                          type="firstname"
+                          type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="firstname"
+                          onChange={onChange}
+                          value={values.firstname}
+                          name="firstname"
+                          
                         />
                       </div>
                       <div className="md:w-1/2 px-3">
@@ -61,9 +113,12 @@ console.log(data)
                           Last Name
                         </label>
                         <input
-                          type="lastname"
+                          type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="lastname"
+                          onChange={onChange}
+                          value={values.lastname}
+                          name="lastname"
                         />
                       </div>
                     </div>
@@ -76,9 +131,12 @@ console.log(data)
                           E-mail
                         </label>
                         <input
-                          type="password"
+                          type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="email"
+                          onChange={onChange}
+                          value={values.email}
+                          name="email"
                         />
                       </div>
                     </div>
@@ -91,9 +149,12 @@ console.log(data)
                           Phone
                         </label>
                         <input
-                          type="phone"
+                          type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="phone"
+                          onChange={onChange}
+                          value={values.tel}
+                          name="tel"
                         />
                       </div>
                       <div className="md:w-1/2 px-3 mb-6 md:mb-0"></div>
@@ -107,9 +168,12 @@ console.log(data)
                           Address
                         </label>
                         <input
-                          type="password"
+                          type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
-                          placeholder="email"
+                          placeholder="address"
+                          onChange={onChange}
+                          value={values.address}
+                          name="address"
                         />
                       </div>
                     </div>
@@ -123,8 +187,11 @@ console.log(data)
                         </label>
                         <input
                           type="text"
+                          name="county"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="Thailand"
+                          onChange={onChange}
+                          value={values.county}
                         />
                       </div>
                       <div className="md:w-1/2 px-1">
@@ -139,6 +206,9 @@ console.log(data)
                             type="text"
                             className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                             placeholder="Bangkok"
+                            onChange={onChange}
+                            value={values.city}
+                          name="city"
                           />
 
                           <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"></div>
@@ -155,6 +225,9 @@ console.log(data)
                           type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="XXX"
+                          onChange={onChange}
+                          value={values.state}
+                          name="state"
                         />
                       </div>
                       <div className="px-10">
@@ -168,12 +241,15 @@ console.log(data)
                           type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="XXXXX"
+                          onChange={onChange}
+                          value={values.zip}
+                          name="zip"
                         />
                       </div>
                     </div>
 
-                    <Link
-                      to="/payment"
+                    <button
+                      type="submit"
                       className="flex justify-center w-full px-10 py-2 mt-6 font-medium text-white uppercase bg-blue-800 rounded-full item-center hover:bg-blue-700 focus:shadow-outline focus:outline-none"
                     >
                       <svg
@@ -190,8 +266,8 @@ console.log(data)
                         />
                       </svg>
                       <span class="ml-2 mt-5px">Continue to Checkout</span>
-                    </Link>
-                  </form>
+                    </button>
+              
                 </div>
                 <div class="col-4 ">
                   <div class="is-sticky-column">
@@ -232,9 +308,7 @@ console.log(data)
                               $ {totalPrice}
                             </td>
                           </tr>
-
                         </tbody>
-
                       </table>
                       <hr></hr>
                       {/* <form>
@@ -257,6 +331,7 @@ console.log(data)
           </div>
         </div>
       </div>
+      </form>
     </section>
   );
 };
