@@ -62,7 +62,7 @@ const FormUpdateProduct = (id_product) => {
           storage: values.storage,
         },
         url: values.url,
-        price: values.price,
+        price: parseInt(values.price),
       },
     },
   });
@@ -227,13 +227,6 @@ const FormUpdateProduct = (id_product) => {
               placeholder=""
               value={values.price}
             />
-          </div>
-          <div className="px-10">
-            <label
-              className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-              for="grid-zip"
-            >
-            </label>
           </div>
         </div>
         <button

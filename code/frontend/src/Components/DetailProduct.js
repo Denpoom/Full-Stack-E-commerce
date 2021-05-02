@@ -78,6 +78,7 @@ const DetailProduct = () => {
         console.log("++1");
         await updateCart({ variables });
         console.log(variables, "Increase Product 1 ea.");
+        alert("Increase Product 1 ea. on Cart Successful!!")
       } else {
         const variables = {
           id: data.productById._id,
@@ -92,6 +93,7 @@ const DetailProduct = () => {
         };
         await updateCart({ variables });
         console.log(variables, "Add product 1 ea.");
+        alert("Add Product 1 ea. on Cart Successful!!")
       }
     },
     [data, updateCart]

@@ -14,12 +14,6 @@ const columns = [
     type: "number",
     width: 150,
   },
-  {
-    field: "amount",
-    headerName: "amount",
-    type: "number",
-    width: 150,
-  },
 ];
 const rows = [];
 const ProductInfo = () => {
@@ -36,7 +30,6 @@ const ProductInfo = () => {
       id: product._id,
       name: product.name,
       price: product.price,
-      amount: product.amount,
     });
   });
   const handleRowClick = (event) => {
@@ -75,7 +68,7 @@ const ProductInfo = () => {
                           rows={rows}
                           columns={columns}
                           pageSize={5}
-                          onRowClick={handleRowClick}
+                          onRowDoubleClick={handleRowClick}
                         />
                       </div>
                     </div>
