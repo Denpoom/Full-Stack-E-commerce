@@ -54,13 +54,15 @@ export const PRODUCT_BYID_QUERY = gql`
       price
       url
       appearInCart{
-        cartId
+        cartOwner
         quantity
       }
     }
     me{
+      username
       cart {
         _id
+        ownerName
         products{
           _id
         }

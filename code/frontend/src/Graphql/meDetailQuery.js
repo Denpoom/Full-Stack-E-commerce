@@ -11,7 +11,7 @@ export const ME_DETAIL_QUERY = gql`
       tel
       ... on Admin {
         password
-      }      
+      }
       ... on Customer {
         password
       }
@@ -22,8 +22,8 @@ export const ME_DETAIL_QUERY = gql`
         products {
           _id
           name
-          appearInCart{
-            cartId
+          appearInCart {
+            cartOwner
             quantity
           }
           price

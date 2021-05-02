@@ -40,7 +40,7 @@ mutation($id:MongoID!,$record:UpdateByIdProductInput!){
       url
       isRecommended
       appearInCart{
-        cartId
+        cartOwner
         quantity
       }
       _id
