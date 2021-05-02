@@ -122,7 +122,7 @@ const Paymentfrom = () => {
                             <td className="text-left text-danger">
                               Redeem Code
                             </td>
-                            <td className="text-right text-danger">-5.00€</td>
+                            <td className="text-right text-danger">0.00€</td>
                           </tr>
                           <tr>
                             <td className="text-left font-bold mb-2">
