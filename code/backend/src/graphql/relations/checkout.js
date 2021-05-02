@@ -1,9 +1,9 @@
 import { CheckoutTC, UserTC } from "../../models";
 
 CheckoutTC.addRelation("owner", {
-  resolver: () => UserTC.getResolver("findById"),
+  resolver: () => UserTC.getResolver("findOne"),
   prepareArgs: {
-    _id: (source) => source.ownerId,
+    filter: (source) => ({ username: source.ownerName }),
   },
-  projection: { ownerId: 1 },
+  projection: { ownerName: 1 },
 });
