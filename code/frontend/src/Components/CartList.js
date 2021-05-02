@@ -14,9 +14,9 @@ const CartList = () => {
     fetchPolicy: "network-only",
   });
   
-  // const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0)
   // const [cost] = useState(31990)
-  const [total, setTotal] = useState(0)
+  // const [total, setTotal] = useState(0)
 
   // const decrementCount = () => {
   //     setCount(prevCount => prevCount - 1)
@@ -33,7 +33,6 @@ const CartList = () => {
     console.log("error");
     return "Error !!";
   }
-  console.log(total)
   console.log(data.me.cart.products[0].price)
   console.log(data);
   return (
@@ -112,7 +111,7 @@ const CartList = () => {
                   <b>Total</b>
                 </div>
                 <div className="col-2 text-right">
-                  <b>{total}€</b>
+                  <b>10€</b>
                 </div>
               </div>
               <div className="flex justify-content-end">

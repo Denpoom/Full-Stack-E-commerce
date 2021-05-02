@@ -4,8 +4,8 @@ UserTC.addRelation(
     {
         resolver: () => CartTC.getResolver('findOne'),
         prepareArgs: {
-            filter: (source) => ({ ownerId: source._id }),
+            filter: (source) => ({ ownerName: source.username }),
         },
-        projection: { _id: 1 },
+        projection: { username: 1 },
     },
 )

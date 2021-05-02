@@ -1,22 +1,20 @@
-import { composeWithMongoose } from 'graphql-compose-mongoose'
-import mongoose from 'mongoose'
-import ProductModel from '../models/product'
+import { composeWithMongoose } from "graphql-compose-mongoose";
+import mongoose from "mongoose";
 
-
-const { Schema } = mongoose
+const { Schema } = mongoose;
 const CartSchema = new Schema({
-    totalCount:{ type: Number, default:0 },
-    ownerId: {
-        type: String,
-        require: true,
-        index: true,
-        ref: 'User',
-    },
-    totalPrice:{ type: Number, default:0 },
-})
+  totalCount: { type: Number, default: 0 },
+  ownerName: {
+    type: String,
+    require: true,
+    index: true,
+    ref: "User",
+  },
+  totalPrice: { type: Number, default: 0 },
+});
 
-export const CartModel = mongoose.model('Cart', CartSchema)
+export const CartModel = mongoose.model("Cart", CartSchema);
 
-export const CartTC = composeWithMongoose(CartModel).removeField('ownerId')
+export const CartTC = composeWithMongoose(CartModel).removeField("ownerId");
 
-export default CartModel
+export default CartModel;

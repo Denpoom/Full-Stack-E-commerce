@@ -13,7 +13,6 @@ export const PRODUCTS_QUERY = gql`
         ram
         os
       }
-      amount
       price
       url
     }
@@ -54,7 +53,6 @@ export const PRODUCT_BYID_QUERY = gql`
       isRecommended
       price
       url
-      amount
       appearInCart
     }
     me{

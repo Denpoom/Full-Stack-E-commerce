@@ -35,7 +35,7 @@ const ProductSchema = new Schema({
       enum: enumProductBrand,
     },
   },
-  price: { type: String, default: "0.00" },
+  price: { type: Number, default: 0 },
   url: {
     type: String,
     require: true,
@@ -58,11 +58,6 @@ const ProductSchema = new Schema({
       ref: 'Cart',
       },
     ],
-  amount: {
-    type: Number,
-    index: true,
-    default: 1,
-  },
 });
 const baseOptions = {
   inputType: {
