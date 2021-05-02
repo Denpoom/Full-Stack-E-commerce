@@ -1,6 +1,93 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
+import React, { useState } from "react";
+import { SHOW_CART_QUERY } from "../Graphql/cartListQuery";
+import { useSession } from "../Contexts/SessionContext";
+import { UPDATE_CART_MUTATION } from "../Graphql/cartMutation";
+import { CREATE_ORDER_MUTATION } from "../Graphql/orderMutation";
+import { CREATE_PAYMENT_MUTATION } from "../Graphql/paymentMutation";
 const Paymentfrom = () => {
+  const { user } = useSession();
+  const { loading, error, data } = useQuery(SHOW_CART_QUERY, {
+    variables: {
+      username: user?.username,
+    },
+  });
+  const totalPrice = data?.products?.reduce(
+    (a, c) => a + c?.price * c?.appearInCart[0].quantity,
+    0
+  );
+  const [values, setValues] = useState({
+    nameoncard: "",
+    cardnumber: "",
+    expdate: "",
+    cvcode: "",
+    ownerName: user?.username,
+    orderOwner: user?.username,
+  });
+  const onChange = (event) => {
+    console.log(values);
+    setValues({ ...values, [event.target.name]: event.target.value });
+  };
+  const [createPayment] = useMutation(CREATE_PAYMENT_MUTATION, {
+    variables: {
+      record: {
+        nameoncard: values.nameoncard,
+        cardnumber: values.cardnumber,
+        expdate: values.expdate,
+        cvcode: values.cvcode,
+        ownerName: values.ownerName,
+        orderOwner: values.orderOwner,
+      },
+    },
+  });
+  const [createOrder] = useMutation(CREATE_ORDER_MUTATION, {
+    variables: {
+      record: {
+        status: "WAITING",
+        ownerName: user?.username,
+        totalPrice: totalPrice,
+      },
+    },
+  });
+  const [updateProduct] = useMutation(UPDATE_CART_MUTATION);
+  const updateOrder = () => {
+    data?.products?.reduce((a, c) => {
+      return updateProduct({
+        variables: {
+          id: c._id,
+          record: {
+            appearInOrder: {
+              orderOwner: user?.username,
+              quantity: c?.appearInCart[0].quantity,
+              mutiprice: c?.price * c?.appearInCart[0].quantity,
+            },
+            appearInCart: c?.appearInCart.filter(
+              (item) => item.cartOwner !== c?.appearInCart[0].cartOwner
+            ),
+          },
+        },
+      });
+    });
+  };
+  const addPaymentandOrder = () => {
+    createOrder();
+    console.log("Create Order!!")
+    updateOrder();
+    console.log("Update Order!!")
+    createPayment();
+    console.log("Create Payment!!")
+  };
+  if (loading) {
+    console.log("loading");
+    return "Loading ...";
+  }
+  if (error) {
+    console.log("error");
+    return "Error !!";
+  }
+  console.log(user);
+  // console.log(total)
+  console.log(data);
   return (
     //form
     <section className="#">
@@ -24,6 +111,9 @@ const Paymentfrom = () => {
                           type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="name"
+                          name="nameoncard"
+                          value={values.nameoncard}
+                          onChange={onChange}
                         />
                       </div>
                     </div>
@@ -36,6 +126,9 @@ const Paymentfrom = () => {
                           type="text"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="0000 0000 0000 0000"
+                          name="cardnumber"
+                          value={values.cardnumber}
+                          onChange={onChange}
                         />
                       </div>
                       <div className="md:w-1/5 px-3 mb-6 md:mb-0">
@@ -49,6 +142,9 @@ const Paymentfrom = () => {
                           type="phone"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="MM/YY"
+                          name="expdate"
+                          value={values.expdate}
+                          onChange={onChange}
                         />
                       </div>
                       <div className="md:w-1/5 px-3 mb-6 md:mb-0">
@@ -62,13 +158,17 @@ const Paymentfrom = () => {
                           type="phone"
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="CVC"
+                          name="cvcode"
+                          value={values.cvcode}
+                          onChange={onChange}
                         />
                       </div>
                     </div>
                     <div className="-mx-3 md:flex mb-6"></div>
 
-                    <Link
+                    <button
                       // to="customer/orders"
+                      onClick={addPaymentandOrder}
                       className="flex justify-center w-full px-10 py-2 mt-6 font-medium text-white uppercase bg-blue-800 rounded-full item-center hover:bg-blue-700 focus:shadow-outline focus:outline-none"
                     >
                       <svg
@@ -85,7 +185,7 @@ const Paymentfrom = () => {
                         />
                       </svg>
                       <span class="ml-2 mt-5px">Payment</span>
-                    </Link>
+                    </button>
                   </form>
                 </div>
                 <div class="col-4 ">
@@ -106,18 +206,18 @@ const Paymentfrom = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td className="text-left ">Iphone x 1</td>
-                            <td className="text-right">30.00€</td>
-                          </tr>
-                          <tr>
-                            <td className="text-left ">Earphone x 3</td>
-                            <td className="text-right">30.00€</td>
-                          </tr>
-                          <tr>
-                            <td className="text-left ">Subtotal</td>
-                            <td className="text-right">60.00€</td>
-                          </tr>
+                          {data?.products?.map((e) => {
+                            return (
+                              <tr>
+                                <td className="text-left ">
+                                  {e?.name} x {e?.appearInCart[0].quantity}
+                                </td>
+                                <td className="text-right">
+                                  $ {e?.price * e?.appearInCart[0].quantity}
+                                </td>
+                              </tr>
+                            );
+                          })}
                           <tr>
                             <td className="text-left text-danger">
                               Redeem Code
@@ -129,7 +229,7 @@ const Paymentfrom = () => {
                               <b>Total</b>
                             </td>
                             <td className="text-right font-bold mb-2">
-                              55.00€
+                              $ {totalPrice}
                             </td>
                           </tr>
                         </tbody>
@@ -146,7 +246,7 @@ const Paymentfrom = () => {
                           </div>
                           <div className="md:w-1/2 px-2 mb-6 md:mb-1 ">
                             <button
-                              type="submit"
+                              // type="submit"
                               className="flex justify-center w-full px- py-2 mt-1 font-medium text-white uppercase bg-blue-800 rounded-full item-center hover:bg-blue-700 focus:shadow-outline focus:outline-none"
                             >
                               <span class="ml-2 mt-5px">Redeem</span>

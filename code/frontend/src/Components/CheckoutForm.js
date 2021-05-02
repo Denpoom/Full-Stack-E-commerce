@@ -11,7 +11,6 @@ const CheckoutForm = () => {
     variables: {
       username: user?.username,
     },
-    fetchPolicy: "network-only",
   });
 
   const [values, setValues] = useState({

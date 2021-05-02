@@ -24,7 +24,6 @@ mutation($id:MongoID!,$record:UpdateByIdProductInput!){
       appearInOrder{
         orderOwner
         quantity
-        
       }
       _id
     }

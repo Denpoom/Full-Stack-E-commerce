@@ -9,16 +9,17 @@ PaymentTC.addFields({
   },
 });
 PaymentTC.addRelation("owner", {
-  resolver: () => UserTC.getResolver("findById"),
+  resolver: () => UserTC.getResolver("findOne"),
   prepareArgs: {
-    _id: (source) => source.ownerId,
-  },
-  projection: { ownerId: 1 },
+    filter: (source) => ({ username: source.ownerName }),
+},
+  projection: { ownerName: 1 },
 });
+
 PaymentTC.addRelation("order", {
-  resolver: () => OrderTC.getResolver("findById"),
+  resolver: () => OrderTC.getResolver("findOne"),
   prepareArgs: {
-    _id: (source) => source.orderId,
-  },
-  projection: { orderId: 1 },
+    filter: (source) => ({ ownerName: source.orderOwner }),
+},
+  projection: { orderOwner: 1 },
 });
