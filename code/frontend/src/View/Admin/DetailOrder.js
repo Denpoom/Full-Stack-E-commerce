@@ -1,9 +1,21 @@
 import React, { Suspense } from "react";
-
+import { useQuery } from "@apollo/client";
 import List from "../../Components/ListAdmin";
 import OrderDetail from "../../Components/OrderDetail";
+import { ORDERS_QUERY } from '../../Graphql/ordersQuery';
 const DetailOrder = () => {
+// ORDERS_QUERY
+const { loading, error, data }= useQuery(ORDERS_QUERY);
+if (loading) {
+  return "Loading ...";
+}
+if (error) {
+  return "Error !!";
+}
+
+console.log(data)
   return (
+
     <React.Fragment>
       <Suspense fallback={<h1>Still Loading…</h1>}>
         <div className="font-sans">
