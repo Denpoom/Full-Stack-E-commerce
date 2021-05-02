@@ -68,7 +68,7 @@ const ProductInfo = () => {
                           rows={rows}
                           columns={columns}
                           pageSize={5}
-                          onRowClick={handleRowClick}
+                          onRowDoubleClick={handleRowClick}
                         />
                       </div>
                     </div>
