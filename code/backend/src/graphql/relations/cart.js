@@ -12,9 +12,9 @@ CartTC.addRelation("products", {
   prepareArgs: {
     filter: (source) => ({
       appearInCart: {
-        cartId: source._id,
+        cartOwner: source.ownerName,
       },
     }),
   },
-  projection: { _id: 1 },
+  projection: { ownerName: 1 },
 });

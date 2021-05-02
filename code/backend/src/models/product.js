@@ -60,7 +60,7 @@ const ProductSchema = new Schema({
   ],
   appearInCart: [
     {
-      cartId: {
+      cartOwner: {
         type: String,
         index: true,
         ref: "Cart",

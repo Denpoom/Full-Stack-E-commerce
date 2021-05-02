@@ -12,7 +12,7 @@ import { useMutation, useLazyQuery } from "@apollo/client";
 import { PRODUCT_BYID_QUERY } from "../Graphql/productsQuery";
 import { useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import { UPDATE_PRODUCT_MUTATION } from "../Graphql/productMutation";
+import { UPDATE_CART_MUTATION } from "../Graphql/cartMutation";
 // import { ME_DETAIL_QUERY } from "../Graphql/meDetailQuery";
 
 const useStyles = makeStyles({
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 const DetailProduct = () => {
   const { id_product } = useParams();
   const classes = useStyles();
-  const [updateCart] = useMutation(UPDATE_PRODUCT_MUTATION);
+  const [updateCart] = useMutation(UPDATE_CART_MUTATION);
   const [loadProduct, { loading, error, data }] = useLazyQuery(
     PRODUCT_BYID_QUERY,
     {
@@ -63,21 +63,22 @@ const DetailProduct = () => {
       // id_cart.toString()
       // setValuet(data?.productById?.appearInCart)
       const exist = data?.productById?.appearInCart.find(
-        (cartId) => cartId === data?.me?.cart?._id
+        (appearInCart) => appearInCart.cartOwner === data?.me?.cart?.ownerName
       );
+      console.log(exist)
       if (exist) {
         const variables = {
           id: data.productById._id,
           record: {
             appearInCart: [
               {
-                cartId: data?.me?.cart?._id,
-                quantity: data?.productById?.appearInCart?.quantity + 1,
+                cartOwner: data?.me?.username,
+                quantity: exist.quantity+1,
               },
             ],
           },
         };
-        console.log("++1")
+        console.log("++1");
         await updateCart({ variables });
         console.log(variables, "Increase Product 1 ea.");
       } else {
@@ -85,9 +86,8 @@ const DetailProduct = () => {
           id: data.productById._id,
           record: {
             appearInCart: [
-              ...data?.productById?.appearInCart,
               {
-                cartId: data?.me?.cart?._id,
+                cartOwner: data?.me?.username,
                 quantity: 1,
               },
             ],
