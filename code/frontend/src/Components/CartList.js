@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { SHOW_CART_QUERY } from "../Graphql/cartListQuery";
 import { useSession } from "../Contexts/SessionContext";
@@ -13,7 +13,8 @@ const CartList = () => {
     fetchPolicy: "network-only",
   });
   const [manageQuantity] = useMutation(UPDATE_CART_MUTATION);
-  const [total, setTotal] = useState(0);
+  const totalPrice = data?.products?.reduce((a,c) => a+(c?.price * c?.appearInCart[0].quantity),0)
+  // const [total, setTotal] = useState(0);
   if (loading) {
     console.log("loading");
     return "Loading ...";
@@ -171,7 +172,7 @@ const CartList = () => {
                   <b>Total</b>
                 </div>
                 <div className="col-2 text-right">
-                  <b>$ {total}</b>
+                  <b>$ {totalPrice}</b>
                 </div>
               </div>
               <div className="flex justify-content-end">
