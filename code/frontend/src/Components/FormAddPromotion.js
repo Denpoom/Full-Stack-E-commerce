@@ -12,8 +12,7 @@ const FormAddPromotion = () => {
     ram: "",
     storage: "",
     url: "",
-    price: "",
-    amount: "",
+    price: 0
   });
   const onChange = (event) => {
     console.log(values);
@@ -33,8 +32,7 @@ const FormAddPromotion = () => {
           storage: values.storage,
         },
         url: values.url,
-        price: values.price,
-        amount: values.amount,
+        price: parseInt(values.price)
       },
     },
   });

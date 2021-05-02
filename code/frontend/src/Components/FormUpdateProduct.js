@@ -22,7 +22,6 @@ const FormUpdateProduct = (id_product) => {
     storage: data?.productById?.detail?.storage,
     url: data?.productById?.url,
     price: data?.productById?.price,
-    amount: data?.productById?.amount,
   });
   useEffect(() => {
     const loadData = async () => {
@@ -40,7 +39,6 @@ const FormUpdateProduct = (id_product) => {
         storage: data?.productById?.detail?.storage,
         url: data?.productById?.url,
         price: data?.productById?.price,
-        amount: data?.productById?.amount,
       });
     }
   }, [loadProduct, data]);
@@ -64,8 +62,7 @@ const FormUpdateProduct = (id_product) => {
           storage: values.storage,
         },
         url: values.url,
-        price: values.price,
-        amount: values.amount,
+        price: parseInt(values.price),
       },
     },
   });
@@ -229,22 +226,6 @@ const FormUpdateProduct = (id_product) => {
               className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
               placeholder=""
               value={values.price}
-            />
-          </div>
-          <div className="px-10">
-            <label
-              className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-              for="grid-zip"
-            >
-              <i class="fab fa-creative-commons-nd"></i> Amount
-            </label>
-            <input
-              name="amount"
-              type="text"
-              onChange={onChange}
-              className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
-              placeholder=""
-              value={values.amount}
             />
           </div>
         </div>
