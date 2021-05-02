@@ -45,9 +45,6 @@ const DetailProduct = () => {
       },
     }
   );
-  // var valuet = data?.productById?.appearInCart
-  // valuet?.push(data?.me?.cart?._id)
-  // const [id_cart, setId_cart] = useState("")
   useEffect(() => {
     const loadData = async () => {
       loadProduct();
@@ -68,7 +65,7 @@ const DetailProduct = () => {
       console.log(exist)
       if (exist) {
         const variables = {
-          id: data.productById._id,
+          id: data.productById._id,      
           record: {
             appearInCart: [
               {
@@ -109,9 +106,9 @@ const DetailProduct = () => {
     console.log("error");
     return "Error !!";
   }
-  // console.log(typeof data?.me?.cart?._id)
-  // console.log(data?.productById?.appearInCart)
-  // console.log(typeof id_cart)
+  console.log(data)
+  console.log(data?.productById?.appearInCart)
+  console.log(typeof id_cart)
   return (
     <React.Fragment>
       <section className="#">

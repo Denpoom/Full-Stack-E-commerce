@@ -30,6 +30,7 @@ const CartList = () => {
     //form
     <section className="#">
       <div className="font-sans">
+
         <div className="relative mt-8 flex flex-col lg:justify-center items-center">
           <div className="mt-5 relative lg:max-w-screen-2xl w-full">
             <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-lg">
@@ -80,13 +81,6 @@ const CartList = () => {
                         <td className="justify-center md:justify-end md:flex mt-6">
                           <div className="w-20 h-10">
                             <div className="relative flex flex-row w-full h-8">
-                              {/* <input
-                            type="number"
-                            min="1"
-                            max="99"
-                            onClick="{handleClickcount}"
-                            className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
-                          /> */}
                               <button
                                 onClick={() => {
                                   if (e?.appearInCart[0]?.quantity - 1 <= 0) {
