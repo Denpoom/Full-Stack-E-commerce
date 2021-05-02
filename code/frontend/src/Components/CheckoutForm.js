@@ -1,6 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { SHOW_CART_QUERY } from '../Graphql/cartListQuery'
+import { useSession } from "../Contexts/SessionContext";
+
 const CheckoutForm = () => {
+  const { user } = useSession()
+  const { loading, error, data } = useQuery(SHOW_CART_QUERY, {
+    variables: {
+      username: user?.username,
+    },
+    fetchPolicy: "network-only",
+  });
+  const totalPrice = data?.products?.reduce(
+    (a, c) => a + c?.price * c?.appearInCart[0].quantity,
+    0
+  );
+
+  if (loading) {
+    console.log("loading");
+    return "Loading ...";
+  }
+  if (error) {
+    console.log("error");
+    return "Error !!";
+  }
+console.log(data)
   return (
     //form
     <section className="#">
@@ -186,19 +211,16 @@ const CheckoutForm = () => {
                             </th>
                           </tr>
                         </thead>
+                      
                         <tbody>
+                        {data?.products?.map((e) => {
+                         return (
                           <tr>
-                            <td className="text-left ">Iphone x 1</td>
-                            <td className="text-right">30.00€</td>
+                            <td className="text-left ">{e?.name} x {e?.appearInCart[0].quantity} </td>
+                            <td className="text-right">$ {e?.price * e?.appearInCart[0].quantity}</td>
                           </tr>
-                          <tr>
-                            <td className="text-left ">Earphone x 3</td>
-                            <td className="text-right">30.00€</td>
-                          </tr>
-                          <tr>
-                            <td className="text-left ">Subtotal</td>
-                            <td className="text-right">60.00€</td>
-                          </tr>
+                          );
+                        })}
                           <tr>
                             <td className="text-left text-danger"></td>
                             <td className="text-right text-danger"></td>
@@ -208,10 +230,12 @@ const CheckoutForm = () => {
                               <b>Total</b>
                             </td>
                             <td className="text-right font-bold mb-2">
-                              60.00€
+                              $ {totalPrice}
                             </td>
                           </tr>
+
                         </tbody>
+
                       </table>
                       <hr></hr>
                       {/* <form>
