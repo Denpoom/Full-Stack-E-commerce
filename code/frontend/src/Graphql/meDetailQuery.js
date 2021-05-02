@@ -22,8 +22,10 @@ export const ME_DETAIL_QUERY = gql`
         products {
           _id
           name
-          appearInOrder
-          appearInCart
+          appearInCart{
+            cartId
+            quantity
+          }
           price
         }
       }

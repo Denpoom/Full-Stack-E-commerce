@@ -53,7 +53,10 @@ export const PRODUCT_BYID_QUERY = gql`
       isRecommended
       price
       url
-      appearInCart
+      appearInCart{
+        cartId
+        quantity
+      }
     }
     me{
       cart {
