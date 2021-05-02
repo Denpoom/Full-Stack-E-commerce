@@ -25,3 +25,32 @@ export const ORDERS_QUERY = gql`
     }
   }
 `;
+export const ALL_ORDERS_QUERY = gql`
+  query{
+    orders {
+      _id
+      totalPrice
+      ownerName
+      status
+      timestamp
+      owner{
+        username
+        email
+      }
+    }
+    products{
+      appearInOrder {
+        _id
+        orderOwner
+        quantity
+        mutiprice
+      }
+      appearInCart {
+        cartOwner
+        quantity
+      }
+      name
+      price
+    }
+  }
+`;

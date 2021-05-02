@@ -1,102 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useHistory} from "react-router-dom";
+import { useLazyQuery } from "@apollo/client";
 import List from "../../Components/ListAdmin";
 import { DataGrid } from "@material-ui/data-grid";
-
+import { ALL_ORDERS_QUERY } from "../../Graphql/ordersQuery";
 const columns = [
-  { field: "id", headerName: "Order", width: 90 },
+  { field: "id", headerName: "Order", width: 220 },
   { field: "user", headerName: "User", width: 120 },
   { field: "email", headerName: "E-mail", width: 240 },
   { field: "date", headerName: "Date", width: 120 },
-  { field: "item", headerName: "Item", width: 85 },
   { field: "total", headerName: "Total", width: 100 },
   { field: "status", headerName: "Status", width: 100 },
 ];
-const rows = [
-  {
-    id: "001",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Processing",
-  },
-  {
-    id: "002",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Finished",
-  },
-  {
-    id: "003",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Finished",
-  },
-  {
-    id: "004",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Finished",
-  },
-  {
-    id: "005",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Processing",
-  },
-  {
-    id: "006",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Processing",
-  },
-  {
-    id: "007",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Finished",
-  },
-  {
-    id: "008",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Finished",
-  },
-  {
-    id: "009",
-    user: "Username",
-    email: "grtdfsdf@gdfdfg.com",
-    date: "24/11/20",
-    item: 2,
-    total: "$ 3000",
-    status: "Finished",
-  },
-];
+const rows = [];
 
 const OrderInfo = () => {
+  const history = useHistory();
+  const [loadOrder, { data }] = useLazyQuery(ALL_ORDERS_QUERY);
+  useEffect(() => {
+    const loadData = async () => {
+      loadOrder();
+    };
+    loadData();
+  }, [loadOrder]);
+  data?.orders?.map((order,) => {
+    return rows.push({
+      id: order._id,
+      user: order.ownerName,
+      email: order.owner.email,
+      date: order.timestamp,
+      total: order.totalPrice,
+      status: order.status,
+    });
+  });
+  const handleRowClick = (event) => {
+    history.push(`/admin/order/${event.id}`);
+    console.log(event.id)
+  };
   return (
     //form
     <section className="#">
@@ -118,7 +58,7 @@ const OrderInfo = () => {
                   <div class="row">
                     <div class="col-11 px-6 py-4 border rounded bg-gray-100 shadow-md">
                       <div style={{ height: 400, width: "100%" }}>
-                        <DataGrid rows={rows} columns={columns} pageSize={5} />
+                        <DataGrid rows={rows} columns={columns} pageSize={5} onRowDoubleClick={handleRowClick}/>
                       </div>
                     </div>
                   </div>
