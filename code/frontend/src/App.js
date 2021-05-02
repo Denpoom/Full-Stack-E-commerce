@@ -63,6 +63,14 @@ function App() {
           </React.Fragment>
         ) : (
           <React.Fragment>
+            <Route
+              path="/product/detail/:id_product"
+              exact
+              component={DetailPage}
+            />
+            <Route path="/product" exact component={ProductPage} />
+            <Route path="/promotion" exact component={PromotionPage} />
+            <Route path="/customer" exact component={CustomerPage} />
             <Route path="/login" exact component={LoginPage} />
             <Route path="/admin/" exact component={DasboardPage} />
             <Route path="/admin/dashboard" exact component={DasboardPage} />
