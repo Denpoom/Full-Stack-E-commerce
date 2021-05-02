@@ -21,6 +21,11 @@ mutation($id:MongoID!,$record:UpdateByIdProductInput!){
         cartOwner
         quantity
       }
+      appearInOrder{
+        orderOwner
+        quantity
+        
+      }
       _id
     }
     error{

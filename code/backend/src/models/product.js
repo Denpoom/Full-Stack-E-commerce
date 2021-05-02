@@ -46,12 +46,17 @@ const ProductSchema = new Schema({
   },
   appearInOrder: [
     {
-      orderId: {
+      orderOwner: {
         type: String,
         index: true,
-        ref: "Cart",
+        ref: "Order",
       },
       quantity: {
+        type: Number,
+        index: true,
+        default: 0,
+      },
+      mutiprice: {
         type: Number,
         index: true,
         default: 0,
