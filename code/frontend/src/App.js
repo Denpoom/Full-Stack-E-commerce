@@ -3,7 +3,7 @@ import React from 'react'
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 
 import HomePage from "../src/View/Authen/Home";
 import LoginPage from "../src/View/Authen/Login";
@@ -42,7 +42,9 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <HashRouter basename={'/e-com'} >
       <Switch>
+        
         {user?.role !== 'Admin' ? (
           <React.Fragment>
             <Route path="/" exact component={HomePage} />
@@ -111,6 +113,7 @@ function App() {
         )}
 
       </Switch>
+      </HashRouter>
       <Footer />
     </div>
   );
