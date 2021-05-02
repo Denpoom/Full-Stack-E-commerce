@@ -33,12 +33,13 @@ const CartList = () => {
     console.log("error");
     return "Error !!";
   }
-  console.log(data.me.cart.products[0].price)
+  // console.log(data.me.cart.products[0].price)
   console.log(data);
   return (
     //form
     <section className="#">
       <div className="font-sans">
+
         <div className="relative mt-8 flex flex-col lg:justify-center items-center">
           <div className="mt-5 relative lg:max-w-screen-2xl w-full">
             <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-lg">
@@ -59,8 +60,11 @@ const CartList = () => {
                   </tr>
                 </thead>
                 {data?.me?.cart?.products?.map((e) =>  {
-                  return (
+                  return (              
                 <tbody> 
+                  {e?.appearInCart.map((f) => {
+                    return (
+
                   <tr>
                     <td>
                       <Link to={`/product/detail/${e?._id}`}>
@@ -83,7 +87,7 @@ const CartList = () => {
                           /> */}
                           {/* <button onClick={decrementCount}
                            className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">-</button> */}
-                          <label className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">1</label>      
+                          <label className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">{f?.quantity}</label>      
                           {/* <button onClick={incrementCount} 
                           className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">+</button> */}
                         </div>
@@ -100,6 +104,8 @@ const CartList = () => {
                       </span>
                     </td>
                   </tr>
+                    )
+                  })}
                 </tbody>
                  )})}
               </table>

@@ -60,16 +60,23 @@ const DetailProduct = () => {
       // id_cart.toString()
       // setValuet(data?.productById?.appearInCart)
       const exist = data?.productById?.appearInCart.find(
-        (cartId) => cartId === data?.me?.cart?._id
+        (appear) => appear.rcartId === data?.me?.cart?._id
       );
+      // numberlength = data?.productById?.appearInCart.length,
+      // cartappear = data?.productById?.appearInCart,
+
+    
+      // for (i = 0; i < numberlength; i++) {
+      //   quantity: cartappear[i]
+      // }
       if (exist) {
         const variables = {
-          id: data.productById._id,
+          id: data.productById._id,      
           record: {
             appearInCart: [
               {
                 cartId: data?.me?.cart?._id,
-                quantity: data?.productById?.appearInCart?.quantity + 1,
+
               },
             ],
           },
