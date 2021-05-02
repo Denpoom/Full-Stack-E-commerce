@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import { SHOW_CART_QUERY } from "../Graphql/cartListQuery";
 import { useSession } from "../Contexts/SessionContext";
 import { UPDATE_CART_MUTATION } from "../Graphql/cartMutation";
-import { CREATE_ORDER_MUTATION } from "../Graphql/orderMutation";
 const CartList = () => {
   const { user } = useSession();
   const { loading, error, data } = useQuery(SHOW_CART_QUERY, {
     variables: {
       username: user?.username,
     },
-    fetchPolicy: "network-only",
   });
   const [manageQuantity] = useMutation(UPDATE_CART_MUTATION);
   const totalPrice = data?.products?.reduce(
@@ -22,18 +20,9 @@ const CartList = () => {
     (a, c) => a + c?.appearInCart[0].quantity,
     0
   );
-  const [createOrder] = useMutation(CREATE_ORDER_MUTATION, {
-    variables: {
-      record: {
-        status: "WAITING",
-        ownerName: user?.username,
-        totalPrice: totalPrice,
-      },
-    },
-  });
-  const HandlecreatOrder = () => {
-    createOrder();
-  };
+  // const HandlecreatOrder = () => {
+  //   createOrder();
+  // };
   if (loading) {
     console.log("loading");
     return "Loading ...";
@@ -192,7 +181,7 @@ const CartList = () => {
               <div className="flex justify-content-end">
                 <Link to="/checkout">
                   <button
-                    onClick={HandlecreatOrder}
+                    // onClick={HandlecreatOrder}
                     className="flex justify-center  px-6 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-500 focus:shadow-outline focus:outline-none"
                   >
                     <svg

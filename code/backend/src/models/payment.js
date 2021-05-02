@@ -4,15 +4,18 @@ import { composeWithMongoose } from "graphql-compose-mongoose";
 const { Schema } = mongoose;
 
 const PaymentSchema = new Schema({
-  total: { type: String, require: true, default: "0" },
+  nameoncard: { type: String, require: true, index: true},
+  cardnumber: { type: String, require: true, index:true},
+  expdate: { type: String, require: true, index:true},
+  cvcode: { type: String, require: true, index:true},
   timestamp: { type: Date, default: Date.now },
-  ownerId: {
+  ownerName: {
     type: String,
     require: true,
     index: true,
     ref: "User",
   },
-  orderId: {
+  orderOwner: {
     type: String,
     require: true,
     index: true,

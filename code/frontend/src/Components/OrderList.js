@@ -1,8 +1,14 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { ORDERS_QUERY } from "../Graphql/ordersQuery";
+import { useSession } from "../Contexts/SessionContext";
 const OrderList = () => {
-  const { loading, error, data } = useQuery(ORDERS_QUERY);
+  const { user } = useSession();
+  const { loading, error, data } = useQuery(ORDERS_QUERY, {
+    variables: {
+      username: user?.username,
+    },
+  });
   if (loading) {
     return "Loading ...";
   }
@@ -53,16 +59,16 @@ const OrderList = () => {
                     return (
                       <>
                         <tr>
-                          <td>{order.name}</td>
+                          <td>{order._id}</td>
                           <td>{order.timestamp}</td>
                           <td
                             className={
-                              order.status === "Wait"
+                              order.status === "WAITING"
                                 ? "text-red-500 font-semibold"
                                 : "text-green-500 font-semibold"
                             }
                           >
-                            {order.status === "Wait"
+                            {order.status === "WAITING"
                               ? "Waiting Payment"
                               : "Payment Successful"}
                           </td>

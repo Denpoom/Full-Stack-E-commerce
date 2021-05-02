@@ -10,7 +10,6 @@ const CheckoutForm = () => {
     variables: {
       username: user?.username,
     },
-    fetchPolicy: "network-only",
   });
   const totalPrice = data?.products?.reduce(
     (a, c) => a + c?.price * c?.appearInCart[0].quantity,
