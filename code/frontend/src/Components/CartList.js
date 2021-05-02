@@ -13,8 +13,8 @@ const CartList = () => {
   });
   
   const [count, setCount] = useState(0)
-  const [cost] = useState(31990)
-  const [total, setTotal] = useState(0)
+  // const [cost] = useState(31990)
+  // const [total, setTotal] = useState(0)
 
   const decrementCount = () => {
       setCount(prevCount => prevCount - 1)
@@ -31,7 +31,7 @@ const CartList = () => {
     console.log("error");
     return "Error !!";
   }
-  console.log(total)
+  // console.log(total)
   console.log(data);
   return (
     //form
@@ -95,7 +95,7 @@ const CartList = () => {
                     </td>
                     <td className="text-right">
                       <span className="text-sm lg:text-base font-medium">
-                        {total}€
+                        {/* {total}€ */}
                       </span>
                     </td>
                   </tr>

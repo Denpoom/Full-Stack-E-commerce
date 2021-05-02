@@ -39,7 +39,6 @@ mutation($id:MongoID!,$record:UpdateByIdProductInput!){
       price
       url
       isRecommended
-      amount
       appearInCart
       _id
     }

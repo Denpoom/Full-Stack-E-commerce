@@ -1,9 +1,9 @@
 import React, { Fragment, useMemo } from "react";
 import { useQuery } from "@apollo/client";
-import { ME_DETAIL_QUERY } from "../Graphql/meDetailQuery";
+import { ME_QUERY } from "../Graphql/meQuery";
 
 const InfoCustomer = () => {
-  const { loading, error, data } = useQuery(ME_DETAIL_QUERY, {
+  const { loading, error, data } = useQuery(ME_QUERY, {
     fetchPolicy: "network-only",
   });
   console.log(data);
