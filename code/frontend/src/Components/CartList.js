@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { SHOW_CART_QUERY } from "../Graphql/cartListQuery";
 import { useSession } from "../Contexts/SessionContext";
 import { UPDATE_CART_MUTATION } from "../Graphql/cartMutation";
+import { CREATE_ORDER_MUTATION } from "../Graphql/orderMutation";
 const CartList = () => {
   const { user } = useSession();
   const { loading, error, data } = useQuery(SHOW_CART_QUERY, {
@@ -13,8 +14,26 @@ const CartList = () => {
     fetchPolicy: "network-only",
   });
   const [manageQuantity] = useMutation(UPDATE_CART_MUTATION);
-  const totalPrice = data?.products?.reduce((a,c) => a+(c?.price * c?.appearInCart[0].quantity),0)
-  // const [total, setTotal] = useState(0);
+  const totalPrice = data?.products?.reduce(
+    (a, c) => a + c?.price * c?.appearInCart[0].quantity,
+    0
+  );
+  const totalCount = data?.products?.reduce(
+    (a, c) => a + c?.appearInCart[0].quantity,
+    0
+  );
+  const [createOrder] = useMutation(CREATE_ORDER_MUTATION, {
+    variables: {
+      record: {
+        status: "WAITING",
+        ownerName: user?.username,
+        totalPrice: totalPrice,
+      },
+    },
+  });
+  const HandlecreatOrder = () => {
+    createOrder();
+  };
   if (loading) {
     console.log("loading");
     return "Loading ...";
@@ -30,7 +49,6 @@ const CartList = () => {
     //form
     <section className="#">
       <div className="font-sans">
-
         <div className="relative mt-8 flex flex-col lg:justify-center items-center">
           <div className="mt-5 relative lg:max-w-screen-2xl w-full">
             <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-lg">
@@ -166,12 +184,17 @@ const CartList = () => {
                   <b>Total</b>
                 </div>
                 <div className="col-2 text-right">
-                  <b>$ {totalPrice}</b>
+                  <b>
+                    $ {totalPrice}, {totalCount} ea.
+                  </b>
                 </div>
               </div>
               <div className="flex justify-content-end">
                 <Link to="/checkout">
-                  <button className="flex justify-center  px-6 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-500 focus:shadow-outline focus:outline-none">
+                  <button
+                    onClick={HandlecreatOrder}
+                    className="flex justify-center  px-6 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-500 focus:shadow-outline focus:outline-none"
+                  >
                     <svg
                       aria-hidden="true"
                       data-prefix="far"

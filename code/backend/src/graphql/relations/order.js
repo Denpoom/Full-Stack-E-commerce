@@ -3,14 +3,18 @@ import { OrderTC, ProductTC, UserTC } from "../../models";
 OrderTC.addRelation("owner", {
   resolver: () => UserTC.getResolver("findById"),
   prepareArgs: {
-    _id: (source) => source.ownerId,
+    _id: (source) => source.ownerName,
   },
-  projection: { ownerId: 1 },
+  projection: { ownerName: 1 },
 });
 OrderTC.addRelation("products", {
   resolver: () => ProductTC.getResolver("findMany"),
   prepareArgs: {
-    filter: (source) => ({ appearInOrder: source._id }),
+    filter: (source) => ({
+      appearInOrder: {
+        orderOwner: source.ownerName,
+      },
+    }),
   },
-  projection: { _id: 1 },
+  projection: { ownerName: 1 },
 });

@@ -15,6 +15,6 @@ const CartSchema = new Schema({
 
 export const CartModel = mongoose.model("Cart", CartSchema);
 
-export const CartTC = composeWithMongoose(CartModel).removeField("ownerId");
+export const CartTC = composeWithMongoose(CartModel);
 
 export default CartModel;

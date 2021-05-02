@@ -2,17 +2,24 @@ import mongoose from "mongoose";
 import { composeWithMongoose } from "graphql-compose-mongoose";
 
 const { Schema } = mongoose;
-
+const enumStatus = {
+  SUCCESS: "Success",
+  WAITING: "Waiting",
+};
 const OrderSchema = new Schema({
-  count: { type: String, require: true, default: "0" },
-  name: { type: String, require: true, index: true },
-  status: { type: String },
-  ownerId: {
+  status: {
+    type: String,
+    enum: Object.keys(enumStatus),
+    default: "Waiting",
+    index: true,
+  },
+  ownerName: {
     type: String,
     require: true,
     index: true,
     ref: "User",
   },
+  totalPrice: { type: Number, default: 0 },
   timestamp: { type: Date, default: Date.now },
 });
 const baseOptions = {
