@@ -1,10 +1,11 @@
 import { useMutation, useQuery } from "@apollo/client";
-import React, { useState } from "react";
+import React, { useState, useCallback} from "react";
 import { SHOW_CART_QUERY } from "../Graphql/cartListQuery";
 import { useSession } from "../Contexts/SessionContext";
 import { UPDATE_CART_MUTATION } from "../Graphql/cartMutation";
 import { CREATE_ORDER_MUTATION } from "../Graphql/orderMutation";
 import { CREATE_PAYMENT_MUTATION } from "../Graphql/paymentMutation";
+import { useHistory } from "react-router-dom";
 const Paymentfrom = () => {
   const { user } = useSession();
   const { loading, error, data } = useQuery(SHOW_CART_QUERY, {
@@ -69,13 +70,19 @@ const Paymentfrom = () => {
       });
     });
   };
-  const addPaymentandOrder = () => {
+  const history = useHistory();
+  const redirect = useCallback(() => {
+    history.push("/customer/orders");
+  }, [history]);
+  const addPaymentandOrder = (event) => {
+    event.preventDefault();
     createOrder();
-    console.log("Create Order!!")
+    console.log("Create Order!!");
     updateOrder();
-    console.log("Update Order!!")
+    console.log("Update Order!!");
     createPayment();
-    console.log("Create Payment!!")
+    console.log("Create Payment!!");
+    redirect()
   };
   if (loading) {
     console.log("loading");
@@ -101,7 +108,7 @@ const Paymentfrom = () => {
               </h1>
               <div className="row justify-center">
                 <div className="col-6 ">
-                  <form className="text-center">
+                  <form className="text-center" onSubmit={addPaymentandOrder}>
                     <div className="-mx-3 md:flex mb-6">
                       <div className="md:w-full px-3">
                         <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
@@ -168,7 +175,7 @@ const Paymentfrom = () => {
 
                     <button
                       // to="customer/orders"
-                      onClick={addPaymentandOrder}
+                      type="submit"
                       className="flex justify-center w-full px-10 py-2 mt-6 font-medium text-white uppercase bg-blue-800 rounded-full item-center hover:bg-blue-700 focus:shadow-outline focus:outline-none"
                     >
                       <svg

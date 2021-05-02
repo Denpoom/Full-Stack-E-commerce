@@ -108,7 +108,7 @@ const CardPromotion = () => {
                             />
                             
                             <CardContent>
-                              <Link to="">
+                              <Link to="promotion">
                                 <Typography
                                   gutterBottom
                                   variant="h7"

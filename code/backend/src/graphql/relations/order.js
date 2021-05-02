@@ -1,9 +1,11 @@
 import { OrderTC, ProductTC, UserTC } from "../../models";
 
 OrderTC.addRelation("owner", {
-  resolver: () => UserTC.getResolver("findById"),
+  resolver: () => UserTC.getResolver("findOne"),
   prepareArgs: {
-    _id: (source) => source.ownerName,
+    filter: (source) => ({
+      username:source.ownerName,
+    }),
   },
   projection: { ownerName: 1 },
 });

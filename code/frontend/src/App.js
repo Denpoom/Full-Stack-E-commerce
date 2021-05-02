@@ -104,7 +104,7 @@ function App() {
               component={AdminUpdateProductPage}
             />
             <Route
-              path="/admin/order/id_order"
+              path="/admin/order/:id_order"
               exact
               component={AdminDetailOrderPage}
             />
