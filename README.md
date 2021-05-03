@@ -1,4 +1,9 @@
 # Full-Stack-E-commerce
+#LOGIN 
+ *    Customer  Username 61070060            Pass 61070060
+ *    Admin     Username admin               Pass 1234
+                  
+      
 1. Authen
     * ✔   Home / Display banner, latest promotion and products
     * ✔   Login /login Login form
