@@ -105,8 +105,7 @@ const CardPromotion = () => {
                               className={classes.media}
                               image="https://img.advice.co.th/images_nas/pic_product4/A0135185/A0135185_s.jpg"
                               title="Contemplative Reptile"
-                            />
-                            
+                            /> 
                             <CardContent>
                               <Link to="promotion">
                                 <Typography
