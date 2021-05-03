@@ -77,6 +77,7 @@ const Paymentfrom = () => {
   }, [history]);
   const addPaymentandOrder = (event) => {
     event.preventDefault();
+    alert("SUCCESS PAYMENT")
     createOrder();
     console.log("Create Order!!");
     updateOrder();
@@ -135,6 +136,7 @@ const Paymentfrom = () => {
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="0000 0000 0000 0000"
                           name="cardnumber"
+                          maxLength="16"
                           value={values.cardnumber}
                           onChange={onChange}
                         />
@@ -151,6 +153,7 @@ const Paymentfrom = () => {
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="MM/YY"
                           name="expdate"
+                          maxLength="5"
                           value={values.expdate}
                           onChange={onChange}
                         />
@@ -167,6 +170,7 @@ const Paymentfrom = () => {
                           className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                           placeholder="CVC"
                           name="cvcode"
+                          maxLength="3"
                           value={values.cvcode}
                           onChange={onChange}
                         />
