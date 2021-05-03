@@ -2,10 +2,19 @@ import React, { Suspense } from "react";
 import { useQuery } from "@apollo/client";
 import List from "../../Components/ListAdmin";
 import OrderDetail from "../../Components/OrderDetail";
-import { ORDERS_QUERY } from '../../Graphql/ordersQuery';
+import { ORDERS_QUERY_BY_ID } from "../../Graphql/ordeqruertById";
+import { useParams } from "react-router";
+
 const DetailOrder = () => {
-// ORDERS_QUERY
-const { loading, error, data }= useQuery(ORDERS_QUERY);
+  const { id_order } = useParams()
+  const { loading, error, data }= useQuery(
+  ORDERS_QUERY_BY_ID,
+  {
+    variables: {
+      id: id_order,
+    },
+  }
+);
 if (loading) {
   return "Loading ...";
 }
@@ -13,9 +22,8 @@ if (error) {
   return "Error !!";
 }
 
-console.log(data)
+console.log(data, id_order)
   return (
-
     <React.Fragment>
       <Suspense fallback={<h1>Still Loading…</h1>}>
         <div className="font-sans">
@@ -26,7 +34,6 @@ console.log(data)
                   <i class="fas fa-user-cog"></i> Detail Order
                 </h1>
                 <hr></hr>
-
                 <div class="ml-2 mt-4 row text-left">
                   <List />
                   <div class="mt-1 col-md-8">

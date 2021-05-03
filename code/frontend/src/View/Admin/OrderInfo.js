@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useHistory} from "react-router-dom";
-import { useLazyQuery } from "@apollo/client";
+import { useQuery} from "@apollo/client";
 import List from "../../Components/ListAdmin";
 import { DataGrid } from "@material-ui/data-grid";
 import { ALL_ORDERS_QUERY } from "../../Graphql/ordersQuery";
@@ -16,13 +16,8 @@ const rows = [];
 
 const OrderInfo = () => {
   const history = useHistory();
-  const [loadOrder, { data }] = useLazyQuery(ALL_ORDERS_QUERY);
-  useEffect(() => {
-    const loadData = async () => {
-      loadOrder();
-    };
-    loadData();
-  }, [loadOrder]);
+  const { loading, error, data } = useQuery(ALL_ORDERS_QUERY);
+ 
   data?.orders?.map((order,) => {
     return rows.push({
       id: order._id,
@@ -37,6 +32,14 @@ const OrderInfo = () => {
     history.push(`/admin/order/${event.id}`);
     console.log(event.id)
   };
+  if (loading) {
+    return "Loading ...";
+  }
+  if (error) {
+    return "Error !!";
+  }
+  
+  
   return (
     //form
     <section className="#">

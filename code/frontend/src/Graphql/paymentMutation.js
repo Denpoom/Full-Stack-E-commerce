@@ -12,7 +12,6 @@ export const CREATE_PAYMENT_MUTATION = gql`
           role
         }
         ownerName
-        orderId
       }
     }
   }
