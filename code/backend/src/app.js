@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: process.env.CORS ?? "http://localhost:3000",
+    origin: true,
     credentials: true,
   })
 );
@@ -57,7 +57,7 @@ server.applyMiddleware({
   app,
   path,
   cors: {
-    origin: process.env.CORS ?? "http://localhost:3000",
+    origin: true,
     credentials: true,
   },
 });
